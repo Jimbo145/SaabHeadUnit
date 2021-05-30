@@ -5,6 +5,8 @@
 #include <chrono> 
 #include <mutex>
 
+#include <SDL2/SDL.h>
+
 
 using namespace std;
 
@@ -13,10 +15,18 @@ void closeSlave();
 int getControlBits(int, bool);
 
 std::mutex m;
-char ScreenBuffer[9][106][8];
+
+const uint PIXEL_SIZE = 4;
+const uint PAGE_SIZE = 8;
+const uint COLUMN_SIZE = 106;
+const uint ROW_SIZE = 8;
+
 
 const int slaveAddress = 0x3C; // <-- Your address of choice
+
 bsc_xfer_t xfer; // Struct to control data flow
+char ScreenBuffer[PAGE_SIZE][COLUMN_SIZE][ROW_SIZE];
+
 
 
 template <typename I> std::string n2hexstr(I w, size_t hex_len = sizeof(I)<<1) {
@@ -68,16 +78,109 @@ void insertByte(char inputByte, char (*buf)[106][8], uint8_t page, uint8_t col){
     buf[page][col][7] = (inputByte & 1<<0)>>0;
      m.unlock();
 }
+
+void graphicScreenBuffer(char (*buf)[106][8]){
     
+    if (SDL_Init(SDL_INIT_VIDEO) != 0){
+        std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
+        //return 1;
+        std::terminate();
+    }
+
+    SDL_Window *win = SDL_CreateWindow("", 100, 100, (COLUMN_SIZE * PIXEL_SIZE), (ROW_SIZE * PAGE_SIZE * PIXEL_SIZE), SDL_WINDOW_SHOWN);
+    if (win == nullptr){
+        std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        //return 1;
+        std::terminate();
+    }
+    SDL_Renderer *ren = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (ren == nullptr){
+        SDL_DestroyWindow(win);
+        std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        //return 1;
+        std::terminate();
+    }
+
+    
+    SDL_Surface *surface = surface = SDL_CreateRGBSurface(0, (COLUMN_SIZE * PIXEL_SIZE), (ROW_SIZE * PAGE_SIZE * PIXEL_SIZE), 32, 0, 0, 0, 0);
+    //Clear the Surface
+    SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0, 0, 0)); 
+
+    
+    SDL_Texture *tex;
+    while(true){
+        
+        for(int page = 0; page <= PAGE_SIZE; page++){
+            for(int row = 0; row < ROW_SIZE; row++){
+                for(int col = 0; col < COLUMN_SIZE; col++){
+                    SDL_Rect pixeldrawRect;
+                    pixeldrawRect.x = col * PIXEL_SIZE;
+                    pixeldrawRect.y = (page * PAGE_SIZE * PIXEL_SIZE) + (row * PIXEL_SIZE);
+                    pixeldrawRect.w = PIXEL_SIZE;
+                    pixeldrawRect.h = PIXEL_SIZE;
+                    if( ScreenBuffer[page][col][row] == 1){
+                        SDL_FillRect(surface, &pixeldrawRect, SDL_MapRGB(surface->format, 0, 255, 0));
+                    }else{
+                        SDL_FillRect(surface, &pixeldrawRect, SDL_MapRGB(surface->format, 0, 0, 0));
+                    }
+                    
+                
+                }
+            }
+        }
+        SDL_Rect pixeldrawRect;
+        pixeldrawRect.x = 0;
+        pixeldrawRect.y = 252;
+        pixeldrawRect.w = PIXEL_SIZE;
+        pixeldrawRect.h = PIXEL_SIZE;
+        SDL_FillRect(surface, &pixeldrawRect, SDL_MapRGB(surface->format, 0, 0, 255));
+
+        tex = SDL_CreateTextureFromSurface(ren, surface);
+        
+        if (tex == nullptr){
+            SDL_DestroyRenderer(ren);
+            SDL_DestroyWindow(win);
+            std::cout << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
+            SDL_Quit();
+            //return 1;
+            std::terminate();
+        }
+
+        //First clear the renderer
+        SDL_RenderClear(ren);
+        //Draw the texture
+        SDL_RenderCopy(ren, tex, NULL, NULL);
+        //Update the screen
+        SDL_RenderPresent(ren);
+        //Take a quick break after all that hard work
+        std::this_thread::sleep_for (std::chrono::seconds(10));
+    }
+    SDL_FreeSurface(surface);
+
+    SDL_DestroyTexture(tex);
+    SDL_DestroyRenderer(ren);
+    SDL_DestroyWindow(win);
+    SDL_Quit();
+}
+    
+//#define TEXT_PRINTING
 
 int main(){
-    // Chose one of those two lines (comment the other out):
+
+    #ifdef TEXT_PRINTING
     thread th1(printScreenBuffer, ScreenBuffer);
+    #endif
+    thread thSDL(graphicScreenBuffer, ScreenBuffer);
+
     runSlave();
 
-    //closeSlave();
 
+    //closeSlave();
+    #ifdef TEXT_PRINTING
     th1.join();
+    #endif
 
     return 0;
 }
@@ -110,11 +213,11 @@ void runSlave() {
                 for(int i = 0; i < xfer.rxCnt; i++){
                     char d = xfer.rxBuf[i];
                     message += " " + n2hexstr(d);
-                    if(updateBuffer && skipMessage == 7){
+                    if(bufferAddressSeen && updateBuffer){
                         insertByte(d, ScreenBuffer, page, col);
                         col++;
                     }else if(bufferAddressSeen == true && d  == 0x40){
-                        skipMessage++;
+                        updateBuffer = true;
                     }else if(d  >= 0x40 and d <= 0x48){
                         page = d & 0b00111111;
                         bufferAddressSeen = true;
