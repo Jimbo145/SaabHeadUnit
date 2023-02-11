@@ -18,10 +18,10 @@ async def main() -> None:
         # Wait for next message from AsyncBufferedReader
 
     try:
-        git.Repo.clone_from('https://github.com/Jimbo145/SaabHeadUnit.git','/home/pi/SaabHeadUnit')
+        git.Repo.clone_from('https://github.com/Jimbo145/SaabHeadUnit.git','/home/pi/saabHeadUnit')
     except:
         pass
-    g = git.cmd.Git("/home/pi/SaabHeadUnit")
+    g = git.cmd.Git("/home/pi/saabHeadUnit")
     g.pull('origin')
 
     subprocess.call(["python", "saabCan.py"])
