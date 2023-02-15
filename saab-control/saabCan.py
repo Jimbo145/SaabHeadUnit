@@ -25,7 +25,7 @@ class TurnSignal(Enum):
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
 
-logging.basicConfig(filename='can.log', level=logging.DEBUG)
+logging.basicConfig(filename='/home/pi/saabHeadUnit/saab-control/can.log', level=logging.DEBUG)
 
 
 # logging.basicConfig(encoding='utf-8', level=logging.INFO)

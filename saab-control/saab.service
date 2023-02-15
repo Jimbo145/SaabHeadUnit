@@ -2,7 +2,7 @@
 Description=SAAB Service
 
 [Service]
-ExecStart=/bin/python3 /home/pi/SaabHeadUnit/saab-control/saabUpdate.py
+ExecStart=python3 /home/pi/saabHeadUnit/saab-control/saabUpdate.py
 
 User=pi
 Environment=DISPLAY=:0
