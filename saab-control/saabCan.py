@@ -8,13 +8,18 @@ from can.notifier import MessageRecipient
 from enum import Enum
 from functools import *
 import sys
+import time
 
 keyboard = Controller()
 
 messageStore = {}
 LogChange: bool = True
 
+global turnSignalAsync
+
 global keyboardPressed
+
+global turn_timer_start
 
 
 class TurnSignal(Enum):
@@ -25,7 +30,7 @@ class TurnSignal(Enum):
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
 
-logging.basicConfig(filename='/home/pi/saabHeadUnit/saab-control/can.log', level=logging.DEBUG)
+logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
 
 
 # logging.basicConfig(encoding='utf-8', level=logging.INFO)
@@ -56,6 +61,7 @@ def receive_message(msg: can.Message, bus: can.bus) -> None:
 
 def parseMessage(can_id: int, data: List[int], bus: can.Bus):
     global keyboardPressed
+    global turnSignalAsync
     
     if can_id == hex_to_int("0x60"):
         """Voltage:
@@ -117,7 +123,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             keyboard.press('N')
             keyboardPressed = 'N'
             logging.info('Keyboard: "N" -  OpenAuto: "Next track"')
-        elif data[3] == 3:
+        elif data[3] == 9:
             keyboard.press('H')
             keyboardPressed = 'H'
             logging.info('Keyboard: "H" -  OpenAuto: "Home"')
@@ -129,16 +135,25 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         if data[4] == (0):
             # send turn signal 2x times if last was true;
             global last_turn_signal
-            if last_turn_signal != TurnSignal.OFF:
+            global turn_timer_start
+
+            if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
                 logging.info("Turn Signal Off")
-                asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
+                turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
+                turn_timer_start = 0
 
             last_turn_signal = TurnSignal.OFF
         elif data[4] == (64):
             last_turn_signal = TurnSignal.RIGHT
+            if turnSignalAsync is not None:
+                turnSignalAsync.cancel()
+            turn_timer_start = time.monotonic()
             logging.info("Turn Signal Right")
         elif data[4] == (128):
             last_turn_signal = TurnSignal.LEFT
+            if turnSignalAsync is not None:
+                turnSignalAsync.cancel()
+            turn_timer_start = time.monotonic()
             logging.info("Turn Signal Left")
     elif can_id == hex_to_int("0x460"):
         """- b0
@@ -152,11 +167,11 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - Brightness sensor
                 - 16 bit integer
         """
-        brightness_sensor = (data[2] << 8) & data[1]
+        brightness_sensor = (data[2] << 8) + data[1]
         logging.info(f"Handle 0x460 light level:{data[1]} {data[2]} Nightmode:{data[0]} Lightsensor:  {brightness_sensor}")
         instrumentLightLevel = data[1]
         if data[0] == 64:
-            snightModeOn = True
+            nightModeOn = True
         else:
             nightModeOn = False
     elif can_id == hex_to_int("0x740"):
@@ -195,7 +210,7 @@ def setup_can():
 
 
 async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
-    step_count = 6
+    step_count = 4
 
     if signal == TurnSignal.RIGHT:
         signal_data = hex_to_int("0x40")
@@ -222,20 +237,24 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
 async def main(test_mode) -> None:
     """The main function that runs in the loop."""
     global notifier
+    global turn_timer_start
+    global turnSignalAsync
 
+    turn_timer_start = 0
+    turnSignalAsync = None
     can_channel = "can0"
     if test_mode:
         can_channel = "vcan0"
-    else:
-        setup_can()
+    # else:
+    #   setup_can()
 
     with can.Bus(  # type: ignore
             channel=can_channel, bustype="socketcan", receive_own_messages=False
     ) as bus:
         reader = can.AsyncBufferedReader()
-        logger = can.Logger("logfile.asc")
+        logger = can.Logger("/tmp/logfile.asc")
         msg = bus.recv()
-        await asyncio.wait_for(send_message(bus, "0x300", [0x0, 0x90]), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
 
         receive_part = partial(receive_message, bus=bus)
 
@@ -263,15 +282,13 @@ try:
         logging.info("Starting")
         args = sys.argv[1:]
         
-        '''if args[0] == "test":
+        if len(args) > 0 and args[0] == "test":
             print("Test Mode")
             test = True
         else:
             test = False
-        '''
-        test=False
         asyncio.run(main(test))
 
 except KeyboardInterrupt:
     print("Stopping...")
-    notifier.stop()
+    #notifier.stop()
