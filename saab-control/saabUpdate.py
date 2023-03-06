@@ -21,7 +21,7 @@ async def main() -> None:
         git.Repo.clone_from('https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnit')
     except:
         pass
-    g = git.cmd.Git("//usr/local/bin/SaabHeadUnit")
+    g = git.cmd.Git("/usr/local/bin/SaabHeadUnit")
     
     g.pull('origin')
 

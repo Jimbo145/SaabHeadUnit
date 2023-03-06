@@ -9,6 +9,7 @@ from enum import Enum
 from functools import *
 import sys
 import time
+    #pip install pyzmq
 
 keyboard = Controller()
 
@@ -16,10 +17,9 @@ messageStore = {}
 LogChange: bool = True
 
 global turnSignalAsync
-
 global keyboardPressed
-
 global turn_timer_start
+global database
 
 
 class TurnSignal(Enum):
@@ -240,11 +240,13 @@ async def main(test_mode) -> None:
     global turn_timer_start
     global turnSignalAsync
 
+
     turn_timer_start = 0
     turnSignalAsync = None
     can_channel = "can0"
     if test_mode:
         can_channel = "vcan0"
+
     # else:
     #   setup_can()
 
