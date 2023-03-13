@@ -1,13 +1,15 @@
 import subprocess
 import asyncio
-import git  # pip install GitPython
 
 
 
 async def main() -> None:
 
     """The main function that runs in the loop."""
-    result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'])
+    try:
+        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'])
+    except:
+        pass
     internet_connected = False
     while not internet_connected:
         result = subprocess.run(['ping', '8.8.8.8', '-c', '1'])
@@ -17,13 +19,10 @@ async def main() -> None:
     
         # Wait for next message from AsyncBufferedReader
 
-    try:
-        git.Repo.clone_from('https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnit')
-    except:
-        pass
-    g = git.cmd.Git("/usr/local/bin/SaabHeadUnit")
-    
-    g.pull('origin')
+
+    result = subprocess.call(['rm', '-rf', '/usr/local/bin/SaabHeadUnit'])
+    print(result)
+    subprocess.call(['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnit'])
 
     subprocess.call(["python3", "/usr/local/bin/SaabHeadUnit/saab-control/saabCan.py"])
         
