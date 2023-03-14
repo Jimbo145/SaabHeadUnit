@@ -1,7 +1,14 @@
 import subprocess
 import asyncio
+import can
 
 
+async def send_message(bus: can.Bus,can_id: str, data:bytearray):
+    message = can.Message(arbitration_id=int(can_id, 16), data=data, is_extended_id=False)
+    try:
+        bus.send(message)
+    except can.CanError:
+        pass
 
 async def main() -> None:
 
@@ -10,6 +17,22 @@ async def main() -> None:
         result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'])
     except:
         pass
+
+    can_channel = "can0"
+
+    with can.Bus(  # type: ignore
+            channel=can_channel, bustype="socketcan", receive_own_messages=False
+    ) as bus:
+        await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
+        await asyncio.sleep(0.1)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
+        await asyncio.sleep(0.1)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
+        await asyncio.sleep(0.1)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
+        await asyncio.sleep(0.1)
+
     internet_connected = False
     while not internet_connected:
         result = subprocess.run(['ping', '8.8.8.8', '-c', '1'])
