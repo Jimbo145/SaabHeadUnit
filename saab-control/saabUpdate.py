@@ -23,15 +23,15 @@ async def main() -> None:
     with can.Bus(  # type: ignore
             channel=can_channel, bustype="socketcan", receive_own_messages=False
     ) as bus:
-        await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
+        # await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
         await asyncio.sleep(0.1)
-        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x09, 0x00])), timeout=0.5)
         await asyncio.sleep(0.1)
-        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
         await asyncio.sleep(0.1)
-        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x09, 0x00])), timeout=0.5)
         await asyncio.sleep(0.1)
-        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
 
     internet_connected = False
     while not internet_connected:
