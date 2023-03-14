@@ -1,9 +1,10 @@
 [Unit]
 Description=SAAB Service
+After=saab_update.service
 
 [Service]
 ExecStart=python3 /usr/local/bin/SaabHeadUnit/saab-control/saabCan.py
-After=saab_update.service
+
 
 User=pi
 Environment=DISPLAY=:0
