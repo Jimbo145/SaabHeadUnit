@@ -24,14 +24,14 @@ async def main() -> None:
             channel=can_channel, bustype="socketcan", receive_own_messages=False
     ) as bus:
         await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
-        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
-        await asyncio.sleep(0.1)
-        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
         await asyncio.sleep(0.1)
         await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
         await asyncio.sleep(0.1)
         await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
         await asyncio.sleep(0.1)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x9, 0x0])), timeout=0.5)
+        await asyncio.sleep(0.1)
+        await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x0, 0x0, 0x0, 0x0])), timeout=0.5)
 
     internet_connected = False
     while not internet_connected:
@@ -42,12 +42,10 @@ async def main() -> None:
     
         # Wait for next message from AsyncBufferedReader
 
-
-    result = subprocess.call(['rm', '-rf', '/usr/local/bin/SaabHeadUnit'])
+    result = subprocess.call(['sudo', 'rm', '-rf', '/usr/local/bin/SaabHeadUnit'])
     print(result)
     subprocess.call(['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnit'])
 
-    subprocess.call(["python3", "/usr/local/bin/SaabHeadUnit/saab-control/saabCan.py"])
         
         
 
