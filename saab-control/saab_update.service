@@ -1,0 +1,12 @@
+[Unit]
+Description=SAAB Service
+
+[Service]
+ExecStart=python3 /usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py
+After=first.service
+
+User=pi
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target

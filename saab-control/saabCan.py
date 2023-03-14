@@ -9,6 +9,7 @@ from enum import Enum
 from functools import *
 import sys
 import time
+import shutil
     #pip install pyzmq
 
 keyboard = Controller()
@@ -282,6 +283,8 @@ try:
     if __name__ == "__main__":
         print("Starting...")
         logging.info("Starting")
+        shutil.copyfile('/usr/local/bin/SaabHeadUnit/saab-control/saabUpdate.py', '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py')
+
         args = sys.argv[1:]
         
         if len(args) > 0 and args[0] == "test":
