@@ -22,7 +22,7 @@ cp $update_file /etc/systemd/system/
 # Copy the Updater to
 cp $service_file /etc/systemd/system/
 
-mkdir /usr/local/bin/SaabHeadUnitUpdater/
+mkdir -p /usr/local/bin/SaabHeadUnitUpdater/
 cp saabUpdate.py /usr/local/bin/SaabHeadUnitUpdater/
 
 # Reload the systemd configuration
