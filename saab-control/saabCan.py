@@ -257,7 +257,7 @@ async def main(test_mode) -> None:
         reader = can.AsyncBufferedReader()
         logger = can.Logger("/tmp/logfile.asc")
         msg = bus.recv()
-        # await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
+        await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
 
         receive_part = partial(receive_message, bus=bus)
 
