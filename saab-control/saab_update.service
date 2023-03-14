@@ -3,7 +3,7 @@ Description=SAAB Service
 
 [Service]
 ExecStart=python3 /usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py
-After=first.service
+Type=oneshot
 
 User=pi
 Environment=DISPLAY=:0
