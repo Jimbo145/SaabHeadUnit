@@ -283,7 +283,8 @@ try:
     if __name__ == "__main__":
         print("Starting...")
         logging.info("Starting")
-        shutil.copyfile('/usr/local/bin/SaabHeadUnit/saab-control/saabUpdate.py', '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py')
+        subprocess.call(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saab-control/saabUpdate.py',
+                         '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'])
 
         args = sys.argv[1:]
         
