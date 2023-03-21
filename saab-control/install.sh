@@ -30,10 +30,8 @@ systemctl daemon-reload
 
 # Enable the service to start on boot
 systemctl enable saab_update
-systemctl enable saab
 
 # Start the service
 systemctl start saab_update
-systemctl start saab
 
 echo "Installation complete."
