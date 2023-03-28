@@ -1,6 +1,7 @@
 import subprocess
 import asyncio
 import can
+import os
 
 
 async def send_message(bus: can.Bus,can_id: str, data:bytearray):
