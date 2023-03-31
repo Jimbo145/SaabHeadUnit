@@ -11,6 +11,9 @@ import sys
 import time
 import shutil
 import os
+import systemd.journal
+# import sqlite3          #pip install sqlite3
+# from aiohttp import web #pip install aiohttp
     #pip install pyzmq
 
 keyboard = Controller()
@@ -29,6 +32,8 @@ class TurnSignal(Enum):
     LEFT = 1
     RIGHT = 2
 
+DATABASE_FILE = 'database.db'
+
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
 
@@ -39,6 +44,33 @@ logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
 
 def hex_to_int(hex_num: str) -> int:
     return int(hex_num, 16)
+
+# def create_database_file():
+#     if not os.path.exists(DATABASE_FILE):
+#         conn = sqlite3.connect(DATABASE_FILE)
+#         conn.close()
+
+# function to create database table if it doesn't exist
+# def create_database_table():
+#     conn = sqlite3.connect(DATABASE_FILE)
+#     conn.execute('''
+#     CREATE TABLE IF NOT EXISTS mytable (
+#         id INTEGER PRIMARY KEY,
+#         data INTEGER
+#     );
+#     ''')
+#     conn.close()
+
+# def set_data(id, data):
+#     conn = sqlite3.connect(DATABASE_FILE)
+#     cursor = conn.execute(f"SELECT id FROM mytable WHERE id={id}")
+#     existing_data = cursor.fetchone()
+#     if existing_data:
+#         conn.execute(f"UPDATE mytable SET data={data} WHERE id={id}")
+#     else:
+#         conn.execute(f"INSERT INTO mytable (id, data) VALUES ({id}, {data})")
+#     conn.commit()
+#     conn.close()
 
 
 def receive_message(msg: can.Message, bus: can.bus) -> None:
@@ -201,6 +233,11 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
 
 def get_battery_status():
     run = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
+    battery_voltage = float(output.decode().strip())
+    systemd.journal.send("Battery voltage: {:.2f} V".format(battery_voltage))
+    await asyncio.sleep(10)
+    asyncio.create_task(get_battery_status())
+
 
 def setup_can():
     # ip link set can0 up type can bitrate 33300
@@ -235,6 +272,21 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
         await (send_message(bus, "0x290", last_message))
         
 
+async def handle_source_change(bus: can.Bus) -> None:
+    last_message = messageStore[hex_to_int("0x290")]
+    last_message[3] = 2
+    #this is loop unrolled
+    await (send_message(bus, "0x290", last_message))
+    await asyncio.sleep(0.2)
+    last_message[3] = 0
+    await (send_message(bus, "0x290", last_message))
+    await asyncio.sleep(0.2)
+    last_message[3] = 2
+    await (send_message(bus, "0x290", last_message))
+    await asyncio.sleep(0.2)
+    last_message[3] = 0
+    await (send_message(bus, "0x290", last_message))
+    await asyncio.sleep(0.2)
 
 async def main(test_mode) -> None:
     """The main function that runs in the loop."""
@@ -259,6 +311,7 @@ async def main(test_mode) -> None:
         logger = can.Logger("/tmp/logfile.asc")
         msg = bus.recv()
         await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
+        await asyncio.wait_for(handle_source_change(bus), timeout=0.5)
 
         receive_part = partial(receive_message, bus=bus)
 
@@ -271,14 +324,38 @@ async def main(test_mode) -> None:
         loop = asyncio.get_running_loop()
         notifier = can.Notifier(bus, listeners, loop=loop)
 
-        # send fog light button pressed id=0x300
-        logging.info("Send Front Fog light")
+        asyncio.create_task(get_battery_status())
 
         while True:
             # Wait for next message from AsyncBufferedReader
             msg = await reader.get_message()
 
             await asyncio.sleep(0.1)
+
+# async def get_data_handler(request):
+#     id = request.match_info['id']
+#     conn = sqlite3.connect(DATABASE_FILE)
+#     cursor = conn.execute(f"SELECT data FROM mytable WHERE id={id}")
+#     data = cursor.fetchone()
+#     if data:
+#         conn.close()
+#         return web.Response(text=str(data[0]))
+#     else:
+#         conn.close()
+#         return web.Response(text="Data not found", status=404)
+# # async def set_data_handler(request):
+#     data = await request.json()
+#     id = data['id']
+#     data = int(data['data'])
+#     conn = sqlite3.connect(DATABASE_FILE)
+#     conn.execute(f"INSERT INTO mytable (id, data) VALUES ({id}, {data})")
+#     conn.commit()
+#     conn.close()
+#     return web.Response(text="Data inserted successfully")
+
+# app = web.Application()
+# app.add_routes([web.get('/data/{id}', get_data_handler)])
+# app.add_routes([web.post('/data', set_data_handler)])
 
 try:
     if __name__ == "__main__":
@@ -290,6 +367,8 @@ try:
             subprocess.call(['sudo', 'rm', '/usr/local/bin/SaabHeadUnitUpdater/update'])
             print('update complete')
 
+
+
         args = sys.argv[1:]
         
         if len(args) > 0 and args[0] == "test":
@@ -297,7 +376,12 @@ try:
             test = True
         else:
             test = False
+
+        # create_database_file()
+        # create_database_table()
+
         asyncio.run(main(test))
+        # web.run_app(app)
 
 except KeyboardInterrupt:
     print("Stopping...")
