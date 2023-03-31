@@ -1,13 +1,9 @@
 [Unit]
 Description=SAAB Service
-After=saab_update.service
 
 [Service]
 ExecStart=python3 /usr/local/bin/SaabHeadUnit/saab-control/saabCan.py
 
-
 User=pi
 Environment=DISPLAY=:0
 
-[Install]
-WantedBy=multi-user.target

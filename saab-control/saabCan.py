@@ -10,6 +10,7 @@ from functools import *
 import sys
 import time
 import shutil
+import os
     #pip install pyzmq
 
 keyboard = Controller()
@@ -283,8 +284,11 @@ try:
     if __name__ == "__main__":
         print("Starting...")
         logging.info("Starting")
-        subprocess.call(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saab-control/saabUpdate.py',
-                         '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'])
+        if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
+            subprocess.call(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
+                            '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'])
+            subprocess.call(['sudo', 'rm', '/usr/local/bin/SaabHeadUnitUpdater/update'])
+            print('update complete')
 
         args = sys.argv[1:]
         
