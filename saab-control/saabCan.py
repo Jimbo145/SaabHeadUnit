@@ -231,7 +231,7 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
         logging.info(f"Message NOT sent {can.CanError}")
 
 
-def get_battery_status():
+async def get_battery_status():
     run = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
     battery_voltage = float(output.decode().strip())
     systemd.journal.send("Battery voltage: {:.2f} V".format(battery_voltage))
