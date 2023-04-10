@@ -1,0 +1,6 @@
+systemd
+aiohttp
+pyzmq
+asyncio
+pynput
+python-can

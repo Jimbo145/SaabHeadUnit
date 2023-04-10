@@ -11,12 +11,16 @@ import sys
 import time
 import shutil
 import os
-import systemd.journal
+from systemd.journal import JournalHandler # pip install systemd
+
+# import sqlite3
+# from aiohttp import web
 # import sqlite3          #pip install sqlite3
 # from aiohttp import web #pip install aiohttp
     #pip install pyzmq
 
 keyboard = Controller()
+
 
 messageStore = {}
 LogChange: bool = True
@@ -234,7 +238,8 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
 async def get_battery_status():
     run = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
     battery_voltage = float(output.decode().strip())
-    systemd.journal.send("Battery voltage: {:.2f} V".format(battery_voltage))
+
+    logging.info("Battery voltage: {:.2f} V".format(battery_voltage))
     await asyncio.sleep(10)
     asyncio.create_task(get_battery_status())
 
@@ -360,6 +365,9 @@ async def main(test_mode) -> None:
 try:
     if __name__ == "__main__":
         print("Starting...")
+        log = logging.getLogger('demo')
+        log.addHandler(JournalHandler())
+        log.setLevel(logging.INFO)
         logging.info("Starting")
         if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
             subprocess.call(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
