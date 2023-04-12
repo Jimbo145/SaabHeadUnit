@@ -13,32 +13,10 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
     except can.CanError:
         pass
 
-async def main() -> None:
-    """The main function that runs in the loop."""
-    try:
-        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'])
-    except:
-        pass
 
-    can_channel = "can0"
-
-    # with can.Bus(  # type: ignore
-    #         channel=can_channel, bustype="socketcan", receive_own_messages=False
-    # ) as bus:
-    #     # await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
-    #     await asyncio.sleep(0.1)
-    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x09, 0x00])), timeout=0.5)
-    #     await asyncio.sleep(0.1)
-    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
-    #     await asyncio.sleep(0.1)
-    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x09, 0x00])), timeout=0.5)
-    #     await asyncio.sleep(0.1)
-    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
-
-    # send updates if update request file is there
-    update = False
+async def copy_files():
     if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
-        update = True
+        subprocess.call(['sudo', 'systemctl', 'stop', 'saab.service'])
         log.info('update notifier present, copy files')
         if not os.path.isdir("/usr/local/bin/SaabHeadUnit"):
             result = subprocess.run(
@@ -55,6 +33,36 @@ async def main() -> None:
              '/usr/local/bin/SaabHeadUnit/saabUpdate.py'], capture_output=True, text=True)
         log.info(result6.stdout)
         subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
+        return True
+    return False
+
+async def main() -> None:
+    """The main function that runs in the loop."""
+    # try:
+    #    result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'])
+    # except:
+    #    pass
+
+    # can_channel = "can0"
+
+    # with can.Bus(  # type: ignore
+    #         channel=can_channel, bustype="socketcan", receive_own_messages=False
+    # ) as bus:
+    #     # await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
+    #     await asyncio.sleep(0.1)
+    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x09, 0x00])), timeout=0.5)
+    #     await asyncio.sleep(0.1)
+    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
+    #     await asyncio.sleep(0.1)
+    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x09, 0x00])), timeout=0.5)
+    #     await asyncio.sleep(0.1)
+    #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
+
+    # send updates if update request file is there
+    update = copy_files()
+
+    # start service immediately
+    subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
 
     internet_timeout = 0
     internet_connected = False
@@ -87,8 +95,8 @@ async def main() -> None:
             clone_success = subprocess.call(
                 ['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit'])
 
-    if not update:
-        subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
+        if copy_files():
+            subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
 
 try:
     if __name__ == "__main__":
