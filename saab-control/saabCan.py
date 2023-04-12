@@ -236,7 +236,7 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
 
 
 async def get_battery_status():
-    run = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
+    output = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
     battery_voltage = float(output.decode().strip())
 
     logging.info("Battery voltage: {:.2f} V".format(battery_voltage))
@@ -305,6 +305,7 @@ async def main(test_mode) -> None:
     can_channel = "can0"
     if test_mode:
         can_channel = "vcan0"
+        print(can_channel)
 
     # else:
     #   setup_can()
@@ -364,16 +365,20 @@ async def main(test_mode) -> None:
 
 try:
     if __name__ == "__main__":
-        print("Starting...")
         log = logging.getLogger('demo')
+        log.propagate = False
         log.addHandler(JournalHandler())
-        log.setLevel(logging.INFO)
-        logging.info("Starting")
+        log.addHandler(logging.StreamHandler())
+        log.setLevel(logging.DEBUG)
+        log.info("Starting SaabCan...")
+
         if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
-            subprocess.call(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
-                            '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'])
-            subprocess.call(['sudo', 'rm', '/usr/local/bin/SaabHeadUnitUpdater/update'])
-            print('update complete')
+            result1 = subprocess.run(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
+                            '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'], capture_output=True, text=True)
+            log.info(result1)
+            result2 = subprocess.run(['sudo', 'rm', '/usr/local/bin/SaabHeadUnitUpdater/update'], capture_output=True, text=True)
+            log.info(result2)
+            log.info('update complete')
 
 
 
