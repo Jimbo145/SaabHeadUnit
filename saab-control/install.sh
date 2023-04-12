@@ -34,12 +34,12 @@ if [ -d "$REPO_DIR/SaabHeadUnit/" ]; then
   git pull
 else
   # If the repository doesn't exist, clone it
-  git clone "$REPO_URL" "$REPO_DIR"
+  git clone "$REPO_URL" "$REPO_DIR/SaabHeadUnit/"
 fi
 
 cp /usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit/saab-control/saabUpdate.py /usr/local/bin/SaabHeadUnitUpdater/
 
-pip install -r ./requirements.txt
+pip3 install -r ./requirements.txt
 
 
 # Reload the systemd configuration
