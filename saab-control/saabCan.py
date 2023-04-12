@@ -371,6 +371,7 @@ try:
         log.addHandler(logging.StreamHandler())
         log.setLevel(logging.DEBUG)
         log.info("Starting SaabCan...")
+
         if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
             result1 = subprocess.run(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
                             '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'], capture_output=True, text=True)
