@@ -11,7 +11,7 @@ import sys
 import time
 import shutil
 import os
-from systemd.journal import JournalHandler # pip install systemd
+from systemd import journal
 
 # import sqlite3
 # from aiohttp import web
@@ -367,7 +367,8 @@ try:
     if __name__ == "__main__":
         log = logging.getLogger('demo')
         log.propagate = False
-        log.addHandler(JournalHandler())
+        handler = journal.JournalHandler()
+        log.addHandler(handler)
         log.addHandler(logging.StreamHandler())
         log.setLevel(logging.DEBUG)
         log.info("Starting SaabCan...")

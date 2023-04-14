@@ -2,7 +2,7 @@ import subprocess
 import asyncio
 import can
 import os
-from systemd.journal import JournalHandler
+from systemd import journal
 import logging
 
 
@@ -102,7 +102,8 @@ try:
     if __name__ == "__main__":
         log = logging.getLogger('demo')
         log.propagate = False
-        log.addHandler(JournalHandler())
+        handler = journal.JournalHandler()
+        log.addHandler(handler)
         log.addHandler(logging.StreamHandler())
         log.setLevel(logging.DEBUG)
         log.info("Saab Update Starting")
