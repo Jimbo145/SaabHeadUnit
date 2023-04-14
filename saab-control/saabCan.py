@@ -305,10 +305,8 @@ async def main(test_mode) -> None:
     can_channel = "can0"
     if test_mode:
         can_channel = "vcan0"
-        print(can_channel)
-
-    # else:
-    #   setup_can()
+    else:
+        setup_can()
 
     with can.Bus(  # type: ignore
             channel=can_channel, bustype="socketcan", receive_own_messages=False

@@ -59,7 +59,7 @@ async def main() -> None:
     #     await asyncio.wait_for(send_message(bus, "0x290", bytearray([0x00, 0x00, 0x19, 0x00, 0x00])), timeout=0.5)
 
     # send updates if update request file is there
-    update = copy_files()
+    update = await copy_files()
 
     # start service immediately
     subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
@@ -95,7 +95,7 @@ async def main() -> None:
             clone_success = subprocess.call(
                 ['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit'])
 
-        if copy_files():
+        if await copy_files():
             subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
 
 try:
