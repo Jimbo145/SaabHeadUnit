@@ -248,8 +248,7 @@ async def get_battery_status():
 def setup_can():
     # ip link set can0 up type can bitrate 33300
     try:
-        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'],
-                             check=True, text=True))
+        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'], check=True, text=True)
         log.info(result.stdout)
     except:
         log.error("setup can failed")
