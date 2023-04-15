@@ -39,7 +39,7 @@ fi
 
 cp /usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit/saab-control/saabUpdate.py /usr/local/bin/SaabHeadUnitUpdater/
 
-pip3 install -r ./requirements.txt
+pip3 install -r  /usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit/saab-control/requirements.txt
 
 
 # Reload the systemd configuration

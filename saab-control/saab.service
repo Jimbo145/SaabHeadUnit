@@ -2,7 +2,7 @@
 Description=SAAB Service
 
 [Service]
-ExecStart=python3 /usr/local/bin/SaabHeadUnit/saab-control/saabCan.py
+ExecStart=python3 /usr/local/bin/SaabHeadUnit/saabCan.py
 
 User=pi
 Environment=DISPLAY=:0
