@@ -20,6 +20,7 @@ from systemd import journal
     #pip install pyzmq
 
 keyboard = Controller()
+log = logging.getLogger('saabLog')
 
 
 messageStore = {}
@@ -89,9 +90,9 @@ def receive_message(msg: can.Message, bus: can.bus) -> None:
         if messageStore[msg.arbitration_id] != msg.data:
             # BitArray(bytes=messageStore[msg.arbitration_id]).pp('bin', show_offset=False)
             # BitArray(bytes=msg.data).pp('bin', show_offset=False)
-            logging.debug(f"Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
+            log.debug(f"Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
     except KeyError:
-        logging.debug(f"New Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
+        log.debug(f"New Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
 
     messageStore.update({msg.arbitration_id: byteList})
     parseMessage(msg.arbitration_id, byteList, bus)
@@ -106,7 +107,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             ex: 0x60,0x3(length),0x0,0xa0,0x69(voltage) -> 0x69*135 = 14175 /1000 = 14.1 V"""
 
         voltage = ((data[2]) * 135) / 1000
-        logging.info(f'Battery voltage {voltage}')
+        log.info(f'Battery voltage {voltage}')
     elif can_id == hex_to_int("0x290"):
         """- b0
                 - 00000001 (01) Windshield washer (pull stick fully in)
@@ -133,7 +134,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000100 (4) Indicator right
                 - 00001000 (8) Indicator left
         """
-        logging.info(f"Handle: {(can_id)} b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
+        log.info(f"Handle: {(can_id)} b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
         # b3
 
         if data[3] == 00:
@@ -152,23 +153,23 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         elif data[3] == 4:
             keyboard.press('M')
             keyboardPressed = 'M'
-            logging.info('Keyboard: "M" -  OpenAuto: "Voice assist"')
+            log.info('Keyboard: "M" -  OpenAuto: "Voice assist"')
         elif data[3] == 6:
             keyboard.press('V')
             keyboardPressed = 'V'
-            logging.info('Keyboard: "V" -  OpenAuto: "Previous track"')
+            log.info('Keyboard: "V" -  OpenAuto: "Previous track"')
         elif data[3] == 5:
             keyboard.press('N')
             keyboardPressed = 'N'
-            logging.info('Keyboard: "N" -  OpenAuto: "Next track"')
+            log.info('Keyboard: "N" -  OpenAuto: "Next track"')
         elif data[3] == 9:
             keyboard.press('H')
             keyboardPressed = 'H'
-            logging.info('Keyboard: "H" -  OpenAuto: "Home"')
+            log.info('Keyboard: "H" -  OpenAuto: "Home"')
         elif data[3] == 12:
             keyboard.press('P')
             keyboardPressed = 'P'
-            logging.info('Keyboard: "P" -  OpenAuto: "Answer call/Phone menu')
+            log.info('Keyboard: "P" -  OpenAuto: "Answer call/Phone menu')
         # b4
         if data[4] == (0):
             # send turn signal 2x times if last was true;
@@ -176,7 +177,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             global turn_timer_start
 
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
-                logging.info("Turn Signal Off")
+                log.info("Turn Signal Off")
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
@@ -186,13 +187,13 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             if turnSignalAsync is not None:
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
-            logging.info("Turn Signal Right")
+            log.info("Turn Signal Right")
         elif data[4] == (128):
             last_turn_signal = TurnSignal.LEFT
             if turnSignalAsync is not None:
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
-            logging.info("Turn Signal Left")
+            log.info("Turn Signal Left")
     elif can_id == hex_to_int("0x460"):
         """- b0
                 - 00000000 (00) Night mode off
@@ -206,14 +207,14 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 16 bit integer
         """
         brightness_sensor = (data[2] << 8) + data[1]
-        logging.info(f"Handle 0x460 light level:{data[1]} {data[2]} Nightmode:{data[0]} Lightsensor:  {brightness_sensor}")
+        log.info(f"Handle 0x460 light level:{data[1]} {data[2]} Nightmode:{data[0]} Lightsensor:  {brightness_sensor}")
         instrumentLightLevel = data[1]
         if data[0] == 64:
             nightModeOn = True
         else:
             nightModeOn = False
     elif can_id == hex_to_int("0x740"):
-        logging.info(f"{data[0]}")
+        log.info(f"{data[0]}")
 
     # elif canid == int("0x627", 16):
     # print(data[0])
@@ -230,16 +231,16 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
     message = can.Message(arbitration_id=hex_to_int(can_id), data=data, is_extended_id=False)
     try:
         bus.send(message)
-        logging.info(f"Message {message} sent on {bus.channel_info}")
+        log.info(f"Message {message} sent on {bus.channel_info}")
     except can.CanError:
-        logging.info(f"Message NOT sent {can.CanError}")
+        log.info(f"Message NOT sent {can.CanError}")
 
 
 async def get_battery_status():
     output = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
     battery_voltage = float(output.decode().strip())
 
-    logging.info("Battery voltage: {:.2f} V".format(battery_voltage))
+    log.info("Battery voltage: {:.2f} V".format(battery_voltage))
     await asyncio.sleep(10)
     asyncio.create_task(get_battery_status())
 
@@ -247,10 +248,11 @@ async def get_battery_status():
 def setup_can():
     # ip link set can0 up type can bitrate 33300
     try:
-        run = subprocess.run(['ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'],
-                             check=True, text=True)
+        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'],
+                             check=True, text=True))
+        log.info(result.stdout)
     except:
-        logging.error("setup can failed")
+        log.error("setup can failed")
 
 
 async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
@@ -261,7 +263,7 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
     elif signal == TurnSignal.LEFT:
         signal_data = hex_to_int("0x80")
     else:
-        logging.warning("unexpected handle turn signal")
+        log.warning("unexpected handle turn signal")
         return
 
     for i in range(step_count):
@@ -363,8 +365,6 @@ async def main(test_mode) -> None:
 
 try:
     if __name__ == "__main__":
-        log = logging.getLogger('demo')
-        log.propagate = False
         handler = journal.JournalHandler()
         log.addHandler(handler)
         log.addHandler(logging.StreamHandler())
