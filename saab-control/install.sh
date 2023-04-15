@@ -39,6 +39,9 @@ fi
 
 cp /usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit/saab-control/saabUpdate.py /usr/local/bin/SaabHeadUnitUpdater/
 
+# force saabUpdate to copy files
+touch /usr/local/bin/SaabHeadUnitUpdater/update
+
 pip3 install -r  /usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit/saab-control/requirements.txt
 
 

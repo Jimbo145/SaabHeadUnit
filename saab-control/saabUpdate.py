@@ -6,6 +6,9 @@ from systemd import journal
 import logging
 
 
+log = logging.getLogger('saabUpdateLog')
+
+
 async def send_message(bus: can.Bus,can_id: str, data:bytearray):
     message = can.Message(arbitration_id=int(can_id, 16), data=data, is_extended_id=False)
     try:
@@ -15,6 +18,7 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
 
 
 async def copy_files():
+    journal.send('Copy Files')
     if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
         subprocess.call(['sudo', 'systemctl', 'stop', 'saab.service'])
         log.info('update notifier present, copy files')
@@ -100,13 +104,13 @@ async def main() -> None:
 
 try:
     if __name__ == "__main__":
-        log = logging.getLogger('demo')
-        log.propagate = False
-        handler = journal.JournalHandler()
+        handler = journal.JournalHandler
         log.addHandler(handler)
-        log.addHandler(logging.StreamHandler())
+        log.addHandler(logging.StreamHandler)
         log.setLevel(logging.DEBUG)
         log.info("Saab Update Starting")
+
         asyncio.run(main())
+
 except KeyboardInterrupt:
     print("Stopping...")
