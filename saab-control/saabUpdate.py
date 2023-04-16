@@ -6,7 +6,9 @@ from systemd import journal
 import logging
 
 
+logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
 log = logging.getLogger('saabUpdateLog')
+
 
 
 async def send_message(bus: can.Bus,can_id: str, data:bytearray):
@@ -104,12 +106,19 @@ async def main() -> None:
 
 try:
     if __name__ == "__main__":
-        handler = journal.JournalHandler
-        log.addHandler(handler)
-        log.addHandler(logging.StreamHandler)
-        log.setLevel(logging.DEBUG)
-        log.info("Saab Update Starting")
 
+
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+
+        log.setLevel(logging.DEBUG)
+
+        log.addHandler(journal.JournalHandler(SYSLOG_IDENTIFIER='saabUpdateLog'))
+        log.addHandler(ch)
+
+        subprocess.call(['xhost', '+', 'local:'])
+
+        log.info("Saab Update Starting")
         asyncio.run(main())
 
 except KeyboardInterrupt:
