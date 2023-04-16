@@ -30,6 +30,7 @@ global turnSignalAsync
 global keyboardPressed
 global turn_timer_start
 global database
+global source_changed
 
 
 class TurnSignal(Enum):
@@ -46,6 +47,14 @@ logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
 
 
 # logging.basicConfig(encoding='utf-8', level=logging.INFO)
+
+def log_subprocess_result(result):
+    if result.stdout != '':
+        log.info(result.stdout)
+    else:
+        log.error(result.stderr)
+
+
 
 def hex_to_int(hex_num: str) -> int:
     return int(hex_num, 16)
@@ -101,6 +110,7 @@ def receive_message(msg: can.Message, bus: can.bus) -> None:
 def parseMessage(can_id: int, data: List[int], bus: can.Bus):
     global keyboardPressed
     global turnSignalAsync
+    global source_changed
     
     if can_id == hex_to_int("0x60"):
         """Voltage:
@@ -135,6 +145,11 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00001000 (8) Indicator left
         """
         log.info(f"Handle: {(can_id)} b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
+
+        if not source_changed:
+            asyncio.create_task(handle_source_change(bus))
+            source_changed = True
+
         # b3
 
         if data[3] == 00:
@@ -231,6 +246,7 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
     message = can.Message(arbitration_id=hex_to_int(can_id), data=data, is_extended_id=False)
     try:
         bus.send(message)
+        bus.flush_tx_buffer()
         log.info(f"Message {message} sent on {bus.channel_info}")
     except can.CanError:
         log.info(f"Message NOT sent {can.CanError}")
@@ -245,13 +261,20 @@ async def get_battery_status():
     asyncio.create_task(get_battery_status())
 
 
-def setup_can():
+def setup_can(test_mode):
     # ip link set can0 up type can bitrate 33300
-    try:
-        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'can0', 'up', 'type', 'can', 'bitrate', '33300'], check=True, text=True)
+    can_chanel = 'can0'
+    if test_mode:
+        result = subprocess.run(['sudo', 'modprobe', 'vcan'], text=True)
         log.info(result.stdout)
-    except:
-        log.error("setup can failed")
+        result = subprocess.run(['sudo', 'ip', 'link', 'add', 'dev', 'vcan0', 'type', 'vcan'], text=True)
+        log.info(result.stdout)
+        can_chanel = 'vcan0'
+
+    result = subprocess.run(['sudo', 'ip', 'link', 'set', can_chanel, 'up', 'type', 'can', 'bitrate', '33300'], text=True)
+    log.info(result.stdout)
+
+    return can_chanel
 
 
 async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
@@ -279,6 +302,8 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
         
 
 async def handle_source_change(bus: can.Bus) -> None:
+    global source_changed
+    source_changed = True
     last_message = messageStore[hex_to_int("0x290")]
     last_message[3] = 2
     #this is loop unrolled
@@ -294,6 +319,7 @@ async def handle_source_change(bus: can.Bus) -> None:
     await (send_message(bus, "0x290", last_message))
     await asyncio.sleep(0.2)
 
+
 async def main(test_mode) -> None:
     """The main function that runs in the loop."""
     global notifier
@@ -303,27 +329,23 @@ async def main(test_mode) -> None:
 
     turn_timer_start = 0
     turnSignalAsync = None
-    can_channel = "can0"
-    if test_mode:
-        can_channel = "vcan0"
-    else:
-        setup_can()
+
+    can_channel = setup_can(test_mode)
 
     with can.Bus(  # type: ignore
             channel=can_channel, bustype="socketcan", receive_own_messages=False
     ) as bus:
         reader = can.AsyncBufferedReader()
-        logger = can.Logger("/tmp/logfile.asc")
-        msg = bus.recv()
+
         await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
-        await asyncio.wait_for(handle_source_change(bus), timeout=0.5)
+        bus.flush_tx_buffer()
+
 
         receive_part = partial(receive_message, bus=bus)
 
         listeners: List[MessageRecipient] = [
             receive_part,  # Callback function
             reader,  # AsyncBufferedReader() listener
-            logger,  # Regular Listener object
         ]
         # Create Notifier with an explicit loop to use for scheduling of callbacks
         loop = asyncio.get_running_loop()
@@ -364,11 +386,17 @@ async def main(test_mode) -> None:
 
 try:
     if __name__ == "__main__":
-        handler = journal.JournalHandler()
-        log.addHandler(handler)
-        log.addHandler(logging.StreamHandler())
-        log.setLevel(logging.DEBUG)
+        jh = journal.JournalHandler()
+        jh.setLevel(logging.DEBUG)
+        log.addHandler(jh)
+
+        sh = logging.StreamHandler()
+        sh.setLevel(logging.INFO)
+        log.addHandler(sh)
+        log.setLevel(logging.INFO)
         log.info("Starting SaabCan...")
+
+        source_changed = False
 
         if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
             result1 = subprocess.run(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
