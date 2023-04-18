@@ -1,5 +1,7 @@
 [Unit]
 Description=SAAB Service
+Restart=on-failure
+RestartSec=2s
 
 [Service]
 ExecStart=python3 /usr/local/bin/SaabHeadUnit/saabCan.py
