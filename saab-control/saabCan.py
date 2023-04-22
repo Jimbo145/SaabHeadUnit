@@ -57,8 +57,10 @@ logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
 def log_subprocess_result(result):
     if result.stdout != '':
         log.info(result.stdout)
+        return 0
     else:
         log.error(result.stderr)
+        return -1
 
 
 
@@ -123,7 +125,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             ex: 0x60,0x3(length),0x0,0xa0,0x69(voltage) -> 0x69*135 = 14175 /1000 = 14.1 V"""
 
         voltage = ((data[2]) * 135) / 1000
-        log.info(f'Battery voltage {voltage}')
+        log.debug(f'Car Battery voltage {voltage}')
     elif can_id == hex_to_int("0x290"):
         """- b0
                 - 00000001 (01) Windshield washer (pull stick fully in)
@@ -150,7 +152,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000100 (4) Indicator right
                 - 00001000 (8) Indicator left
         """
-        log.info(f"Handle: {(can_id)} b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
+        log.info(f"Handle: 0x290 b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
 
         if not source_changed:
             asyncio.create_task(handle_source_change(bus))
@@ -228,14 +230,14 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 16 bit integer
         """
         brightness_sensor = (data[2] << 8) + data[1]
-        log.info(f"Handle 0x460 light level:{data[1]} {data[2]} Nightmode:{data[0]} Lightsensor:  {brightness_sensor}")
+        log.info(f"Handle 0x460 (light level) {data}")
         instrumentLightLevel = data[1]
         if data[0] == 64:
             nightModeOn = True
         else:
             nightModeOn = False
     elif can_id == hex_to_int("0x740"):
-        log.info(f"{data[0]}")
+        log.info(f"Handle 0x740 {data}")
 
     # elif canid == int("0x627", 16):
     # print(data[0])
@@ -262,7 +264,7 @@ async def get_battery_status():
     output = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
     battery_voltage = float(output.decode().strip())
 
-    log.info("Battery voltage: {:.2f} V".format(battery_voltage))
+    log.info("Life4powered voltage: {:.2f} V".format(battery_voltage))
     await asyncio.sleep(10)
     asyncio.create_task(get_battery_status())
 
@@ -272,13 +274,13 @@ def setup_can(test_mode):
     can_chanel = 'can0'
     if test_mode:
         result = subprocess.run(['sudo', 'modprobe', 'vcan'], text=True)
-        log.info(result.stdout)
+        log_subprocess_result(result)
         result = subprocess.run(['sudo', 'ip', 'link', 'add', 'dev', 'vcan0', 'type', 'vcan'], text=True)
-        log.info(result.stdout)
+        log_subprocess_result(result)
         can_chanel = 'vcan0'
 
     result = subprocess.run(['sudo', 'ip', 'link', 'set', can_chanel, 'up', 'type', 'can', 'bitrate', '33300'], text=True)
-    log.info(result.stdout)
+    log_subprocess_result(result)
 
     return can_chanel
 
@@ -311,14 +313,14 @@ async def handle_source_change(bus: can.Bus) -> None:
     global source_changed
     source_changed = True
     last_message = messageStore[hex_to_int("0x290")]
-    last_message[3] = 2
+    last_message[3] = 3
     #this is loop unrolled
     await (send_message(bus, "0x290", last_message))
     await asyncio.sleep(0.2)
     last_message[3] = 0
     await (send_message(bus, "0x290", last_message))
     await asyncio.sleep(0.2)
-    last_message[3] = 2
+    last_message[3] = 3
     await (send_message(bus, "0x290", last_message))
     await asyncio.sleep(0.2)
     last_message[3] = 0
@@ -407,9 +409,9 @@ try:
         if os.path.exists('/usr/local/bin/SaabHeadUnitUpdater/update'):
             result1 = subprocess.run(['sudo', 'cp', '/usr/local/bin/SaabHeadUnit/saabUpdate.py',
                             '/usr/local/bin/SaabHeadUnitUpdater/saabUpdate.py'], capture_output=True, text=True)
-            log.info(result1)
+            log_subprocess_result(result1)
             result2 = subprocess.run(['sudo', 'rm', '/usr/local/bin/SaabHeadUnitUpdater/update'], capture_output=True, text=True)
-            log.info(result2)
+            log_subprocess_result(result2)
             log.info('update complete')
 
 
