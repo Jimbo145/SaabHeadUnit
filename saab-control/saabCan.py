@@ -2,7 +2,6 @@ import asyncio
 import logging
 from typing import List
 import subprocess
-from pynput.keyboard import Key, Controller
 import can
 from can.notifier import MessageRecipient
 from enum import Enum
@@ -12,13 +11,20 @@ import time
 import shutil
 import os
 from systemd import journal
-
 # import sqlite3
 # from aiohttp import web
 # import sqlite3          #pip install sqlite3
 # from aiohttp import web #pip install aiohttp
     #pip install pyzmq
 
+x_not_available = True
+while x_not_available:
+    try:
+        from pynput.keyboard import Key, Controller
+    except:
+        pass
+    else:
+        x_not_available = False
 keyboard = Controller()
 log = logging.getLogger('saabLog')
 
