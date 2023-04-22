@@ -90,7 +90,7 @@ async def main() -> None:
                 if 'Already up to date' not in result3 and result3.stderr == '':
                     # create an update request file
                     log.info("Pull Completed " + result3.stdout)
-                    subprocess.call(['sudo', 'touch', '/usr/local/bin/SaabHeadUnitUpdater/updated'])
+                    subprocess.call(['sudo', 'touch', '/usr/local/bin/SaabHeadUnitUpdater/update'])
                 else:
                     log.info("Repo up to date")
             except FileNotFoundError:
