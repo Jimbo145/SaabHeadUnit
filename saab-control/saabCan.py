@@ -37,6 +37,9 @@ global keyboardPressed
 global turn_timer_start
 global database
 global source_changed
+global updated
+
+updated = False
 
 
 class TurnSignal(Enum):
@@ -126,6 +129,32 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
 
         voltage = ((data[2]) * 135) / 1000
         log.debug(f'Car Battery voltage {voltage}')
+    elif can_id == hex_to_int("0x91"):
+        """ - b2
+                - 00000000 (0x00) GUESS Cruise control not setup / brake must be pressed
+                - 00100000 (0x20) Brake released, cruise control enabled?
+                - 10100000 (0xa0) Brake pressed
+            - b1
+                - 00000000 (00) Cruise control on
+                - 00100000 (20) Cruise control off"""
+        pass
+    elif can_id == hex_to_int("0x108"):
+        """ -- These are wrong atm.
+            - b0:b1
+                - 16 bit integer for turbo boost (percentage I believe)
+            - b2:b3
+                - 16 bit integer for RPM
+            - b4:b5
+                - 16 bit integer for KPH"""
+        pass
+    elif can_id == hex_to_int("0x220"):
+        """ - b1:b2
+                - Steering wheel angle (16 bit special integer)
+                - When MSB is 0, decode as regular 16 bit integer (b1 << 8) + b2.
+                - When MSB is 1, subtract 65536 from (b1 << 8), before adding with b2.
+                - This results in a range of ~-8600 to ~+8600 representing full wheel range (lock to lock).
+                - Unsure what the real-world angle-equivalent of this value is (yet)."""
+        pass
     elif can_id == hex_to_int("0x290"):
         """- b0
                 - 00000001 (01) Windshield washer (pull stick fully in)
@@ -217,6 +246,53 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
             log.info("Turn Signal Left")
+    elif can_id == hex_to_int("0x310"):
+        """ -- b1
+                - SID-C ESP button
+                - 00000000 (00) OFF
+                - 00000001 (01) Pressed
+            - b5
+                - SID-C Spare button
+                - 00000000 (00) OFF
+                - 00100000 (20) ON (Toggle)"""
+        pass
+    elif can_id == hex_to_int("0x320"):
+        """ - b0
+                - Locking status / controls 
+                - 00010000 (10) Driver unlocked
+                - 00010001 (11) Driver locked
+                - 00010100 (14) Unlock Button
+                - 00011001 (19) Lock Button
+            - b1
+                - Mirror adjustment, triggered by d-pad
+                - 00000000 (00) Default
+                - 10000000 (80) Adjustment in progress
+            - b3
+                - Mirror adjust DPAD direction (for left mirror only?)
+                - 00010000 (10) LEFT
+                - 00100000 (20) RIGHT
+                - 01000000 (40) DOWN
+                - 10000000 (80) UP
+            - """
+        pass
+    elif can_id == hex_to_int("0x370"):
+        """ - b0
+                - Front fog lights / reversing light
+                - 00000000 (00) OFF
+                - 00000001 (01) REVERSE
+                - 01000000 (40) ON
+                - 01000001 (41) ON and REVERSE"""
+        pass
+    elif can_id == hex_to_int("0x380"):
+        """ - b0
+                - Brakes pressesd
+                - 00000000 (00) Default
+                - 00100000 (20) Brakes pressed
+            - b1
+                - Rear fog lights
+                - 00000000 (00) OFF
+                - 00100000 (20) ON"""
+        pass
     elif can_id == hex_to_int("0x460"):
         """- b0
                 - 00000000 (00) Night mode off
@@ -229,15 +305,45 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - Brightness sensor
                 - 16 bit integer
         """
-        brightness_sensor = (data[2] << 8) + data[1]
-        log.info(f"Handle 0x460 (light level) {data}")
+        brightness_sensor = (data[4] << 8) + data[3]
         instrumentLightLevel = data[1]
         if data[0] == 64:
             nightModeOn = True
+            brightness = data[2]
         else:
             nightModeOn = False
+            brightness = data[1]
+        log.info
+        log.info(f"Handle 0x460 (light level) {brightness}")
+    elif can_id == hex_to_int("0x390"):
+        """  - Normal state
+                - 0x00 0x00 
+             - Beep state
+                - 0x00 0x80"""
+        pass
+    elif can_id == hex_to_int("0x520"):
+        """ - b0
+                - Years after 2000
+                - 8 bit int
+            - b1
+                - Month
+                - 8 bit int
+            - b2
+                - Day
+                - 8 bit int
+            - b3
+                - Hour
+                - 8 bit int
+            - b4
+                - Minute
+                - 8 bit int
+            - b5
+                - Second
+                - 8 bit int"""
+        pass
     elif can_id == hex_to_int("0x740"):
-        log.info(f"Handle 0x740 {data}")
+        # unsure what this is
+        pass
 
     # elif canid == int("0x627", 16):
     # print(data[0])
@@ -262,9 +368,9 @@ async def send_message(bus: can.Bus,can_id: str, data:bytearray):
 
 async def get_battery_status():
     output = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
-    battery_voltage = float(output.decode().strip())
+    battery_voltage = float(output.stdout)
 
-    log.info("Life4powered voltage: {:.2f} V".format(battery_voltage))
+    log.info(f"Life4powered voltage: {battery_voltage}")
     await asyncio.sleep(10)
     asyncio.create_task(get_battery_status())
 
@@ -314,18 +420,32 @@ async def handle_source_change(bus: can.Bus) -> None:
     source_changed = True
     last_message = messageStore[hex_to_int("0x290")]
     last_message[3] = 3
-    #this is loop unrolled
+    # this is loop unrolled
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(0.2)
+    await asyncio.sleep(0.5)
     last_message[3] = 0
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(0.2)
+    await asyncio.sleep(0.5)
     last_message[3] = 3
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(0.2)
+    await asyncio.sleep(0.5)
     last_message[3] = 0
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(0.2)
+    await asyncio.sleep(0.5)
+
+
+async def handle_beep(bus: can.Bus, num: int) -> None:
+    """t("0x390"):
+         - Normal state
+                - 0x00 0x00
+             - Beep state
+                - 0x00 0x80
+    """
+    for x in range(num):
+        await (send_message(bus, "0x390", [hex_to_int("0x00"), hex_to_int("0x80")]))
+        await asyncio.sleep(0.5)
+        await (send_message(bus, "0x390", [hex_to_int("0x00"), hex_to_int("0x00")]))
+        await asyncio.sleep(0.5)
 
 
 async def main(test_mode) -> None:
@@ -333,6 +453,7 @@ async def main(test_mode) -> None:
     global notifier
     global turn_timer_start
     global turnSignalAsync
+    global updated
 
 
     turn_timer_start = 0
@@ -348,6 +469,9 @@ async def main(test_mode) -> None:
         await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
         bus.flush_tx_buffer()
 
+        if updated:
+            asyncio.create_task(handle_beep(bus, 2))
+            pass
 
         receive_part = partial(receive_message, bus=bus)
 
@@ -394,9 +518,9 @@ async def main(test_mode) -> None:
 
 try:
     if __name__ == "__main__":
-        jh = journal.JournalHandler()
-        jh.setLevel(logging.DEBUG)
-        log.addHandler(jh)
+        # jh = journal.JournalHandler()
+        # jh.setLevel(logging.INFO)
+        # log.addHandler(jh)
 
         sh = logging.StreamHandler()
         sh.setLevel(logging.INFO)
@@ -413,6 +537,7 @@ try:
             result2 = subprocess.run(['sudo', 'rm', '/usr/local/bin/SaabHeadUnitUpdater/update'], capture_output=True, text=True)
             log_subprocess_result(result2)
             log.info('update complete')
+            updated = True
 
 
 
