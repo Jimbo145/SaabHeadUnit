@@ -10,6 +10,14 @@ logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
 log = logging.getLogger('saabUpdateLog')
 
 
+def log_subprocess_result(result):
+    if result.stdout != '':
+        log.info(result.stdout)
+        return 0
+    else:
+        log.error(result.stderr)
+        return -1
+
 
 async def send_message(bus: can.Bus,can_id: str, data:bytearray):
     message = can.Message(arbitration_id=int(can_id, 16), data=data, is_extended_id=False)
@@ -84,10 +92,12 @@ async def main() -> None:
         if os.path.isdir("/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit"):
             try:
                 os.chdir('/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit')
-                result1 = subprocess.run(['sudo', 'git', 'reset', '--hard'], capture_output=True, text=True)
-                result2 = subprocess.run(['sudo', 'git', 'clean', '-fq'], capture_output=True, text=True)
+                # log_subprocess_result(subprocess.run(['sudo', 'git', 'reset', '--hard'], capture_output=True, text=True))
+
+                # log_subprocess_result(subprocess.run(['sudo', 'git', 'clean', '-fq'], capture_output=True, text=True))
                 result3 = subprocess.run(['sudo', 'git', 'pull'], capture_output=True, text=True)
-                if 'Already up to date' not in result3 and result3.stderr == '':
+                log_subprocess_result(result3)
+                if 'Already up to date' not in str(result3.stdout) and str(result3.stderr) == '':
                     # create an update request file
                     log.info("Pull Completed " + result3.stdout)
                     subprocess.call(['sudo', 'touch', '/usr/local/bin/SaabHeadUnitUpdater/update'])
@@ -95,31 +105,25 @@ async def main() -> None:
                     log.info("Repo up to date")
             except FileNotFoundError:
                 log.error('SaabHeadUnit not found')
-            except:
-                pass
+            except Exception as e:
+                log.error(f'Unhandled Update Exception {e}')
         else:
-            clone_success = subprocess.call(
-                ['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit'])
-
+            log_subprocess_result(subprocess.call(
+                ['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit']))
         if await copy_files():
             subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
+if __name__ == "__main__":
 
-try:
-    if __name__ == "__main__":
+    # jh = journal.JournalHandler()
+    # jh.setLevel(logging.INFO)
+    # log.addHandler(jh)
 
+    sh = logging.StreamHandler()
+    sh.setLevel(logging.INFO)
+    log.addHandler(sh)
+    log.setLevel(logging.INFO)
 
-        ch = logging.StreamHandler()
-        ch.setLevel(logging.DEBUG)
+    subprocess.call(['xhost', '+', 'local:'])
 
-        log.setLevel(logging.DEBUG)
-
-        log.addHandler(journal.JournalHandler(SYSLOG_IDENTIFIER='saabUpdateLog'))
-        log.addHandler(ch)
-
-        subprocess.call(['xhost', '+', 'local:'])
-
-        log.info("Saab Update Starting")
-        asyncio.run(main())
-
-except KeyboardInterrupt:
-    print("Stopping...")
+    log.info("Saab Update Starting")
+    asyncio.run(main())
