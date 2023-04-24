@@ -181,7 +181,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000100 (4) Indicator right
                 - 00001000 (8) Indicator left
         """
-        log.info(f"Handle: 0x290 b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
+        log.debug(f"Handle: 0x290 b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
 
         if not source_changed:
             asyncio.create_task(handle_source_change(bus))
@@ -305,16 +305,19 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - Brightness sensor
                 - 16 bit integer
         """
-        brightness_sensor = (data[4] << 8) + data[3]
+        brightness_adjusted = 100.0
+        brightness_sensor = (data[3] << 8) + data[4]
+        sensor_percent = 1.0 * (brightness_sensor / 65535.0 )
+        instrument_brightness = 1.0 * (data[1] / 255.0 )
+
+        brightness_adjusted = brightness_adjusted * sensor_percent
+
         instrumentLightLevel = data[1]
         if data[0] == 64:
             nightModeOn = True
-            brightness = data[2]
         else:
             nightModeOn = False
-            brightness = data[1]
-        log.info
-        log.info(f"Handle 0x460 (light level) {brightness}")
+        log.debug(f"Handle 0x460 (light level) {brightness_adjusted}")
     elif can_id == hex_to_int("0x390"):
         """  - Normal state
                 - 0x00 0x00 
@@ -347,8 +350,8 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
 
     # elif canid == int("0x627", 16):
     # print(data[0])
-    # else:
-    # print(f"unsupported code: {hex(canid)}")
+    else:
+        log.info(f"Handle unsupported {can_id} {data}")
 
 
 firstRun = True
@@ -425,13 +428,12 @@ async def handle_source_change(bus: can.Bus) -> None:
     await asyncio.sleep(0.5)
     last_message[3] = 0
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(0.5)
+    await asyncio.sleep(1.5)
     last_message[3] = 3
     await (send_message(bus, "0x290", last_message))
     await asyncio.sleep(0.5)
     last_message[3] = 0
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(0.5)
 
 
 async def handle_beep(bus: can.Bus, num: int) -> None:
