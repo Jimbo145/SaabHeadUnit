@@ -139,13 +139,46 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00100000 (20) Cruise control off"""
         pass
     elif can_id == hex_to_int("0x108"):
-        """ -- These are wrong atm.
-            - b0:b1
-                - 16 bit integer for turbo boost (percentage I believe)
+        """ Gauge Cluster
+            - b0
+                00 to FF Accelerator Position
+            - b1
+                - turbo boost ?
             - b2:b3
                 - 16 bit integer for RPM
             - b4:b5
-                - 16 bit integer for KPH"""
+                - 16 bit integer for 
+        """
+        pass
+    elif can_id == hex_to_int("0x170"):
+        """ Coolant Temp
+            b1 - 0x28 = Temp (C)
+        """
+        pass
+    elif can_id == hex_to_int("0x180"):
+        """ Parking Sensor Raw? (PDC)
+            - b1
+            - b2
+            - b3
+        """
+        log.info(f'Parking Sensor (PDC) {data}')
+        pass
+    elif can_id == hex_to_int("0x183"):
+        """ Parking Sensor (SPA)
+            - b0
+                - (43) SPA Not Active
+                - (62) SPA Active
+            - b3
+                - SPA Distance
+        """
+        log.info(f'Parking Sensor (SPA) {data}')
+        pass
+    elif can_id == hex_to_int("0x210"):
+        """ Seatbelts
+        """
+        pass
+    elif can_id == hex_to_int("0x211"):
+        """ Hazard Lights"""
         pass
     elif can_id == hex_to_int("0x220"):
         """ - b1:b2
@@ -155,6 +188,22 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - This results in a range of ~-8600 to ~+8600 representing full wheel range (lock to lock).
                 - Unsure what the real-world angle-equivalent of this value is (yet)."""
         pass
+    elif can_id == hex_to_int("0x230"):
+        """ keyfob
+            - b0
+                - (10)
+            - b1
+                - (0x40) Lock
+                - (0xC0) Long Press Lock
+                - (0x10) Unlock
+                - (0x01) Hello On (Dash on remote)
+                - (0x02) Hello Off (Dash on remote)
+                - (0x03) Hello Long Press
+                - (0x04) Trunk
+                - (0x0C) Long Press Trunk
+        """
+        pass
+
     elif can_id == hex_to_int("0x290"):
         """- b0
                 - 00000001 (01) Windshield washer (pull stick fully in)
@@ -166,6 +215,8 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00001010 (10) Wiper intermittent
                 - 00001011 (11) Wiper slow
                 - 00001101 (13) Wiper fast
+            - b2
+                - 00000001 (01) ESP Button
             - b3
                 - 00000000 (00) Default
                 - 00000001 (01) Volume UP
@@ -181,7 +232,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000100 (4) Indicator right
                 - 00001000 (8) Indicator left
         """
-        log.debug(f"Handle: 0x290 b0:{data[0]} b1:{data[1]} b3:{data[3]} b4:{data[4]}")
+        log.debug(f"Handle: 0x290 {data} ")
 
         if not source_changed:
             asyncio.create_task(handle_source_change(bus))
@@ -246,19 +297,49 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
             log.info("Turn Signal Left")
+    elif can_id == hex_to_int("0x300"):
+        """
+            - b0
+                - (00) lights Off
+                - (08) Lights Off and park brake
+                - (20) Corner Lights
+                - (10) Main Lights
+                - +80 Fog Lights
+                - +40 Rear Fog lgihts
+                - (A0) Coner pluh front fog
+                - +8 Parking brake
+        """
     elif can_id == hex_to_int("0x310"):
-        """ -- b1
-                - SID-C ESP button
+        """ 
+            - b0 
+                - 00000000 (00) Full Anti-theft
+                - 00001000 (06) Doors Only Anti-theft
+            - b1
+                - SID-C
                 - 00000000 (00) OFF
-                - 00000001 (01) Pressed
+                - 00000001 (01) ESP Pressed
+                - 00000010 (02) Window Defrost Manual
+                - 00000100 (04) SPA on
+            - b3
+                AC Fan
+                - 00000000 (00) Middle Speed Interior Fan
+                - 00000100 (04) High speed Fan
+                - 00010000 (10) Low Speed 
+                - 01000000 (40) AC Auto 
+            - b4 
+                Seat Heat
+                - (10) Seat Heater Auto
+                - (50) Seat Heater Manual
             - b5
-                - SID-C Spare button
+                - SID-C
                 - 00000000 (00) OFF
-                - 00100000 (20) ON (Toggle)"""
+                - 00100000 (20) ON (Toggle)
+                - 00000000 (80) Long Press CLR
+        """
         pass
     elif can_id == hex_to_int("0x320"):
         """ - b0
-                - Locking status / controls 
+                Locking status / controls 
                 - 00010000 (10) Driver unlocked
                 - 00010001 (11) Driver locked
                 - 00010100 (14) Unlock Button
@@ -268,11 +349,33 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000000 (00) Default
                 - 10000000 (80) Adjustment in progress
             - b3
-                - Mirror adjust DPAD direction (for left mirror only?)
+                - Mirror adjust DPAD direction left mirror
                 - 00010000 (10) LEFT
                 - 00100000 (20) RIGHT
                 - 01000000 (40) DOWN
                 - 10000000 (80) UP
+            - b4
+                - Mirror adjust DPAD direction Right Mirror
+                - 00010000 (10) LEFT
+                - 00100000 (20) RIGHT
+                - 01000000 (40) DOWN
+                - 10000000 (80) UP
+            - b6
+                Front Windows
+                - 00000010   passenger window up button
+                - 00000100   passenger window down button
+                - 00001000   passenger comfort open button
+                - 00010000   driver window in motion 
+                - 00100000   driver window closed
+                - 10000000   window lock button  
+            - b7
+                Rear Windows
+                - 00000100   passenger window down button
+                - 00001000   passenger window up button
+                - 00010000   passenger comfort open button
+                - 00100000   driver up button 
+                - 01000000   driver down button  
+                - 10000000   driver comfort open button
             - """
         pass
     elif can_id == hex_to_int("0x370"):
@@ -281,7 +384,11 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000000 (00) OFF
                 - 00000001 (01) REVERSE
                 - 01000000 (40) ON
-                - 01000001 (41) ON and REVERSE"""
+                - 01000001 (41) ON and REVERSE
+            - b1 
+                - 00000000 (00) Normal
+                -          (80) Dash Board Lights
+        """
         pass
     elif can_id == hex_to_int("0x380"):
         """ - b0
@@ -291,7 +398,13 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             - b1
                 - Rear fog lights
                 - 00000000 (00) OFF
-                - 00100000 (20) ON"""
+                - 00100000 (20) ON
+        """
+        pass
+    elif can_id == hex_to_int("0x445"):
+        """ Temp Outside (C)
+            (b1 - b2) / 2 = Temp C
+        """
         pass
     elif can_id == hex_to_int("0x460"):
         """- b0
@@ -343,6 +456,15 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             - b5
                 - Second
                 - 8 bit int"""
+        pass
+    elif can_id == hex_to_int("0x545"):
+        """ Indoor Temp?
+            -b0 0x5 
+            -b1 high byte
+            -b2 low byte
+            
+            ((b1<<8)+b2)/10 = Temp (C)
+        """
         pass
     elif can_id == hex_to_int("0x740"):
         # unsure what this is
