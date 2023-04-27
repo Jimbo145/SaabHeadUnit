@@ -47,6 +47,7 @@ class TurnSignal(Enum):
     LEFT = 1
     RIGHT = 2
 
+
 DATABASE_FILE = 'database.db'
 
 
@@ -64,7 +65,6 @@ def log_subprocess_result(result):
     else:
         log.error(result.stderr)
         return -1
-
 
 
 def hex_to_int(hex_num: str) -> int:
@@ -150,6 +150,21 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 16 bit integer for 
         """
         pass
+    elif can_id == hex_to_int("0x130"):
+        """ unknown
+            1 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x135"):
+        """ unknown
+            1 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x150"):
+        """ unknown
+            1 byte 
+        """
+        pass
     elif can_id == hex_to_int("0x170"):
         """ Coolant Temp
             b1 - 0x28 = Temp (C)
@@ -225,7 +240,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000100 (04) Voice activation button
                 - 00000101 (05) Seek forward
                 - 00000110 (06) Seek backward
-                - 00010001 (09) NXT button
+                - 00010001 (11) NXT button
                 - 00010010 (12) Phone button
             - b4
                 - 00000000 (00) Default
@@ -265,7 +280,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             keyboard.press('N')
             keyboardPressed = 'N'
             log.info('Keyboard: "N" -  OpenAuto: "Next track"')
-        elif data[3] == 9:
+        elif data[3] == 11:
             keyboard.press('H')
             keyboardPressed = 'H'
             log.info('Keyboard: "H" -  OpenAuto: "Home"')
@@ -280,7 +295,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             global turn_timer_start
 
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
-                log.info("Turn Signal Off")
+                log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
@@ -290,13 +305,13 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             if turnSignalAsync is not None:
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
-            log.info("Turn Signal Right")
+            log.info(f"Turn Signal Right {turn_timer_start}")
         elif data[4] == (128):
             last_turn_signal = TurnSignal.LEFT
             if turnSignalAsync is not None:
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
-            log.info("Turn Signal Left")
+            log.info(f"Turn Signal Left {turn_timer_start}")
     elif can_id == hex_to_int("0x300"):
         """
             - b0
@@ -309,6 +324,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - (A0) Coner pluh front fog
                 - +8 Parking brake
         """
+        pass
     elif can_id == hex_to_int("0x310"):
         """ 
             - b0 
@@ -378,6 +394,11 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 10000000   driver comfort open button
             - """
         pass
+    elif can_id == hex_to_int("0x340"):
+        """ unknown
+            6 byte 
+        """
+        pass
     elif can_id == hex_to_int("0x370"):
         """ - b0
                 - Front fog lights / reversing light
@@ -401,6 +422,16 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00100000 (20) ON
         """
         pass
+    elif can_id == hex_to_int("0x430"):
+        """ unknown
+            2 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x440"):
+        """ unknown
+            1 byte 
+        """
+        pass
     elif can_id == hex_to_int("0x445"):
         """ Temp Outside (C)
             (b1 - b2) / 2 = Temp C
@@ -420,8 +451,8 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         """
         brightness_adjusted = 100.0
         brightness_sensor = (data[3] << 8) + data[4]
-        sensor_percent = 1.0 * (brightness_sensor / 65535.0 )
-        instrument_brightness = 1.0 * (data[1] / 255.0 )
+        sensor_percent = 1.0 * (brightness_sensor / 65535.0)
+        instrument_brightness = 1.0 * (data[1] / 255.0)
 
         brightness_adjusted = brightness_adjusted * sensor_percent
 
@@ -457,6 +488,11 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - Second
                 - 8 bit int"""
         pass
+    elif can_id == hex_to_int("0x535"):
+        """ unknown
+            4 byte 
+        """
+        pass
     elif can_id == hex_to_int("0x545"):
         """ Indoor Temp?
             -b0 0x5 
@@ -466,10 +502,29 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             ((b1<<8)+b2)/10 = Temp (C)
         """
         pass
+    elif can_id == hex_to_int("0x621"):
+        """ unknown
+            8 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x625"):
+        """ unknown
+            8 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x690"):
+        """ unknown
+            8 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x700"):
+        """ unknown
+            8 byte 
+        """
+        pass
     elif can_id == hex_to_int("0x740"):
         # unsure what this is
         pass
-
     # elif canid == int("0x627", 16):
     # print(data[0])
     else:
@@ -550,7 +605,7 @@ async def handle_source_change(bus: can.Bus) -> None:
     await asyncio.sleep(0.5)
     last_message[3] = 0
     await (send_message(bus, "0x290", last_message))
-    await asyncio.sleep(1.5)
+    await asyncio.sleep(3.0)
     last_message[3] = 3
     await (send_message(bus, "0x290", last_message))
     await asyncio.sleep(0.5)
