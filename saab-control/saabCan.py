@@ -129,6 +129,14 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
 
         voltage = ((data[2]) * 135) / 1000
         log.debug(f'Car Battery voltage {voltage}')
+    elif can_id == hex_to_int("0x70"):
+        """ Unknown 5 bytes
+        """
+        pass
+    elif can_id == hex_to_int("0x90"):
+        """ Unknown 1 bytes
+        """
+        pass
     elif can_id == hex_to_int("0x91"):
         """ - b2
                 - 00000000 (0x00) GUESS Cruise control not setup / brake must be pressed
@@ -160,9 +168,17 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             1 byte 
         """
         pass
+    elif can_id == hex_to_int("0x140"):
+        """ Unknown 5 bytes
+        """
+        pass
     elif can_id == hex_to_int("0x150"):
         """ unknown
             1 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x160"):
+        """ Unknown 5 bytes
         """
         pass
     elif can_id == hex_to_int("0x170"):
@@ -187,6 +203,10 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - SPA Distance
         """
         log.info(f'Parking Sensor (SPA) {data}')
+        pass
+    elif can_id == hex_to_int("0x190"):
+        """ Unknown
+        """
         pass
     elif can_id == hex_to_int("0x210"):
         """ Seatbelts
@@ -394,9 +414,17 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 10000000   driver comfort open button
             - """
         pass
+    elif can_id == hex_to_int("0x330"):
+        """ Unknown 5 bytes
+        """
+        pass
     elif can_id == hex_to_int("0x340"):
         """ unknown
             6 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x350"):
+        """ Unknown 5 bytes
         """
         pass
     elif can_id == hex_to_int("0x370"):
@@ -422,6 +450,16 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00100000 (20) ON
         """
         pass
+    elif can_id == hex_to_int("0x390"):
+        """  - Normal state
+                - 0x00 0x00 
+             - Beep state
+                - 0x00 0x80"""
+        pass
+    elif can_id == hex_to_int("0x400"):
+        """ Unknown 5 bytes
+        """
+        pass
     elif can_id == hex_to_int("0x430"):
         """ unknown
             2 byte 
@@ -435,6 +473,10 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
     elif can_id == hex_to_int("0x445"):
         """ Temp Outside (C)
             (b1 - b2) / 2 = Temp C
+        """
+        pass
+    elif can_id == hex_to_int("0x450"):
+        """ Unknown  bytes
         """
         pass
     elif can_id == hex_to_int("0x460"):
@@ -462,11 +504,13 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         else:
             nightModeOn = False
         log.debug(f"Handle 0x460 (light level) {brightness_adjusted}")
-    elif can_id == hex_to_int("0x390"):
-        """  - Normal state
-                - 0x00 0x00 
-             - Beep state
-                - 0x00 0x80"""
+    elif can_id == hex_to_int("0x480"):
+        """  Unknown  2 bytes
+        """
+        pass
+    elif can_id == hex_to_int("0x490"):
+        """ Unknown 8 bytes
+        """
         pass
     elif can_id == hex_to_int("0x520"):
         """ - b0
@@ -487,6 +531,10 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             - b5
                 - Second
                 - 8 bit int"""
+        pass
+    elif can_id == hex_to_int("0x532"):
+        """ Unknown 5 bytes
+        """
         pass
     elif can_id == hex_to_int("0x535"):
         """ unknown
@@ -512,9 +560,17 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             8 byte 
         """
         pass
+    elif can_id == hex_to_int("0x627"):
+        """ Unknown 5 bytes
+        """
+        pass
     elif can_id == hex_to_int("0x690"):
         """ unknown
             8 byte 
+        """
+        pass
+    elif can_id == hex_to_int("0x62A"):
+        """ Unknown 5 bytes
         """
         pass
     elif can_id == hex_to_int("0x700"):
