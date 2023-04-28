@@ -97,12 +97,12 @@ async def main() -> None:
                 # log_subprocess_result(subprocess.run(['sudo', 'git', 'clean', '-fq'], capture_output=True, text=True))
                 result3 = subprocess.run(['sudo', 'git', 'pull'], capture_output=True, text=True)
                 log_subprocess_result(result3)
-                if 'Already up to date' not in str(result3.stdout) and str(result3.stderr) == '':
+                if 'Already up to date'  in str(result3.stdout):
+                    log.info("Repo up to date")
+                else:
                     # create an update request file
                     log.info("Pull Completed " + result3.stdout)
                     subprocess.call(['sudo', 'touch', '/usr/local/bin/SaabHeadUnitUpdater/update'])
-                else:
-                    log.info("Repo up to date")
             except FileNotFoundError:
                 log.error('SaabHeadUnit not found')
             except Exception as e:
@@ -112,6 +112,7 @@ async def main() -> None:
                 ['sudo', 'git', 'clone', 'https://github.com/Jimbo145/SaabHeadUnit.git', '/usr/local/bin/SaabHeadUnitUpdater/SaabHeadUnit']))
         if await copy_files():
             subprocess.call(['sudo', 'systemctl', 'start', 'saab.service'])
+
 if __name__ == "__main__":
 
     # jh = journal.JournalHandler()
