@@ -172,6 +172,18 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         """ Unknown 5 bytes
         """
         pass
+    elif can_id == hex_to_int("0x143"):
+        """ Windshield Wiper Trigger
+            [0] to ack wiper start?
+            [64] Rain sensing maybe?
+        """
+        pass
+    elif can_id == hex_to_int("0x144"):
+        """ Windshield Wiper Trigger
+            [1] to start wiper
+            [0] to ack 143's [64]
+        """
+        pass
     elif can_id == hex_to_int("0x150"):
         """ unknown
             1 byte 
@@ -187,22 +199,22 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         """
         pass
     elif can_id == hex_to_int("0x180"):
-        """ Parking Sensor Raw? (PDC)
+        """ Parking Sensor Raw (PDC)
             - b1
             - b2
             - b3
         """
-        log.info(f'Parking Sensor (PDC) {data}')
+        log.debug(f'Parking Sensor (PDC) {data}')
         pass
     elif can_id == hex_to_int("0x183"):
         """ Parking Sensor (SPA)
             - b0
-                - (43) SPA Not Active
-                - (62) SPA Active
+                - (67) SPA Not Active
+                - (98) SPA Active
             - b3
                 - SPA Distance
         """
-        log.info(f'Parking Sensor (SPA) {data}')
+        log.debug(f'Parking Sensor (SPA) {data}')
         pass
     elif can_id == hex_to_int("0x190"):
         """ Unknown
@@ -261,7 +273,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000101 (05) Seek forward
                 - 00000110 (06) Seek backward
                 - 00010001 (11) NXT button
-                - 00010010 (12) Phone button
+                - 00010010 (18) Phone button
             - b4
                 - 00000000 (00) Default
                 - 00000100 (4) Indicator right
@@ -300,38 +312,38 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             keyboard.press('N')
             keyboardPressed = 'N'
             log.info('Keyboard: "N" -  OpenAuto: "Next track"')
-        elif data[3] == 11:
+        elif data[3] == 17:
             keyboard.press('H')
             keyboardPressed = 'H'
             log.info('Keyboard: "H" -  OpenAuto: "Home"')
-        elif data[3] == 12:
+        elif data[3] == 18:
             keyboard.press('P')
             keyboardPressed = 'P'
             log.info('Keyboard: "P" -  OpenAuto: "Answer call/Phone menu')
         # b4
-        if data[4] == (0):
+        global last_turn_signal
+        global turn_timer_start
+        if data[4] == 0:
             # send turn signal 2x times if last was true;
-            global last_turn_signal
-            global turn_timer_start
-
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
                 log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
             last_turn_signal = TurnSignal.OFF
-        elif data[4] == (64):
+        elif data[4] == 128:
             last_turn_signal = TurnSignal.RIGHT
             if turnSignalAsync is not None:
                 turnSignalAsync.cancel()
             turn_timer_start = time.monotonic()
             log.info(f"Turn Signal Right {turn_timer_start}")
-        elif data[4] == (128):
-            last_turn_signal = TurnSignal.LEFT
-            if turnSignalAsync is not None:
-                turnSignalAsync.cancel()
-            turn_timer_start = time.monotonic()
-            log.info(f"Turn Signal Left {turn_timer_start}")
+        elif data[4] == 64:
+            if last_turn_signal != TurnSignal.LEFT :
+                last_turn_signal = TurnSignal.LEFT
+                if turnSignalAsync is not None:
+                    turnSignalAsync.cancel()
+                turn_timer_start = time.monotonic()
+                log.info(f"Turn Signal Left {turn_timer_start}")
     elif can_id == hex_to_int("0x300"):
         """
             - b0
