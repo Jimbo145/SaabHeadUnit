@@ -6,7 +6,7 @@ from systemd import journal
 import logging
 
 
-logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
+logging.basicConfig(filename='/tmp/update.log', level=logging.DEBUG)
 log = logging.getLogger('saabUpdateLog')
 
 
@@ -95,14 +95,21 @@ async def main() -> None:
                 # log_subprocess_result(subprocess.run(['sudo', 'git', 'reset', '--hard'], capture_output=True, text=True))
 
                 # log_subprocess_result(subprocess.run(['sudo', 'git', 'clean', '-fq'], capture_output=True, text=True))
+                gitRevSubprocessResult = subprocess.run(['sudo', 'git', 'rev-parse', '--short', 'HEAD'], capture_output=True, text=True)
+                gitRev = str(gitRevSubprocessResult.stdout)
+                log.info(f'Pre pull Revision {gitRev}')
                 result3 = subprocess.run(['sudo', 'git', 'pull'], capture_output=True, text=True)
                 log_subprocess_result(result3)
-                if 'Already up to date'  in str(result3.stdout):
+                newGitRevSubprocessResult = subprocess.run(['sudo', 'git', 'rev-parse', '--short', 'HEAD'],
+                                                        capture_output=True, text=True)
+                newGitRev = str(newGitRevSubprocessResult.stdout)
+                log.info(f'Post pull Revision {newGitRev}')
+                if gitRev == newGitRev:
                     log.info("Repo up to date")
                 else:
                     # create an update request file
+                    subprocess.run(f'sudo sh -c \'echo "{newGitRev}" > /usr/local/bin/SaabHeadUnitUpdater/update\'', shell=True)
                     log.info("Pull Completed " + result3.stdout)
-                    subprocess.call(['sudo', 'touch', '/usr/local/bin/SaabHeadUnitUpdater/update'])
             except FileNotFoundError:
                 log.error('SaabHeadUnit not found')
             except Exception as e:

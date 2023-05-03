@@ -122,7 +122,9 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
     global keyboardPressed
     global turnSignalAsync
     global source_changed
-    
+    global last_turn_signal
+    global turn_timer_start
+
     if can_id == hex_to_int("0x60"):
         """Voltage:
             ex: 0x60,0x3(length),0x0,0xa0,0x69(voltage) -> 0x69*135 = 14175 /1000 = 14.1 V"""
@@ -321,8 +323,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             keyboardPressed = 'P'
             log.info('Keyboard: "P" -  OpenAuto: "Answer call/Phone menu')
         # b4
-        global last_turn_signal
-        global turn_timer_start
+
         if data[4] == 0:
             # send turn signal 2x times if last was true;
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
@@ -332,13 +333,14 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
 
             last_turn_signal = TurnSignal.OFF
         elif data[4] == 128:
-            last_turn_signal = TurnSignal.RIGHT
-            if turnSignalAsync is not None:
-                turnSignalAsync.cancel()
-            turn_timer_start = time.monotonic()
-            log.info(f"Turn Signal Right {turn_timer_start}")
+            if turn_timer_start != TurnSignal.RIGHT:
+                last_turn_signal = TurnSignal.RIGHT
+                if turnSignalAsync is not None:
+                    turnSignalAsync.cancel()
+                turn_timer_start = time.monotonic()
+                log.info(f"Turn Signal Right {turn_timer_start}")
         elif data[4] == 64:
-            if last_turn_signal != TurnSignal.LEFT :
+            if turn_timer_start != TurnSignal.LEFT:
                 last_turn_signal = TurnSignal.LEFT
                 if turnSignalAsync is not None:
                     turnSignalAsync.cancel()
@@ -643,9 +645,9 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
     step_count = 4
 
     if signal == TurnSignal.RIGHT:
-        signal_data = hex_to_int("0x40")
-    elif signal == TurnSignal.LEFT:
         signal_data = hex_to_int("0x80")
+    elif signal == TurnSignal.LEFT:
+        signal_data = hex_to_int("0x40")
     else:
         log.warning("unexpected handle turn signal")
         return
