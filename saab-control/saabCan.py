@@ -339,13 +339,12 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 turn_timer_start = time.monotonic()
                 log.info(f"Turn Signal Right {turn_timer_start}")
         elif data[4] == 64:
-            if last_turn_signal != TurnSignal.LEFT:
-                last_turn_signal = TurnSignal.LEFT
-                if turnSignalAsync is not None:
-                    turnSignalAsync.cancel()
-                if turn_timer_start == 0:
-                    turn_timer_start = time.monotonic()
-                    log.info(f"Turn Signal Left {turn_timer_start}")
+            last_turn_signal = TurnSignal.LEFT
+            if turnSignalAsync is not None:
+                turnSignalAsync.cancel()
+            if turn_timer_start == 0:
+                turn_timer_start = time.monotonic()
+                log.info(f"Turn Signal Left {turn_timer_start}")
     elif can_id == hex_to_int("0x300"):
         """
             - b0
@@ -645,9 +644,9 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
     step_count = 4
 
     if signal == TurnSignal.RIGHT:
-        signal_data = hex_to_int("0x40")
-    elif signal == TurnSignal.LEFT:
         signal_data = hex_to_int("0x80")
+    elif signal == TurnSignal.LEFT:
+        signal_data = hex_to_int("0x40")
     else:
         log.warning("unexpected handle turn signal")
         return
