@@ -122,7 +122,9 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
     global keyboardPressed
     global turnSignalAsync
     global source_changed
-    
+    global last_turn_signal
+    global turn_timer_start
+
     if can_id == hex_to_int("0x60"):
         """Voltage:
             ex: 0x60,0x3(length),0x0,0xa0,0x69(voltage) -> 0x69*135 = 14175 /1000 = 14.1 V"""
@@ -321,8 +323,6 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             keyboardPressed = 'P'
             log.info('Keyboard: "P" -  OpenAuto: "Answer call/Phone menu')
         # b4
-        global last_turn_signal
-        global turn_timer_start
         if data[4] == 0:
             # send turn signal 2x times if last was true;
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
@@ -335,15 +335,17 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             last_turn_signal = TurnSignal.RIGHT
             if turnSignalAsync is not None:
                 turnSignalAsync.cancel()
-            turn_timer_start = time.monotonic()
-            log.info(f"Turn Signal Right {turn_timer_start}")
+            if turn_timer_start == 0:
+                turn_timer_start = time.monotonic()
+                log.info(f"Turn Signal Right {turn_timer_start}")
         elif data[4] == 64:
-            if last_turn_signal != TurnSignal.LEFT :
+            if last_turn_signal != TurnSignal.LEFT:
                 last_turn_signal = TurnSignal.LEFT
                 if turnSignalAsync is not None:
                     turnSignalAsync.cancel()
-                turn_timer_start = time.monotonic()
-                log.info(f"Turn Signal Left {turn_timer_start}")
+                if turn_timer_start == 0:
+                    turn_timer_start = time.monotonic()
+                    log.info(f"Turn Signal Left {turn_timer_start}")
     elif can_id == hex_to_int("0x300"):
         """
             - b0
@@ -701,10 +703,11 @@ async def main(test_mode) -> None:
     global turn_timer_start
     global turnSignalAsync
     global updated
-
+    global last_turn_signal
 
     turn_timer_start = 0
     turnSignalAsync = None
+    last_turn_signal = TurnSignal.OFF
 
     can_channel = setup_can(test_mode)
 
