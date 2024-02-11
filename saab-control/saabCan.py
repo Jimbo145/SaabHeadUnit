@@ -703,10 +703,11 @@ async def main(test_mode) -> None:
     global turn_timer_start
     global turnSignalAsync
     global updated
-
+    global last_turn_signal
 
     turn_timer_start = 0
     turnSignalAsync = None
+    last_turn_signal = TurnSignal.OFF
 
     can_channel = setup_can(test_mode)
 
