@@ -38,6 +38,7 @@ global turn_timer_start
 global database
 global source_changed
 global updated
+global test
 
 updated = False
 
@@ -53,7 +54,7 @@ DATABASE_FILE = 'database.db'
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
 
-logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
+logging.basicConfig(filename='/home/cole/can.log', level=logging.DEBUG)
 
 
 # logging.basicConfig(encoding='utf-8', level=logging.INFO)
@@ -326,8 +327,8 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
 
         if data[4] == 0:
             # send turn signal 2x times if last was true;
+            log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
-                log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
@@ -663,7 +664,7 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
             last_message[4] = 0
 
         await (send_message(bus, "0x290", last_message))
-        
+
 
 async def handle_source_change(bus: can.Bus) -> None:
     global source_changed
@@ -792,7 +793,7 @@ try:
 
 
         args = sys.argv[1:]
-        
+
         if len(args) > 0 and args[0] == "test":
             print("Test Mode")
             test = True
