@@ -54,7 +54,9 @@ DATABASE_FILE = 'database.db'
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
 
-logging.basicConfig(filename='/home/cole/can.log', level=logging.DEBUG)
+home_dir_expanded = os.path.expanduser('~')
+log_file = home_dir_expanded + '/saabCan.log'
+logging.basicConfig(filename=log_file, level=logging.DEBUG)
 
 
 # logging.basicConfig(encoding='utf-8', level=logging.INFO)
