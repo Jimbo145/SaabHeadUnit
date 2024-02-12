@@ -10,9 +10,11 @@ import sys
 import time
 import shutil
 import os
+import mimetypes
+
 from systemd import journal
 # import sqlite3
-# from aiohttp import web
+from aiohttp import web
 # import sqlite3          #pip install sqlite3
 # from aiohttp import web #pip install aiohttp
     #pip install pyzmq
@@ -29,6 +31,9 @@ keyboard = Controller()
 log = logging.getLogger('saabLog')
 
 
+
+
+
 messageStore = {}
 LogChange: bool = True
 
@@ -38,6 +43,7 @@ global turn_timer_start
 global database
 global source_changed
 global updated
+global test
 
 updated = False
 
@@ -53,8 +59,35 @@ DATABASE_FILE = 'database.db'
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
 
-logging.basicConfig(filename='/tmp/can.log', level=logging.DEBUG)
+home_dir_expanded = os.path.expanduser('~')
+log_file = home_dir_expanded + '/saabCan.log'
+logging.basicConfig(filename=log_file, level=logging.DEBUG)
 
+async def handle(request):
+    name = request.match_info.get('name', "Anonymous")
+    text = f" test {messageStore} {name}"
+    return web.Response(text=text)
+
+async def handle_file(request):
+    # Assuming you want to serve a specific file, adjust the file path accordingly
+    file_path = '/path/to/your/file.txt'  # Replace this with the actual file path
+
+    try:
+        with open(log_file, 'rb') as f:
+            file_content = f.read()
+    except FileNotFoundError:
+        return web.Response(status=404, text="File not found")
+
+    mime_type, _ = mimetypes.guess_type(file_path)
+    if not mime_type:
+        mime_type = 'application/txt'  # Fallback MIME type if extension is not recognized
+
+    return web.Response(body=file_content, content_type=mime_type)
+
+
+app = web.Application()
+app.add_routes([web.get('/', handle),
+                web.get('/log', handle_file)])
 
 # logging.basicConfig(encoding='utf-8', level=logging.INFO)
 
@@ -70,49 +103,26 @@ def log_subprocess_result(result):
 def hex_to_int(hex_num: str) -> int:
     return int(hex_num, 16)
 
-# def create_database_file():
-#     if not os.path.exists(DATABASE_FILE):
-#         conn = sqlite3.connect(DATABASE_FILE)
-#         conn.close()
-
-# function to create database table if it doesn't exist
-# def create_database_table():
-#     conn = sqlite3.connect(DATABASE_FILE)
-#     conn.execute('''
-#     CREATE TABLE IF NOT EXISTS mytable (
-#         id INTEGER PRIMARY KEY,
-#         data INTEGER
-#     );
-#     ''')
-#     conn.close()
-
-# def set_data(id, data):
-#     conn = sqlite3.connect(DATABASE_FILE)
-#     cursor = conn.execute(f"SELECT id FROM mytable WHERE id={id}")
-#     existing_data = cursor.fetchone()
-#     if existing_data:
-#         conn.execute(f"UPDATE mytable SET data={data} WHERE id={id}")
-#     else:
-#         conn.execute(f"INSERT INTO mytable (id, data) VALUES ({id}, {data})")
-#     conn.commit()
-#     conn.close()
-
 
 def receive_message(msg: can.Message, bus: can.bus) -> None:
     """Regular callback function. Can also be a coroutine."""
-
+    global firestore_connected
     byteList = []
     for byt in msg.data:
         byteList.append(hex_to_int(hex(byt)))
 
     # print(BitArray(msg.data).unpack(hex))
     try:
-        if messageStore[msg.arbitration_id] != msg.data:
+        if bytearray(messageStore[msg.arbitration_id]) != msg.data:
             # BitArray(bytes=messageStore[msg.arbitration_id]).pp('bin', show_offset=False)
             # BitArray(bytes=msg.data).pp('bin', show_offset=False)
-            log.debug(f"Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
+            log.debug(f"Message recieve : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
+            print(f"Message recieve : {messageStore[msg.arbitration_id]} {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
+        else:
+            print("repeat message")
     except KeyError:
         log.debug(f"New Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
+
 
     messageStore.update({msg.arbitration_id: byteList})
     parseMessage(msg.arbitration_id, byteList, bus)
@@ -325,8 +335,8 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         # b4
         if data[4] == 0:
             # send turn signal 2x times if last was true;
+            log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
-                log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
@@ -662,7 +672,7 @@ async def handle_turn_signal(signal: TurnSignal, bus: can.Bus) -> None:
             last_message[4] = 0
 
         await (send_message(bus, "0x290", last_message))
-        
+
 
 async def handle_source_change(bus: can.Bus) -> None:
     global source_changed
@@ -710,6 +720,11 @@ async def main(test_mode) -> None:
 
     can_channel = setup_can(test_mode)
 
+    app_runner = web.AppRunner(app)
+    await app_runner.setup()
+    site = web.TCPSite(app_runner, 'localhost', 8080)
+    await site.start()
+
     with can.Bus(  # type: ignore
             channel=can_channel, bustype="socketcan", receive_own_messages=False
     ) as bus:
@@ -738,32 +753,12 @@ async def main(test_mode) -> None:
             # Wait for next message from AsyncBufferedReader
             msg = await reader.get_message()
 
+
             await asyncio.sleep(0.1)
 
-# async def get_data_handler(request):
-#     id = request.match_info['id']
-#     conn = sqlite3.connect(DATABASE_FILE)
-#     cursor = conn.execute(f"SELECT data FROM mytable WHERE id={id}")
-#     data = cursor.fetchone()
-#     if data:
-#         conn.close()
-#         return web.Response(text=str(data[0]))
-#     else:
-#         conn.close()
-#         return web.Response(text="Data not found", status=404)
-# # async def set_data_handler(request):
-#     data = await request.json()
-#     id = data['id']
-#     data = int(data['data'])
-#     conn = sqlite3.connect(DATABASE_FILE)
-#     conn.execute(f"INSERT INTO mytable (id, data) VALUES ({id}, {data})")
-#     conn.commit()
-#     conn.close()
-#     return web.Response(text="Data inserted successfully")
 
-# app = web.Application()
-# app.add_routes([web.get('/data/{id}', get_data_handler)])
-# app.add_routes([web.post('/data', set_data_handler)])
+def hello_world():
+    return 'Hello World'
 
 try:
     if __name__ == "__main__":
@@ -776,6 +771,7 @@ try:
         log.addHandler(sh)
         log.setLevel(logging.INFO)
         log.info("Starting SaabCan...")
+
 
         source_changed = False
 
@@ -791,7 +787,7 @@ try:
 
 
         args = sys.argv[1:]
-        
+
         if len(args) > 0 and args[0] == "test":
             print("Test Mode")
             test = True
@@ -801,8 +797,8 @@ try:
         # create_database_file()
         # create_database_table()
 
+
         asyncio.run(main(test))
-        # web.run_app(app)
 
 except KeyboardInterrupt:
     print("Stopping...")
