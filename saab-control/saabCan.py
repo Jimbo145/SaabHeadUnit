@@ -332,17 +332,18 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         else:
             pass
         # b4
-
         if data[4] == 0:
             # send turn signal 2x times if last was true;
             log.info(f"Turn Signal Off ")
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
                 log.info(f"{time.monotonic() - turn_timer_start}")
+
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
             last_turn_signal = TurnSignal.OFF
         elif data[4] == 128:
+
             if last_turn_signal != TurnSignal.RIGHT:
                 last_turn_signal = TurnSignal.RIGHT
                 if turnSignalAsync is not None:
@@ -354,6 +355,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 last_turn_signal = TurnSignal.LEFT
                 if turnSignalAsync is not None:
                     turnSignalAsync.cancel()
+
                 turn_timer_start = time.monotonic()
                 log.info(f"Turn Signal Left {turn_timer_start}")
     elif can_id == hex_to_int("0x300"):
