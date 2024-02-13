@@ -725,7 +725,7 @@ async def main(test_mode) -> None:
 
     app_runner = web.AppRunner(app)
     await app_runner.setup()
-    site = web.TCPSite(app_runner, 'localhost', 8080)
+    site = web.TCPSite(app_runner, '0.0.0.0', 8080)
     await site.start()
 
     with can.Bus(  # type: ignore
