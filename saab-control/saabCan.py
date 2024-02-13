@@ -24,7 +24,7 @@ while x_not_available:
     try:
         from pynput.keyboard import Key, Controller
     except:
-        pass
+        print('pynput not available')
     else:
         x_not_available = False
 keyboard = Controller()
@@ -46,7 +46,7 @@ global updated
 global test
 
 updated = False
-
+keyboardPressed = 'None'
 
 class TurnSignal(Enum):
     OFF = 0
@@ -117,9 +117,6 @@ def receive_message(msg: can.Message, bus: can.bus) -> None:
             # BitArray(bytes=messageStore[msg.arbitration_id]).pp('bin', show_offset=False)
             # BitArray(bytes=msg.data).pp('bin', show_offset=False)
             log.debug(f"Message recieve : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
-            print(f"Message recieve : {messageStore[msg.arbitration_id]} {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
-        else:
-            print("repeat message")
     except KeyError:
         log.debug(f"New Message : {hex(msg.arbitration_id)} {byteList} {msg.dlc}")
 
@@ -291,7 +288,7 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
                 - 00000100 (4) Indicator right
                 - 00001000 (8) Indicator left
         """
-        log.debug(f"Handle: 0x290 {data} ")
+        log.info(f"Handle: 0x290 {data} ")
 
         if not source_changed:
             asyncio.create_task(handle_source_change(bus))
@@ -332,27 +329,33 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
             keyboard.press('P')
             keyboardPressed = 'P'
             log.info('Keyboard: "P" -  OpenAuto: "Answer call/Phone menu')
+        else:
+            pass
         # b4
         if data[4] == 0:
             # send turn signal 2x times if last was true;
-            log.info(f"Turn Signal Off {time.monotonic() - turn_timer_start}")
+            log.info(f"Turn Signal Off ")
             if last_turn_signal != TurnSignal.OFF and (time.monotonic() - turn_timer_start) < 1:
+                log.info(f"{time.monotonic() - turn_timer_start}")
+
                 turnSignalAsync = asyncio.create_task(handle_turn_signal(last_turn_signal, bus))
                 turn_timer_start = 0
 
             last_turn_signal = TurnSignal.OFF
         elif data[4] == 128:
-            last_turn_signal = TurnSignal.RIGHT
-            if turnSignalAsync is not None:
-                turnSignalAsync.cancel()
-            if turn_timer_start == 0:
+
+            if last_turn_signal != TurnSignal.RIGHT:
+                last_turn_signal = TurnSignal.RIGHT
+                if turnSignalAsync is not None:
+                    turnSignalAsync.cancel()
                 turn_timer_start = time.monotonic()
                 log.info(f"Turn Signal Right {turn_timer_start}")
         elif data[4] == 64:
-            last_turn_signal = TurnSignal.LEFT
-            if turnSignalAsync is not None:
-                turnSignalAsync.cancel()
-            if turn_timer_start == 0:
+            if last_turn_signal != TurnSignal.LEFT:
+                last_turn_signal = TurnSignal.LEFT
+                if turnSignalAsync is not None:
+                    turnSignalAsync.cancel()
+
                 turn_timer_start = time.monotonic()
                 log.info(f"Turn Signal Left {turn_timer_start}")
     elif can_id == hex_to_int("0x300"):
