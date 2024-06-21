@@ -133,3 +133,4 @@ slaveTest
 /circuit_boards/headunit_pi4/headunit_pi4-backups
 /circuit_boards/headunit_hub/headunit_hub-backups
 /circuit_boards/headunit_controls/headunit_controls-backups
+/saab-control/serviceAccountKey.json
