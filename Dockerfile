@@ -5,7 +5,7 @@ FROM debian:bullseye
 
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y init git python3-dev systemd systemd-sysv rsyslog systemd-cron \
+    && apt-get install --no-install-recommends -y init git python3-dev systemd systemd-sysv rsyslog systemd-cron ca-certificates \
     # Fix a bug with common-debian script
     && rm -f /usr/local/bin/systemctl 
     #  Clean up
