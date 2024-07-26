@@ -93,10 +93,10 @@ app.add_routes([web.get('/', handle),
 
 def log_subprocess_result(result):
     if result.stdout != '':
-        log.info(result.stdout)
+        log.debug("Subprocess Result " + str(result.stdout))
         return 0
     else:
-        log.error(result.stderr)
+        log.error("Subprocess Result " + str(result.stderr)) 
         return -1
 
 
@@ -641,13 +641,27 @@ def setup_can(test_mode):
     # ip link set can0 up type can bitrate 33300
     can_chanel = 'can0'
     if test_mode:
-        result = subprocess.run(['sudo', 'modprobe', 'vcan'], text=True)
+        result = subprocess.run(['sudo', 'modprobe', 'vcan'], 
+                                text=True, 
+                                stdout=subprocess.DEVNULL,
+                                stderr=subprocess.STDOUT)
         log_subprocess_result(result)
-        result = subprocess.run(['sudo', 'ip', 'link', 'add', 'dev', 'vcan0', 'type', 'vcan'], text=True)
+        result = subprocess.run(['sudo', 'ip', 'link', 'add', 'dev', 'vcan0', 'type', 'vcan'], 
+                                text=True, 
+                                stdout=subprocess.DEVNULL,
+                                stderr=subprocess.STDOUT)
+        log_subprocess_result(result)
+        result = subprocess.run(['sudo', 'ip', 'link', 'set', 'up', 'vcan0'], 
+                                text=True, 
+                                stdout=subprocess.DEVNULL,
+                                stderr=subprocess.STDOUT)
         log_subprocess_result(result)
         can_chanel = 'vcan0'
 
-    result = subprocess.run(['sudo', 'ip', 'link', 'set', can_chanel, 'up', 'type', 'can', 'bitrate', '33300'], text=True)
+    result = subprocess.run(['sudo', 'ip', 'link', 'set', can_chanel, 'up', 'type', 'can', 'bitrate', '33300'], 
+                            text=True, 
+                            stdout=subprocess.DEVNULL,
+                            stderr=subprocess.STDOUT)
     log_subprocess_result(result)
 
     return can_chanel
@@ -760,8 +774,6 @@ async def main(test_mode) -> None:
             await asyncio.sleep(0.1)
 
 
-def hello_world():
-    return 'Hello World'
 
 try:
     if __name__ == "__main__":
@@ -774,6 +786,10 @@ try:
         log.addHandler(sh)
         log.setLevel(logging.INFO)
         log.info("Starting SaabCan...")
+
+        
+        #web.run_app(app, host='0.0.0.0', port=8080)
+        
 
 
         source_changed = False
@@ -792,13 +808,11 @@ try:
         args = sys.argv[1:]
 
         if len(args) > 0 and args[0] == "test":
-            print("Test Mode")
+            log.info ("Test Mode")
             test = True
         else:
             test = False
 
-        # create_database_file()
-        # create_database_table()
 
 
         asyncio.run(main(test))

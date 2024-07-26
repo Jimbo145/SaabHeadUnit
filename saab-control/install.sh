@@ -6,6 +6,10 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+apt install -y can-utils
+
+bash -c 'echo "vcan" >> /etc/modules'
+
 # Define the service file
 service_file=saab.service
 update_file=saab_update.service

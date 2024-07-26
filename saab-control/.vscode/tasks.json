@@ -1,0 +1,19 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Restart Saab Service and Copy File",
+            "type": "shell",
+            "command": "sudo systemctl stop saab.service && sudo cp ${workspaceFolder}/saabCan.py /usr/local/bin/SaabHeadUnit/saabCan.py  && sudo systemctl start saab.service",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}
