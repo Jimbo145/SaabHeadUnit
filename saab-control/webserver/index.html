@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <button onclick="sendRadioButton('AMFM')">AM/FM</button>
+    <button onclick="sendRadioButton('CD')">CD</button>
+    <button onclick="sendRadioButton('SCAN')">SCAN</button>
+    <br>
+    <input id=scrn_brightness ondrag="preventUpdate()" onchange="sendBrightness('scrn_brightness', this.value)" type="range" min="0" max="100"/>
+    <fieldset>
+        <legend>Choose your monster's features:</legend>
+      
+        <div>
+          <input type="checkbox" id="fog_light" onchange="sendToggle('fog_light')" name="Fog"  />
+          <label for="Fog">Auto Fog Lights</label>
+        </div>
+    </fieldset>
+    
+    <script>
+        var connected = false;
+        var initialized = false;
+        var socket;
+        var updateEnable = false;
+        function connectWebSocket() {
+            // Create a new WebSocket connection
+            socket = new WebSocket("ws://" + window.location.host + "/ws");
+
+            // Event handler for when the connection is established
+            socket.onopen = function(event) {
+                console.log("WebSocket connection established");
+                // Perform any actions you need here
+                connected = true;
+                socket.send(createMsg("update", "", ""));              
+            };
+
+            
+
+            // Event handler for when a message is received
+            socket.onmessage = function(event) {
+                console.log("Received message: " + event.data);
+                // Perform any actions you need here
+                obj = JSON.parse(event.data);
+                if(obj['group'] == "update"){
+                    update(obj);
+                }
+
+            };
+
+            // Event handler for when the connection is closed
+            socket.onclose = function(event) {
+                console.log("WebSocket connection closed");
+                connected = false;
+            };
+        }
+
+        function preventUpdate(){   
+            updateEnable = true;
+        }
+
+        function sendRadioButton(button) {
+            if (connected) {
+                socket.send(createMsg("gpio", "press", button));
+            }
+        }
+
+        function sendBrightness(pin, value){
+            if (connected) {
+                socket.send(createMsg("gpio", "set", {"pin": pin, "val": value}));
+                updateEnable = false;
+            }
+        }
+
+        function sendToggle(button){
+            if (connected) {
+                socket.send(createMsg("toggle", "press", button));
+                updateEnable = false;
+            }
+        }
+
+        function createMsg(grp, cmd, dat){
+            obj = {group: grp, command: cmd, data: dat};
+            return JSON.stringify(obj);
+        }
+
+        function update(obj){
+            if (!connected){
+                return;
+            }
+            console.log('update')
+            if (initialized === false){
+                document.getElementById('scrn_brightness').value = obj['data']['par']['scrn_brightness'];
+                document.getElementById('fog_light').checked = obj['data']['par']['fog_light'];
+                initialized = true;
+            }
+        }
+        
+
+        connectWebSocket();
+    </script>
+</body>
+</html>

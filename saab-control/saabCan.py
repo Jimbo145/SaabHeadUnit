@@ -11,10 +11,13 @@ import time
 import shutil
 import os
 import mimetypes
+import gpiozero
+import json
 
 from systemd import journal
 # import sqlite3
 from aiohttp import web
+from aiohttp import WSMessage
 # import sqlite3          #pip install sqlite3
 # from aiohttp import web #pip install aiohttp
     #pip install pyzmq
@@ -23,15 +26,14 @@ x_not_available = True
 while x_not_available:
     try:
         from pynput.keyboard import Key, Controller
-    except:
-        print('pynput not available')
+    except Exception as e:
+        print(e)
+        pass
     else:
+        print('pynput connected')
         x_not_available = False
 keyboard = Controller()
 log = logging.getLogger('saabLog')
-
-
-
 
 
 messageStore = {}
@@ -44,17 +46,64 @@ global database
 global source_changed
 global updated
 global test
+global gpio_manager
+global app_status
 
 updated = False
 keyboardPressed = 'None'
+firstRun = True
+notifier = None
+app_data = {
+    "par": {
+        "scrn_brightness" : 100,
+        "led_brightness" : 100,
+        "fog_light" : 0
+
+    },
+    "status": {
+        "battery_voltage": 0,
+        "output_current": 0
+    }
+}
 
 class TurnSignal(Enum):
     OFF = 0
     LEFT = 1
     RIGHT = 2
 
+class GPIOManager:
+    def __init__(self):
+        self.pin_mapping = {
+            'AMFM': gpiozero.DigitalOutputDevice(pin= 'GPIO26', active_high=True, initial_value=False),
+            'SCAN': gpiozero.DigitalOutputDevice(pin= 'GPIO21', active_high=True, initial_value=False),
+            'CD': gpiozero.DigitalOutputDevice(pin= 'GPIO20', active_high=True, initial_value=False),
+            'scrn_brightness': gpiozero.PWMOutputDevice(pin= 'GPIO13', active_high=True, initial_value=0),
+        }
 
-DATABASE_FILE = 'database.db'
+    def set_gpio(self, gpio_pin: str, status: bool):
+        if status:
+            self.pin_mapping[gpio_pin].on()
+        else:
+            self.pin_mapping[gpio_pin].off()
+
+    def set_pwm(self, gpio_pin: str, brightness: float):
+            if brightness > 1 or brightness < 0 or gpio_pin == "":
+                return
+            self.pin_mapping[gpio_pin].value = brightness
+    
+    def blink_gpio(self, gpio_pin: str, duration: float):
+        if duration < 0 or gpio_pin == "":
+            return
+        self.pin_mapping[gpio_pin].blink(on_time=duration, off_time=duration, n=1)
+
+    def toggle_gpio(self, gpio_pin: str):
+        if self.pin_mapping[gpio_pin].value:
+            self.pin_mapping[gpio_pin].off()
+        else:
+            self.pin_mapping[gpio_pin].on()
+
+
+gpio_manager: GPIOManager = GPIOManager()
 
 
 last_turn_signal: TurnSignal = TurnSignal.OFF
@@ -64,9 +113,19 @@ log_file = home_dir_expanded + '/saabCan.log'
 logging.basicConfig(filename=log_file, level=logging.DEBUG)
 
 async def handle(request):
-    name = request.match_info.get('name', "Anonymous")
-    text = f" test {messageStore} {name}"
-    return web.Response(text=text)
+    file_path = '/home/pi/SaabHeadUnit/saab-control/webserver/index.html'  # Replace this with the actual file path
+
+    try:
+        with open(file_path, 'rb') as f:
+            file_content = f.read()
+    except FileNotFoundError:
+        return web.Response(status=404, text="File not found")
+
+    mime_type, _ = mimetypes.guess_type(file_path)
+    if not mime_type:
+        mime_type = 'text/html'  # Fallback MIME type if extension is not recognized
+
+    return web.Response(body=file_content, content_type=mime_type)
 
 async def handle_file(request):
     # Assuming you want to serve a specific file, adjust the file path accordingly
@@ -84,12 +143,74 @@ async def handle_file(request):
 
     return web.Response(body=file_content, content_type=mime_type)
 
+async def websocket_handler(request):
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+    async for msg in ws:
+        if msg.type == web.WSMsgType.TEXT:
+            if msg.data == 'close':
+                await ws.close()
+            else:
+                log.info(f"Received: {msg.data}")
+                response = handle_wsmessage(msg)
+                await ws.send_str(f"{response}")
+        elif msg.type == web.WSMsgType.ERROR:
+            log.error('WebSocket connection closed with exception %s' % ws.exception())
+
+    return ws
+
+def handle_wsmessage(msg: WSMessage) -> str:  
+    global app_data
+    global gpio_manager
+    wsjson = json.loads(msg.data)
+    response = {
+        "status": 501,
+        "group": "",
+        "data" : {}
+    }
+    if wsjson['group'] == 'gpio':
+        response['status'] = 200
+        response['group'] = 'gpio'
+        if wsjson['command'] == 'press':
+            gpio_manager.blink_gpio(wsjson['data'], 1.0)
+        elif wsjson['command'] == 'toggle':
+            pass
+        elif wsjson['command'] == 'set':
+            pwm_value = float(wsjson['data']['val'])
+            gpio_manager.set_pwm(wsjson['data']['pin'], pwm_value)
+            set_setting(wsjson['data']['pin'], pwm_value)
+            response['data'] = app_data
+        elif wsjson['command'] == 'clear':
+            pass
+    elif wsjson['group'] == 'can':
+        response['status'] = 200
+        response['group'] = 'can'
+        if wsjson['command'] == 'send':
+            pass
+        elif wsjson['command'] == 'read':
+            pass
+    elif wsjson['group'] == 'toggle':
+        response['status'] = 200
+        response['group'] = 'toggle'
+        response['data'] = app_data
+        if wsjson['command'] == 'press':
+            if app_data['par'][wsjson['data']] == 1:
+                set_setting(wsjson['data'], 0)
+            else:
+                set_setting(wsjson['data'], 1)
+    elif wsjson['group'] == 'update':
+        response['status'] = 200
+        response['group'] = 'update'
+        response['data'] = app_data
+    return json.dumps(response)
+
+
 
 app = web.Application()
 app.add_routes([web.get('/', handle),
-                web.get('/log', handle_file)])
+                web.get('/log', handle_file),
+                web.get('/ws', websocket_handler)])
 
-# logging.basicConfig(encoding='utf-8', level=logging.INFO)
 
 def log_subprocess_result(result):
     if result.stdout != '':
@@ -102,6 +223,36 @@ def log_subprocess_result(result):
 
 def hex_to_int(hex_num: str) -> int:
     return int(hex_num, 16)
+
+def set_setting(key, value):
+    global app_data
+    app_data['par'][key] = value
+    write_settings()
+
+
+def read_settings():
+    global app_data
+    settings_path = "/home/pi/SaabHeadUnit/saab-control/settings.json"
+    try:
+        with open(settings_path, 'r') as file:
+            content = file.read()
+            app_data['par'] = json.loads(content)
+    except FileNotFoundError:
+        log.error(f"File not found: {settings_path}")
+        return ""
+    finally:
+        file.close()
+
+def write_settings():
+    global app_data
+    settings_path = "/home/pi/SaabHeadUnit/saab-control/settings.json"
+    try:
+        with open(settings_path, 'w') as file:
+            json.dump(app_data['par'], file)
+    except FileNotFoundError:
+        log.error(f"File not found: {settings_path}")
+    finally:
+        file.close()
 
 
 def receive_message(msg: can.Message, bus: can.bus) -> None:
@@ -613,26 +764,37 @@ def parseMessage(can_id: int, data: List[int], bus: can.Bus):
         log.info(f"Handle unsupported {can_id} {data}")
 
 
-firstRun = True
-
-notifier = None
-
-
 async def send_message(bus: can.Bus,can_id: str, data:bytearray):
     message = can.Message(arbitration_id=hex_to_int(can_id), data=data, is_extended_id=False)
     try:
         bus.send(message)
         bus.flush_tx_buffer()
         log.info(f"Message {message} sent on {bus.channel_info}")
-    except can.CanError:
-        log.info(f"Message NOT sent {can.CanError}")
+    except can.CanError as e:
+        log.info(f"Message NOT sent {e.args}")
 
 
 async def get_battery_status():
-    output = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True)
-    battery_voltage = float(output.stdout)
+    global app_data
+    result = subprocess.run(['lifepo4wered-cli' , 'get', 'vbat'], check=True, text=True, capture_output=True)
 
-    log.info(f"Life4powered voltage: {battery_voltage}")
+    output = result.stdout.strip()
+    try:
+        battery_voltage = float(output)
+        app_data['status']['battery_voltage'] = battery_voltage
+    except ValueError:
+        log.warning(f"Life4powered voltage Failed to parse numeric value from output {output}")
+
+    result = subprocess.run(['lifepo4wered-cli' , 'get', 'IOUT'], check=True, text=True, capture_output=True)
+
+    output = result.stdout.strip()
+    try:
+        output_current = float(output)
+        app_data['status']['output_current'] = output_current
+    except ValueError:
+        log.warning(f"Life4powered Current Failed to parse numeric value from output {output}")
+
+
     await asyncio.sleep(10)
     asyncio.create_task(get_battery_status())
 
@@ -735,11 +897,13 @@ async def main(test_mode) -> None:
     turnSignalAsync = None
     last_turn_signal = TurnSignal.OFF
 
+    read_settings()
+
     can_channel = setup_can(test_mode)
 
     app_runner = web.AppRunner(app)
     await app_runner.setup()
-    site = web.TCPSite(app_runner, '0.0.0.0', 8080)
+    site = web.TCPSite(app_runner)
     await site.start()
 
     with can.Bus(  # type: ignore
@@ -747,8 +911,9 @@ async def main(test_mode) -> None:
     ) as bus:
         reader = can.AsyncBufferedReader()
 
-        await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
-        bus.flush_tx_buffer()
+        if app_data['par']['fog_light'] == 1:
+            await asyncio.wait_for(send_message(bus, "0x300", bytearray([0x0, 0x90])), timeout=0.5)
+            bus.flush_tx_buffer()
 
         if updated:
             asyncio.create_task(handle_beep(bus, 2))
@@ -777,19 +942,12 @@ async def main(test_mode) -> None:
 
 try:
     if __name__ == "__main__":
-        # jh = journal.JournalHandler()
-        # jh.setLevel(logging.INFO)
-        # log.addHandler(jh)
 
         sh = logging.StreamHandler()
         sh.setLevel(logging.INFO)
         log.addHandler(sh)
         log.setLevel(logging.INFO)
-        log.info("Starting SaabCan...")
-
-        
-        #web.run_app(app, host='0.0.0.0', port=8080)
-        
+        log.info("Starting SaabCan...")        
 
 
         source_changed = False

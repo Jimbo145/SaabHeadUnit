@@ -6,9 +6,13 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-apt install -y can-utils
+apt install -y can-utils python3-gpiozero
 
 bash -c 'echo "vcan" >> /etc/modules'
+
+sudo mkdir /run/SaabHeadUnit
+
+sudo setcap 'cap_net_bind_service=+ep' /usr/bin/python3.11
 
 # Define the service file
 service_file=saab.service
