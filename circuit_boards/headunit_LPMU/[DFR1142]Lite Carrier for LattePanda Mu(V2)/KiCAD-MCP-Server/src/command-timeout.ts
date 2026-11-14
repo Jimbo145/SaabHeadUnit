@@ -1,0 +1,114 @@
+/**
+ * Per-command timeout policy for the Python worker bridge.
+ *
+ * Kept as a pure function so the policy is unit-testable without spawning a
+ * worker — the same reason `tools/registry.ts` and `tools/tool-response.ts`
+ * are separated out.
+ */
+
+/** Fallback for commands that should answer promptly. */
+export const DEFAULT_COMMAND_TIMEOUT_MS = 30_000;
+
+/** Blanket allowance for operations that are slow but not caller-tunable. */
+export const LONG_COMMAND_TIMEOUT_MS = 600_000;
+
+/**
+ * Commands whose cost scales with the size of the thing being worked on rather
+ * than with a parameter the caller can reason about up front.
+ *
+ * `digikey_check_library_availability` is here for a different reason to the
+ * rest: it issues one or two rate-limited HTTP requests per symbol and
+ * self-throttles between them, so even its reduced default of 25 symbols cannot
+ * finish inside `DEFAULT_COMMAND_TIMEOUT_MS` once network latency is included.
+ * Since #382 a late response is discarded by request id rather than mis-delivered
+ * to the next call, so the cost of timing out is now confined to this command —
+ * but it is still the whole sweep's results, every one of them already paid for
+ * against the caller's rate limit.
+ */
+export const LONG_RUNNING_COMMANDS = [
+  "run_drc",
+  "export_gerber",
+  "export_pdf",
+  "export_3d",
+  "sync_schematic_to_board",
+  // Runs sync_schematic_to_board on a fresh board.
+  "create_board_from_schematic",
+  "run_erc",
+  // Batch schematic edits parse every symbol library they place from; one
+  // STM32 symbol from MCU_ST_STM32G0 took longer than the 30 s default, and a
+  // batch abandoned mid-write left a .kicad_sch that no longer loaded.
+  "batch_add_components",
+  "batch_connect",
+  "batch_add_and_connect",
+  "batch_add_no_connects",
+  "batch_edit_schematic_components",
+  "list_schematic_nets",
+  "list_schematic_labels",
+  "get_schematic_view",
+  "digikey_check_library_availability",
+] as const;
+
+/**
+ * Extra wall-clock granted to `autoroute` on top of the routing budget the
+ * caller asked for, covering DSN export, JVM start-up per attempt, SES import
+ * and the board save.
+ */
+export const AUTOROUTE_OVERHEAD_MS = 120_000;
+
+/**
+ * `download_jlcpcb_database` fetches a 230-400 MB catalog and converts it to
+ * SQLite: 30 s at best, many minutes on a slow link (one 50 MiB volume took
+ * about 8 minutes for the reporter of #454). Under the 30 s default the bridge
+ * gave up and restarted the worker mid-download, which cut the files short.
+ */
+export const JLCPCB_DOWNLOAD_TIMEOUT_MS = 3_600_000;
+
+/**
+ * How long the Node side waits for `command` before abandoning the request.
+ *
+ * `autoroute` is computed rather than fixed: its Python side takes a
+ * per-attempt `timeout` (seconds, default 300) and repeats it `attempts` times
+ * for best-of-N, so a flat ceiling would still cut off a caller who legitimately
+ * raised either. Under-waiting here is what issue #251 reports — the Node
+ * default fired at 30 s while Freerouting was still working, so the tool
+ * reported failure even though a valid .ses had been written.
+ */
+export function computeCommandTimeout(
+  command: string,
+  params?: unknown,
+  env: Record<string, string | undefined> = process.env,
+): number {
+  // KICAD_MCP_COMMAND_TIMEOUT_MS raises the floor for every command, for
+  // slow machines or very large designs. It never shortens a timeout.
+  const floor = toPositiveNumber(env.KICAD_MCP_COMMAND_TIMEOUT_MS) ?? 0;
+  return Math.max(policyTimeout(command, params), floor);
+}
+
+function policyTimeout(command: string, params?: unknown): number {
+  if (command === "autoroute") {
+    const p = (params ?? {}) as Record<string, unknown>;
+
+    const perAttemptSec = toPositiveNumber(p.timeout) ?? 300;
+    const attempts = Math.max(1, Math.floor(toPositiveNumber(p.attempts) ?? 1));
+
+    const budgetMs = perAttemptSec * 1000 * attempts + AUTOROUTE_OVERHEAD_MS;
+    // Never drop below the blanket long-running allowance.
+    return Math.max(budgetMs, LONG_COMMAND_TIMEOUT_MS);
+  }
+
+  if (command === "download_jlcpcb_database") {
+    return JLCPCB_DOWNLOAD_TIMEOUT_MS;
+  }
+  if ((LONG_RUNNING_COMMANDS as readonly string[]).includes(command)) {
+    return LONG_COMMAND_TIMEOUT_MS;
+  }
+
+  return DEFAULT_COMMAND_TIMEOUT_MS;
+}
+
+/** Finite, positive numbers only; anything else falls back to the default. */
+function toPositiveNumber(value: unknown): number | undefined {
+  const n = typeof value === "string" ? Number(value) : value;
+  if (typeof n !== "number" || !Number.isFinite(n) || n <= 0) return undefined;
+  return n;
+}

@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Cplib")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/CPLib.kicad_sym")(options "")(descr ""))
+  (lib (name "relay")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/Relay.kicad_sym")(options "")(descr ""))
+  (lib (name "pi4")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/RASPBERRY_PI_4B_4GB/RASPBERRY_PI_4B_4GB.kicad_sym")(options "")(descr ""))
+)

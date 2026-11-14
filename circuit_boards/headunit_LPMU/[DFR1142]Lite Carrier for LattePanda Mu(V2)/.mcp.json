@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "kicad": {
+      "command": "node",
+      "args": ["KiCAD-MCP-Server/dist/index.js"],
+      "env": {
+        "PYTHONPATH": "C:\\Users\\cpick\\AppData\\Local\\Programs\\KiCad\\10.0\\bin\\Lib\\site-packages",
+        "KICAD_PYTHON": "C:\\Users\\cpick\\AppData\\Local\\Programs\\KiCad\\10.0\\bin\\python.exe",
+        "LOG_LEVEL": "info"
+      }
+    }
+  }
+}

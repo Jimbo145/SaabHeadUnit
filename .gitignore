@@ -134,3 +134,32 @@ slaveTest
 /circuit_boards/headunit_hub/headunit_hub-backups
 /circuit_boards/headunit_controls/headunit_controls-backups
 /saab-control/serviceAccountKey.json
+
+# Gerber outputs
+*.gbr
+*.gbrjob
+gerber/
+gerber.zip
+
+# KiCad backups, autosave, locks, per-user state
+*-backups/
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.bak
+_autosave-*
+*-save.kicad_pcb
+*-save.pro
+*.lck
+~*.lck
+*.kicad_prl
+fp-info-cache
+
+# KiCad generated outputs
+*.drl
+*.drl.map
+*-pos.csv
+*-pos.pos
+*.rpt
+*.dsn
+*.ses
+*.net

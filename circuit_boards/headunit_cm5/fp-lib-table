@@ -1,0 +1,7 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "CPlib")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/CPlib.pretty")(options "")(descr ""))
+  (lib (name "fpc")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/Connector_FFC-FPC.pretty")(options "")(descr ""))
+  (lib (name "pi4")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/RASPBERRY_PI_4B_4GB")(options "")(descr ""))
+  (lib (name "sparkfun")(type "KiCad")(uri "C:/Users/cpick/Desktop/saabHeadUnit/circuit_boards/libs/SparkFun-KiCad-Libraries-master")(options "")(descr ""))
+)
