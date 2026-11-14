@@ -5,18 +5,23 @@ FROM debian:bullseye
 
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y init git python3-dev systemd systemd-sysv rsyslog systemd-cron ca-certificates \
+    && apt-get install --no-install-recommends -y init git python3-dev systemd libsystemd-dev systemd-sysv rsyslog systemd-cron ca-certificates python3-pip pkg-config build-essential iproute2 kmod \
     # Fix a bug with common-debian script
     && rm -f /usr/local/bin/systemctl 
     #  Clean up
 
 
+ARG USERNAME=pi
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
 
-
-
-
-# Create user pi
-RUN useradd -m pi && echo "pi:raspberry" 
+# Create the user
+RUN groupadd --gid $USER_GID $USERNAME \
+&& useradd --uid $USER_UID --create-home --gid $USER_GID -m $USERNAME \
+&& apt-get update \
+&& apt-get install -y sudo \
+&& echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+&& chmod 0440 /etc/sudoers.d/$USERNAME
 
 RUN apt-get install -y x11-xserver-utils iputils-ping
 
