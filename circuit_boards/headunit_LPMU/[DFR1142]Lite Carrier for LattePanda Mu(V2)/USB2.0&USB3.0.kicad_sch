@@ -1694,7 +1694,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
+			(property "Footprint" "A_HDJ_Library:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
 				(at -24.13 -10.16 0)
 				(effects
 					(font
@@ -4265,6 +4265,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 173.9613 254.0 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "cddfc23d-03d0-4d74-b33b-24f3a625b0e1")
 		)
@@ -4361,6 +4364,15 @@
 		)
 		(property "Field-1" ""
 			(at 309.88 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C883112"
+			(at 307.594 98.298 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4610,7 +4622,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:USB3_A_Molex_48406-0001_Horizontal_Stacked"
+		(property "Footprint" "A_HDJ_Library:USB3_A_Molex_484060003_Horizontal_Stacked"
 			(at 322.58 189.23 0)
 			(effects
 				(font
@@ -4666,6 +4678,15 @@
 		)
 		(property "Field-1" ""
 			(at 326.39 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C565298"
+			(at 337.82 191.135 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4827,6 +4848,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 287.02 129.54 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "46a8e222-3594-4480-b028-860627997657")
 		)
@@ -5019,6 +5043,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C59461" (at 293.37 181.61 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "5b85778a-8b4e-4e6b-ab9a-fd04ba860dfe")
 		)
@@ -5122,6 +5149,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 318.77 231.14 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "5a9f20cd-e8e5-4930-ab55-f7bb939af0a8")
 		)
@@ -5249,6 +5279,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 256.54 201.93 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "3540ec1f-e2eb-4cd8-94c9-7763e7a511fa")
 		)
@@ -5345,6 +5378,15 @@
 		)
 		(property "Field-1" ""
 			(at 309.88 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C883112"
+			(at 307.848 105.156 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5521,6 +5563,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C70158"
+			(at 304.8 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "83357da5-c1cf-42d9-b7c6-ad0f257b0142")
 		)
@@ -5627,6 +5678,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 184.1213 254.0 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "724a5284-7481-4544-b874-41eae651f10d")
 		)
@@ -5797,6 +5851,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 256.54 204.47 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "c5c06abb-1415-4595-a3ff-43f84c6b2b23")
 		)
@@ -5968,6 +6025,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 194.2813 254.0 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "581a0afd-c58f-4525-bdf3-9ccf869152d1")
 		)
@@ -6078,7 +6138,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:USB3_A_Molex_48406-0001_Horizontal_Stacked"
+		(property "Footprint" "A_HDJ_Library:USB3_A_Molex_484060003_Horizontal_Stacked"
 			(at 322.58 267.97 0)
 			(effects
 				(font
@@ -6134,6 +6194,15 @@
 		)
 		(property "Field-1" ""
 			(at 326.39 270.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C565298"
+			(at 337.82 269.875 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6295,6 +6364,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C59461" (at 293.37 100.33 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "4c68733b-7edc-4025-8e16-dd7e0aeb832b")
 		)
@@ -6402,7 +6474,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:USB_A_CUI_UJ2-ADH-TH_Horizontal_Stacked"
+		(property "Footprint" "A_HDJ_Library:USB_A_Stacked_AF_SS-JB17.6_Horizontal"
 			(at 325.12 124.46 0)
 			(effects
 				(font
@@ -6439,7 +6511,7 @@
 				(hide yes)
 			)
 		)
-		(property "DF_Comment" "USB2.0-A型双层白胶母座"
+		(property "DF_Comment" "Replaced CUI UJ2-ADH-TH (not at JLC) with AF SS-JB17.6 stacked USB-A 2.0 (C456021); pad 1-4 / 5-8 per EasyEDA, verify port order"
 			(at 328.93 110.49 0)
 			(effects
 				(font
@@ -6466,6 +6538,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C456021" (at 328.93 110.49 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "02cc509f-cceb-45b5-98ad-191535cde01d")
 		)
@@ -6590,6 +6665,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 256.54 280.67 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "c4ac5990-940f-4943-b3bd-c197d2538b8d")
 		)
@@ -6759,6 +6837,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C59461" (at 293.37 260.35 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "c10cd404-6ffb-4310-8032-a7348801b0bf")
 		)
@@ -6862,6 +6943,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 256.54 283.21 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "3d7a7130-6d72-4eb8-9070-ff34162a5f7f")
 		)
@@ -6965,6 +7049,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 248.92 231.14 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "35ae02ee-f215-44ca-adcb-bef4bede6849")
 		)
@@ -7228,6 +7315,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 163.8013 254.0 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "f99d47d9-4e68-4f32-838b-e7a6464e8424")
 		)
@@ -7391,6 +7481,15 @@
 		)
 		(property "Field-1" ""
 			(at 304.8 260.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C70158"
+			(at 305.054 256.286 0)
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -3310,7 +3310,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
+			(property "Footprint" "A_HDJ_Library:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
 				(at -24.13 -10.16 0)
 				(effects
 					(font
@@ -7490,6 +7490,592 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Power_Management:LTC4359-MS8"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at -5.08 8.89 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "LTC4359-MS8"
+				(at 6.35 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm"
+				(at 6.35 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ltc4359.pdf"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Ideal diode controller with reverse input protection, MSOP-8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "ideal-diode or-ing reverse-protection"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "MSOP*3x3mm*P0.65mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "LTC4359-MS8_0_1"
+				(rectangle
+					(start -5.08 7.62)
+					(end 5.08 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "LTC4359-MS8_1_1"
+				(pin output line
+					(at 2.54 10.16 270)
+					(length 2.54)
+					(name "GATE"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 0 10.16 270)
+					(length 2.54)
+					(name "SRC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -2.54 -7.62 90)
+					(length 2.54)
+					(hide yes)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -7.62 0 0)
+					(length 2.54)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "~{SHDN}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -10.16 90)
+					(length 2.54)
+					(name "Vss"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(hide yes)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_FET:Q_NMOS_SSSGD_AvalancheRated"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Q_NMOS_SSSGD_AvalancheRated"
+				(at 5.08 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "N-MOSFET transistor, source (pins 1-3)/gate/drain (pin 5), SO-8/SO-8F/SO-8FL/SON-8/PowerPAK-8/TDSON-8/VSON-8"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "transistor NMOS N-MOS N-MOSFET"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Q_NMOS_SSSGD_AvalancheRated_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Q_NMOS_SSSGD_AvalancheRated_1_1"
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(hide yes)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(hide yes)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 5.08)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "soft start"
 		(exclude_from_sim no)
@@ -7502,7 +8088,7 @@
 		)
 		(uuid "07d6938f-c373-4ac7-b45a-f67bb474f0c1")
 	)
-	(text "15V PD Input"
+	(text "12V PD Input (test supply: constant 12V + key-switch trigger)"
 		(exclude_from_sim no)
 		(at 162.56 237.49 0)
 		(effects
@@ -7514,17 +8100,6 @@
 			(justify left bottom)
 		)
 		(uuid "1a34408c-ff94-4c40-aab2-3ad32d18f1e4")
-	)
-	(text "J19: Connector for Smart UPS Expansion Board(DFR1247)"
-		(exclude_from_sim no)
-		(at 150.876 312.674 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "35acb56c-1e2c-4cd8-ae71-0f6999edfa6e")
 	)
 	(text "SY8253ADC 23V 3A 500kHz\n"
 		(exclude_from_sim no)
@@ -7599,7 +8174,7 @@
 		)
 		(uuid "b7b67f65-b060-4e63-802a-4aca18a7eb41")
 	)
-	(text "CH224K get DC 15V power from USB-PD adapter"
+	(text "CH224A requests 12V (CFG1 24K) from USB-PD adapter and feeds +12V_CONST via D18-D20"
 		(exclude_from_sim no)
 		(at 238.76 275.59 0)
 		(effects
@@ -8011,12 +8586,6 @@
 		(uuid "778b59c5-b2cb-4485-9c96-9ae8c30fdc69")
 	)
 	(junction
-		(at 262.89 194.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "77dd19fb-2a50-4378-b016-2aac25d1ff3a")
-	)
-	(junction
 		(at 375.92 316.23)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8129,18 +8698,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9996b9e0-9348-4638-8993-b5db43a8a45d")
-	)
-	(junction
-		(at 173.99 350.52)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9bd29630-a414-4c92-a44f-5478b05024fd")
-	)
-	(junction
-		(at 262.89 198.12)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9c60b84f-c032-49cb-8b23-f1bffadbec21")
 	)
 	(junction
 		(at 252.73 147.32)
@@ -8614,16 +9171,6 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 363.22) (xy 196.85 363.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0709c2aa-2964-44a4-b327-42d19f9fe308")
-	)
-	(wire
-		(pts
 			(xy 265.43 97.79) (xy 265.43 101.6)
 		)
 		(stroke
@@ -8652,16 +9199,6 @@
 			(type default)
 		)
 		(uuid "0c9a0216-90eb-4a1e-9f79-b20d692b0ee2")
-	)
-	(wire
-		(pts
-			(xy 323.85 209.55) (xy 323.85 213.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ff2153c-077f-4361-8408-5bfb18f106c5")
 	)
 	(wire
 		(pts
@@ -8813,16 +9350,6 @@
 			(type default)
 		)
 		(uuid "17756ee6-5ac8-4d45-9044-fff7f6a286ce")
-	)
-	(wire
-		(pts
-			(xy 219.71 354.33) (xy 234.95 354.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17caba08-aba5-4ed0-997d-8bfed226547a")
 	)
 	(wire
 		(pts
@@ -9307,16 +9834,6 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 359.41) (xy 234.95 364.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "37c08d06-3410-46af-bb7f-6fb4a438e7d6")
-	)
-	(wire
-		(pts
 			(xy 265.43 123.19) (xy 265.43 127)
 		)
 		(stroke
@@ -9474,16 +9991,6 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 359.41) (xy 260.35 364.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "44c88bd3-4ac5-4bf8-a15b-c5389d0edf7a")
-	)
-	(wire
-		(pts
 			(xy 246.38 171.45) (xy 232.41 171.45)
 		)
 		(stroke
@@ -9597,16 +10104,6 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 354.33) (xy 275.59 354.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4c9a3f9b-2737-464a-84e7-6adb50a321f1")
-	)
-	(wire
-		(pts
 			(xy 252.73 90.17) (xy 252.73 111.76)
 		)
 		(stroke
@@ -9624,16 +10121,6 @@
 			(type default)
 		)
 		(uuid "4d198a43-d9a2-422b-9707-dfb37e23d9fa")
-	)
-	(wire
-		(pts
-			(xy 292.1 209.55) (xy 295.91 209.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4eb0bb73-ed62-4beb-8da6-bc457157443e")
 	)
 	(wire
 		(pts
@@ -9709,16 +10196,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 347.98) (xy 173.99 350.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "593897df-5871-4389-96ad-51c09335b50f")
-	)
-	(wire
-		(pts
 			(xy 454.66 186.69) (xy 449.58 186.69)
 		)
 		(stroke
@@ -9749,16 +10226,6 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 349.25) (xy 260.35 354.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5acf2549-f039-46b3-b483-9db493bbfd04")
-	)
-	(wire
-		(pts
 			(xy 419.1 163.83) (xy 424.18 163.83)
 		)
 		(stroke
@@ -9767,16 +10234,6 @@
 			(color 255 0 0 1)
 		)
 		(uuid "5bb7aa3d-6281-4879-a8af-4fc705340288")
-	)
-	(wire
-		(pts
-			(xy 173.99 330.2) (xy 173.99 332.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5c1fe6cb-ab7f-4a33-86b7-ce4fa757947c")
 	)
 	(wire
 		(pts
@@ -10202,26 +10659,6 @@
 	)
 	(wire
 		(pts
-			(xy 260.35 364.49) (xy 275.59 364.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b03ff38-805d-45ea-9f44-f5e66c887ca1")
-	)
-	(wire
-		(pts
-			(xy 173.99 327.66) (xy 173.99 330.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7d6ef786-df97-4fd4-bc6e-8bf7c19b837d")
-	)
-	(wire
-		(pts
 			(xy 233.68 259.08) (xy 256.54 259.08)
 		)
 		(stroke
@@ -10283,16 +10720,6 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 358.14) (xy 196.85 358.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8191344f-929c-47ed-8210-e6795c670a77")
-	)
-	(wire
-		(pts
 			(xy 173.99 284.48) (xy 173.99 287.02)
 		)
 		(stroke
@@ -10300,17 +10727,6 @@
 			(type default)
 		)
 		(uuid "81cd38e2-736b-490b-b63b-129ffbcda5c2")
-	)
-	(wire
-		(pts
-			(xy 262.89 194.31) (xy 254 194.31)
-		)
-		(stroke
-			(width 1)
-			(type default)
-			(color 255 0 0 1)
-		)
-		(uuid "81e1dcec-483c-452e-a4f8-558b3e68955f")
 	)
 	(wire
 		(pts
@@ -10522,16 +10938,6 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 364.49) (xy 234.95 364.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8ebd8988-db19-4774-b9eb-09c4735a7796")
-	)
-	(wire
-		(pts
 			(xy 226.06 251.46) (xy 236.22 251.46)
 		)
 		(stroke
@@ -10740,17 +11146,6 @@
 	)
 	(wire
 		(pts
-			(xy 262.89 190.5) (xy 254 190.5)
-		)
-		(stroke
-			(width 1)
-			(type default)
-			(color 255 0 0 1)
-		)
-		(uuid "9e419297-648d-4fc3-8b90-9ee911cbc95b")
-	)
-	(wire
-		(pts
 			(xy 236.22 331.47) (xy 243.84 331.47)
 		)
 		(stroke
@@ -10810,16 +11205,6 @@
 			(type default)
 		)
 		(uuid "a0bafa76-0dad-4272-9c63-e3c075658471")
-	)
-	(wire
-		(pts
-			(xy 199.39 342.9) (xy 200.66 342.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a234cc2a-7b9a-4fb2-84e5-f9fdff348b29")
 	)
 	(wire
 		(pts
@@ -10915,16 +11300,6 @@
 	)
 	(wire
 		(pts
-			(xy 173.99 340.36) (xy 191.77 340.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a80d5f44-7a75-4f13-affb-5c1fcb998111")
-	)
-	(wire
-		(pts
 			(xy 392.43 173.99) (xy 392.43 186.69)
 		)
 		(stroke
@@ -11004,16 +11379,6 @@
 			(type default)
 		)
 		(uuid "af83808b-1f9e-457e-a543-9dc83921b0c2")
-	)
-	(wire
-		(pts
-			(xy 173.99 342.9) (xy 191.77 342.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "afb4048b-cd29-4d86-862a-6258dd1c6055")
 	)
 	(wire
 		(pts
@@ -11261,17 +11626,6 @@
 	)
 	(wire
 		(pts
-			(xy 226.06 163.83) (xy 232.41 163.83)
-		)
-		(stroke
-			(width 1)
-			(type default)
-			(color 255 0 0 1)
-		)
-		(uuid "c6e8f5e7-b9d7-4510-9c0f-008721e835cf")
-	)
-	(wire
-		(pts
 			(xy 205.232 163.83) (xy 218.44 163.83)
 		)
 		(stroke
@@ -11353,17 +11707,6 @@
 	)
 	(wire
 		(pts
-			(xy 262.89 198.12) (xy 254 198.12)
-		)
-		(stroke
-			(width 1)
-			(type default)
-			(color 255 0 0 1)
-		)
-		(uuid "cd0c9c8f-7f74-4cce-878b-2ae432523d88")
-	)
-	(wire
-		(pts
 			(xy 252.73 129.54) (xy 262.89 129.54)
 		)
 		(stroke
@@ -11423,26 +11766,6 @@
 			(color 255 0 0 1)
 		)
 		(uuid "d216e21b-2f2f-4697-9fe7-db879fd4b4de")
-	)
-	(wire
-		(pts
-			(xy 181.61 365.76) (xy 196.85 365.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d22b2f8e-803a-4585-b208-9bb5a5319e84")
-	)
-	(wire
-		(pts
-			(xy 173.99 345.44) (xy 173.99 347.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d3335d43-a83e-4ad2-b128-068a91980a2a")
 	)
 	(wire
 		(pts
@@ -11544,16 +11867,6 @@
 			(type default)
 		)
 		(uuid "da1276f6-d63e-403d-b486-fea5ff0d57a9")
-	)
-	(wire
-		(pts
-			(xy 234.95 349.25) (xy 234.95 354.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "da8b08d6-f6e0-4881-af6e-131770eb7089")
 	)
 	(wire
 		(pts
@@ -11677,16 +11990,6 @@
 	)
 	(wire
 		(pts
-			(xy 292.1 207.01) (xy 292.1 209.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e09675ba-bf9c-4c9e-97cd-31a082cc2858")
-	)
-	(wire
-		(pts
 			(xy 218.44 327.66) (xy 236.22 327.66)
 		)
 		(stroke
@@ -11695,16 +11998,6 @@
 			(color 255 0 7 1)
 		)
 		(uuid "e102333e-72ce-4e3f-bc4d-3a54bd3e4994")
-	)
-	(wire
-		(pts
-			(xy 181.61 360.68) (xy 196.85 360.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e16ff86d-4d86-42b2-9545-1c6838963b6d")
 	)
 	(wire
 		(pts
@@ -11788,16 +12081,6 @@
 	)
 	(wire
 		(pts
-			(xy 323.85 207.01) (xy 323.85 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7a6989d-7a11-4def-a242-85c0b0033795")
-	)
-	(wire
-		(pts
 			(xy 226.06 251.46) (xy 226.06 270.51)
 		)
 		(stroke
@@ -11829,26 +12112,6 @@
 	)
 	(wire
 		(pts
-			(xy 226.06 163.83) (xy 232.41 163.83)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e94a1957-2123-4654-9802-a466f7f99228")
-	)
-	(wire
-		(pts
-			(xy 173.99 350.52) (xy 173.99 355.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e94fe709-c3b2-4e19-a209-ab59f3b13c29")
-	)
-	(wire
-		(pts
 			(xy 321.31 142.24) (xy 321.31 147.32)
 		)
 		(stroke
@@ -11866,16 +12129,6 @@
 			(type default)
 		)
 		(uuid "ebfec9fa-c296-4ba3-8aff-9d0e64a61b6a")
-	)
-	(wire
-		(pts
-			(xy 303.53 207.01) (xy 323.85 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ec41c2ee-a41f-4c90-a09d-64c7fae5b746")
 	)
 	(wire
 		(pts
@@ -11940,26 +12193,6 @@
 	)
 	(wire
 		(pts
-			(xy 295.91 207.01) (xy 292.1 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f4066261-e237-4560-8179-da5bcade8040")
-	)
-	(wire
-		(pts
-			(xy 276.86 207.01) (xy 292.1 207.01)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f5119adb-cfc0-44c1-a4d5-085b8e2cd4c8")
-	)
-	(wire
-		(pts
 			(xy 392.43 255.27) (xy 396.24 255.27)
 		)
 		(stroke
@@ -11967,16 +12200,6 @@
 			(type default)
 		)
 		(uuid "f5131e3e-d227-4322-8df8-158e52446f36")
-	)
-	(wire
-		(pts
-			(xy 199.39 340.36) (xy 200.66 340.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f55c2376-29e4-401d-af17-44a8130c2c87")
 	)
 	(wire
 		(pts
@@ -12010,16 +12233,6 @@
 			(color 255 0 0 1)
 		)
 		(uuid "f6dc9383-8d75-4aad-9fe5-3fbb37bf7f5a")
-	)
-	(wire
-		(pts
-			(xy 303.53 209.55) (xy 323.85 209.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f79ae460-6564-4332-a54a-bdecf9ac7bde")
 	)
 	(wire
 		(pts
@@ -12861,16 +13074,6 @@
 		)
 		(uuid "05b35683-5603-47bd-a8dc-73cdc6bf0f03")
 	)
-	(label "UPS_STATE_LP"
-		(at 219.71 354.33 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0b4b7cbb-7f60-4e65-99dd-63e86d78f975")
-	)
 	(label "~{SLP_S4_N}"
 		(at 375.666 255.27 0)
 		(effects
@@ -12880,26 +13083,6 @@
 			(justify left bottom)
 		)
 		(uuid "0bfe8e00-95bd-4a9b-a9ba-d86fbc41b272")
-	)
-	(label "CON_UPS_USB_DP"
-		(at 173.99 342.9 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0e0b08ab-cd64-47f5-b215-d0aa0c3c7cf1")
-	)
-	(label "UPS_USB_DN"
-		(at 275.59 354.33 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "1943b6ab-a619-4aa8-aff5-f37a6acef8d6")
 	)
 	(label "POWER_SW"
 		(at 444.246 312.42 0)
@@ -12911,16 +13094,6 @@
 		)
 		(uuid "19619ac9-8e27-4c6b-bdf3-0f7912c1c496")
 	)
-	(label "UPS_SW_LP"
-		(at 181.61 360.68 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1be48462-6ef9-41ff-b28d-3d55b65697cd")
-	)
 	(label "PWR_EN"
 		(at 361.95 207.01 0)
 		(effects
@@ -12930,16 +13103,6 @@
 			(justify left bottom)
 		)
 		(uuid "214f38ff-17ca-40ac-9877-2eeb395b5d0a")
-	)
-	(label "UPS_STATE_LP"
-		(at 173.99 335.28 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "2e113a4d-09d6-4ce3-929b-b546c38d4285")
 	)
 	(label "~{PWR_LED}{slash}~{PSON}"
 		(at 332.74 213.36 0)
@@ -12981,16 +13144,6 @@
 		)
 		(uuid "3a7c9572-09be-4d8c-82fc-ea24884ee688")
 	)
-	(label "CON_UPS_USB_DP"
-		(at 181.61 365.76 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4934f384-8e50-4167-ae8a-186b25183bbc")
-	)
 	(label "CC1"
 		(at 189.23 251.46 0)
 		(effects
@@ -13010,16 +13163,6 @@
 			(justify right bottom)
 		)
 		(uuid "5e28f646-350f-4bb2-8e1f-d0960a406bea")
-	)
-	(label "UPS_STATE_LP"
-		(at 276.86 207.01 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6bcd39e0-4eb5-4117-b2c1-a154e42a7c51")
 	)
 	(label "PWR_EN"
 		(at 473.71 176.53 0)
@@ -13041,16 +13184,6 @@
 		)
 		(uuid "9ac77cdd-4f40-44f0-ac64-e3a011f72ee1")
 	)
-	(label "UPS_SW_LP"
-		(at 414.02 299.72 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a04af97c-d377-4480-b3fb-61fa185ad971")
-	)
 	(label "RESET_SW"
 		(at 467.614 257.81 180)
 		(effects
@@ -13060,26 +13193,6 @@
 			(justify right bottom)
 		)
 		(uuid "a2cbb979-3880-4c2a-820a-4bfb9e85dec4")
-	)
-	(label "UPS_SW_LP"
-		(at 219.71 364.49 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a4e8fa99-82fe-4a5c-84ea-c28c4f7fbc2f")
-	)
-	(label "UPS_SW_LP"
-		(at 173.99 337.82 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b2b8e579-37d7-4867-a8c6-86946df689a3")
 	)
 	(label "PWR_LED"
 		(at 457.454 260.35 0)
@@ -13091,26 +13204,6 @@
 		)
 		(uuid "ba1a5747-3a73-47e9-91a7-0d34e341d040")
 	)
-	(label "UPS_STATE_LP"
-		(at 181.61 358.14 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "bb97b668-f83f-45bf-a0e9-2157652e3d5a")
-	)
-	(label "CON_UPS_USB_DN"
-		(at 173.99 340.36 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d5cb1a29-e258-437c-bfe8-07c347099182")
-	)
 	(label "PWR_EN"
 		(at 361.95 168.91 0)
 		(effects
@@ -13121,26 +13214,6 @@
 		)
 		(uuid "dacb0530-8c61-4e88-900f-ee37d90742ec")
 	)
-	(label "UPS_USB_DP"
-		(at 275.59 364.49 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e3395b02-6ae4-4364-a460-30373e865ceb")
-	)
-	(label "CON_UPS_USB_DN"
-		(at 181.61 363.22 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "e7358a9c-303b-4341-a17c-e816f00f6971")
-	)
 	(label "PWR_C_D-"
 		(at 189.23 261.62 0)
 		(effects
@@ -13150,17 +13223,6 @@
 			(justify left bottom)
 		)
 		(uuid "ff96277d-7dd1-414c-a8fe-0e5a4dd338c4")
-	)
-	(hierarchical_label "UPS_USB_DP"
-		(shape input)
-		(at 200.66 342.9 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "0ba5c591-180a-4642-a9fb-65f84933126b")
 	)
 	(hierarchical_label "~{PWR_SW}"
 		(shape output)
@@ -13183,17 +13245,6 @@
 			(justify right)
 		)
 		(uuid "5e1dde19-a3f6-42a5-ba39-fed5bc902da9")
-	)
-	(hierarchical_label "UPS_USB_DN"
-		(shape input)
-		(at 200.66 340.36 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6d706361-7115-4d77-964d-4aa71850381a")
 	)
 	(hierarchical_label "~{PWR_LED}{slash}~{PSON}"
 		(shape input)
@@ -13305,6 +13356,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C59461"
+			(at 444.5 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5d6534a9-603e-4aa9-b0d7-a30c319e9869")
 		)
@@ -13405,6 +13465,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 318.77 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C8545"
 			(at 318.77 123.19 0)
 			(effects
 				(font
@@ -13529,6 +13598,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C17701683"
+			(at 168.91 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "8388834d-3d95-4f95-8c61-5a47b454cad2")
 		)
@@ -13635,6 +13713,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1547"
+			(at 431.8 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8035e0ed-c61c-4c95-8f1e-68a53cff5ee7")
 		)
@@ -13730,6 +13817,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 430.276 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
 			(at 430.276 320.04 0)
 			(effects
 				(font
@@ -13847,7 +13943,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:SW_PUSH_SIDE_TS-1012EV_7.7x3.95x3.5mm"
+		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A"
 			(at 504.19 321.31 0)
 			(effects
 				(font
@@ -13884,6 +13980,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 499.11 321.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C318884"
 			(at 499.11 321.31 0)
 			(effects
 				(font
@@ -13932,7 +14037,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 425.958 167.64 90)
 			(effects
 				(font
@@ -13987,6 +14092,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 424.18 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C140129"
 			(at 424.18 167.64 0)
 			(effects
 				(font
@@ -14098,6 +14212,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C59461"
+			(at 454.66 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c41a9d34-c123-4a58-b3fb-80049af732fc")
 		)
@@ -14139,7 +14262,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:USB_C_Receptacle_G-Switch_GT-USB-7010ASV"
+		(property "Footprint" "A_HDJ_Library:USB-C_GT-USB-7010AN"
 			(at 177.8 261.62 0)
 			(effects
 				(font
@@ -14195,6 +14318,15 @@
 		)
 		(property "Field-1" ""
 			(at 173.99 261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C963370"
+			(at 173.99 238.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14287,7 +14419,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 395.9352 142.24 0)
 			(effects
 				(font
@@ -14386,6 +14518,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C913904"
+			(at 394.97 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "24dcbb5a-8f5d-4644-983e-116e788c65ab")
 		)
@@ -14465,6 +14606,15 @@
 			)
 		)
 		(property "无标题字段" ""
+			(at 494.03 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15155"
 			(at 494.03 166.37 0)
 			(effects
 				(font
@@ -14582,7 +14732,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 292.1 99.822 90)
 			(effects
 				(font
@@ -14645,6 +14795,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25741"
+			(at 292.1 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "13282156-2512-4b66-96e1-da3fab423f90")
 		)
@@ -14655,111 +14814,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "R44")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 299.72 207.01 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "11525ea6-6146-4297-8389-cb1b8b87c337")
-		(property "Reference" "R93"
-			(at 301.498 201.422 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100R/1%"
-			(at 302.768 203.962 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "A_DFRobot:R_0402"
-			(at 299.72 208.788 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 299.72 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 299.72 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" ""
-			(at 299.72 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "贴片电阻0402-100R-1%"
-			(at 299.72 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SCH_Show_Footprint" ""
-			(at 299.72 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field-1" ""
-			(at 299.72 207.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ffc22ef6-5b61-4c71-9a4b-2b76865c5e1c")
-		)
-		(pin "2"
-			(uuid "4aeec781-0a39-4480-9c7a-98b2d39d6d01")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "R93")
 					(unit 1)
 				)
 			)
@@ -14792,7 +14846,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 481.33 310.642 90)
 			(effects
 				(font
@@ -14847,6 +14901,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 481.33 312.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25076"
 			(at 481.33 312.42 0)
 			(effects
 				(font
@@ -14952,6 +15015,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 209.55 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C316049"
 			(at 209.55 275.59 0)
 			(effects
 				(font
@@ -15132,6 +15204,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C93736"
+			(at 392.43 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bc3fea2c-cf5f-4a4b-86fb-e63b74ac01e1")
 		)
@@ -15252,6 +15333,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 491.49 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "acfa9666-052b-4ff5-b384-508edb1f14a1")
 		)
@@ -15352,6 +15442,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 430.276 303.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 430.276 303.53 0)
 			(effects
 				(font
@@ -15733,7 +15832,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 247.65 335.28 0)
 			(effects
 				(font
@@ -15787,6 +15886,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22452"
+			(at 247.65 335.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d2ef3da7-8aee-4e62-896b-486e0a12603f")
 		)
@@ -15797,73 +15905,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "D32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 365.76 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "258ee336-ef48-4eef-8622-cb5e3e287e3a")
-		(property "Reference" "TP17"
-			(at 201.422 365.76 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 367.0299 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "A_DFRobot:TestPoint_Pad_D1.5mm"
-			(at 196.85 370.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 370.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 365.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0ab3bd12-7cce-41da-bb18-e375e550dbe1")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "TP17")
 					(unit 1)
 				)
 			)
@@ -15887,7 +15928,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "CH224K"
+		(property "Value" "CH224A"
 			(at 265.43 260.35 0)
 			(effects
 				(font
@@ -15933,7 +15974,7 @@
 				(hide yes)
 			)
 		)
-		(property "DF_Comment" "USB PD等快充协议受电芯片-CH224K-ESSOP10"
+		(property "DF_Comment" "Replaced CH224K (not at JLC) with CH224A, ESSOP-10; CH224A is a pin-compatible drop-in for CH224K (done.land); CFG1 24K = 12V on both"
 			(at 266.7 256.54 0)
 			(effects
 				(font
@@ -15952,6 +15993,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 266.7 256.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42459160"
 			(at 266.7 256.54 0)
 			(effects
 				(font
@@ -16098,7 +16148,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 388.62 257.048 90)
 			(effects
 				(font
@@ -16161,6 +16211,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C11702"
+			(at 388.62 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3c2a6b36-4445-4363-ac00-35929498a713")
 		)
@@ -16171,133 +16230,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "R78")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Power_Protection:D3V3XA4B10LP")
-		(at 247.65 356.87 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2a40d376-2a1c-4952-9bb4-baa289dd3097")
-		(property "Reference" "U19"
-			(at 252.73 372.11 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "ULC0524P"
-			(at 259.08 369.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "A_HDJ_Library:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
-			(at 223.52 367.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/D3V3XA4B10LP.pdf"
-			(at 247.65 356.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 247.65 356.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" ""
-			(at 247.65 356.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "ESD静电保护IC-BV-ULC0524P-DFN2510-10L"
-			(at 247.65 356.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SCH_Show_Footprint" ""
-			(at 247.65 356.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field-1" ""
-			(at 247.65 356.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "75c6439e-7ed6-445a-89da-64a96bef5bd3")
-		)
-		(pin "6"
-			(uuid "6f7cfd8a-e3f3-4c54-9c56-a4de8be28fe9")
-		)
-		(pin "1"
-			(uuid "39dbfc49-d23f-4358-bc03-e46f858b720b")
-		)
-		(pin "7"
-			(uuid "f7a0220d-379b-44b1-814a-23a4eba4bff6")
-		)
-		(pin "8"
-			(uuid "b91fcea0-5cba-40c4-a4dd-c29c4e7fe71e")
-		)
-		(pin "3"
-			(uuid "9337081c-4034-4ca9-9d17-0e9555f47098")
-		)
-		(pin "5"
-			(uuid "278c1e83-4653-427b-9f9b-5fec8060afbb")
-		)
-		(pin "4"
-			(uuid "3d730ce8-476e-45cd-a8b9-dab11658ae13")
-		)
-		(pin "10"
-			(uuid "2e427b77-e7d2-49b5-9481-08cce9377d56")
-		)
-		(pin "9"
-			(uuid "9d11386e-226a-4a82-9d28-e82d9f070652")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "U19")
 					(unit 1)
 				)
 			)
@@ -16394,7 +16326,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 250.19 198.12 0)
 			(effects
 				(font
@@ -16448,6 +16380,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22452"
+			(at 250.19 198.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "749d4e69-bb85-4c17-807a-f4aebce32897")
 		)
@@ -16488,7 +16429,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 246.38 248.158 90)
 			(effects
 				(font
@@ -16543,6 +16484,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 246.38 246.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 246.38 246.38 0)
 			(effects
 				(font
@@ -16787,6 +16737,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C52923"
+			(at 247.65 254.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8e3bb4cd-ad19-4e72-b4b0-b028f0acedb0")
 		)
@@ -16827,7 +16786,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 360.172 323.85 90)
 			(effects
 				(font
@@ -16864,6 +16823,15 @@
 			)
 		)
 		(property "DF_Comment" "贴片电阻0402-1M-1%"
+			(at 361.95 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C26083"
 			(at 361.95 323.85 0)
 			(effects
 				(font
@@ -16980,6 +16948,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 405.13 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d590ae05-7ef3-4b75-b631-0815ada6ff5c")
 		)
@@ -17080,6 +17057,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 492.76 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C316049"
 			(at 492.76 320.04 0)
 			(effects
 				(font
@@ -17193,6 +17179,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C316049"
+			(at 226.06 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "be043c4e-c5b7-4900-bff4-d7ed048a61d5")
 		)
@@ -17203,73 +17198,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "D13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 360.68 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "3957a68c-d4bb-4515-99a5-2aea6ac6ebd2")
-		(property "Reference" "TP15"
-			(at 201.422 360.68 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 361.9499 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "A_DFRobot:TestPoint_Pad_D1.5mm"
-			(at 196.85 365.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 365.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 360.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "41d5c4e7-dd13-4085-8593-2e71d5460a04")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "TP15")
 					(unit 1)
 				)
 			)
@@ -17342,6 +17270,15 @@
 			)
 		)
 		(property "DF_Comment" "2N7002-N沟道MOS管-SOT-23[备选型号:JMTL2N7002K]"
+			(at 397.51 327.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C8545"
 			(at 397.51 327.66 0)
 			(effects
 				(font
@@ -17459,7 +17396,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 250.19 163.83 0)
 			(effects
 				(font
@@ -17505,6 +17442,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 250.19 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22452"
 			(at 250.19 163.83 0)
 			(effects
 				(font
@@ -17621,6 +17567,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 405.13 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "297777af-e7d6-45c9-ae8a-3b663378678d")
 		)
@@ -17667,7 +17622,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "A_DFRobot:TestPoint_Pad_D1.5mm"
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
 			(at 223.52 327.66 0)
 			(effects
 				(font
@@ -17731,7 +17686,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 369.062 99.06 90)
 			(effects
 				(font
@@ -17794,6 +17749,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C185442"
+			(at 370.84 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "fab2c3b3-3774-4ba6-a42a-0292e1039cb5")
 		)
@@ -17834,7 +17798,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 425.958 213.36 90)
 			(effects
 				(font
@@ -17889,6 +17853,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 424.18 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25900"
 			(at 424.18 213.36 0)
 			(effects
 				(font
@@ -18004,7 +17977,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 337.82 257.048 90)
 			(effects
 				(font
@@ -18059,6 +18032,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 337.82 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C11702"
 			(at 337.82 255.27 0)
 			(effects
 				(font
@@ -18162,6 +18144,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 407.67 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1525"
 			(at 407.67 163.83 0)
 			(effects
 				(font
@@ -18390,6 +18381,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C502815"
+			(at 327.66 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "b4f1f1a0-fe49-4f0e-a4ad-a7e5759cd21e")
 		)
@@ -18457,7 +18457,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 247.65 331.47 0)
 			(effects
 				(font
@@ -18503,6 +18503,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 247.65 331.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22452"
 			(at 247.65 331.47 0)
 			(effects
 				(font
@@ -18619,7 +18628,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 472.44 258.572 90)
 			(effects
 				(font
@@ -18701,6 +18710,15 @@
 			)
 		)
 		(property "Sim.Type" ""
+			(at 472.44 260.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25087"
 			(at 472.44 260.35 0)
 			(effects
 				(font
@@ -19012,6 +19030,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1547"
+			(at 431.8 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b1d653a3-50e0-4331-91e4-ff79f8688101")
 		)
@@ -19118,7 +19145,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_1206"
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 201.422 165.608 90)
 			(effects
 				(font
@@ -19164,6 +19191,15 @@
 		)
 		(property "无标题字段" ""
 			(at 201.422 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C41367232"
+			(at 199.136 158.75 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19278,7 +19314,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 398.018 259.08 90)
 			(effects
 				(font
@@ -19341,6 +19377,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 396.24 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "41c465e4-4cf9-4c13-a202-44b9ba7e3ac0")
 		)
@@ -19384,7 +19429,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 404.368 139.7 90)
 			(effects
 				(font
@@ -19439,6 +19484,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 402.59 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25117"
 			(at 402.59 139.7 0)
 			(effects
 				(font
@@ -19542,6 +19596,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 292.1 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C52923"
 			(at 292.1 97.79 0)
 			(effects
 				(font
@@ -19792,7 +19855,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:SW_PUSH_SIDE_TS-1012EV_7.7x3.95x3.5mm"
+		(property "Footprint" "Button_Switch_SMD:SW_Push_1P1T_XKB_TS-1187A"
 			(at 449.326 321.31 0)
 			(effects
 				(font
@@ -19829,6 +19892,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 444.246 321.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C318884"
 			(at 444.246 321.31 0)
 			(effects
 				(font
@@ -19877,7 +19949,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 352.298 259.08 90)
 			(effects
 				(font
@@ -19932,6 +20004,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 350.52 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 350.52 259.08 0)
 			(effects
 				(font
@@ -20046,6 +20127,15 @@
 			)
 		)
 		(property "无标题字段" ""
+			(at 218.44 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C477994"
 			(at 218.44 274.32 0)
 			(effects
 				(font
@@ -20223,6 +20313,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 449.58 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b56ccd07-00ff-483d-92b7-68d5acdfc097")
 		)
@@ -20331,7 +20430,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 247.65 327.66 0)
 			(effects
 				(font
@@ -20377,6 +20476,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 247.65 327.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22452"
 			(at 247.65 327.66 0)
 			(effects
 				(font
@@ -20483,7 +20591,7 @@
 				)
 			)
 		)
-		(property "Value" "HM7533HBPR"
+		(property "Value" "HT7533-1"
 			(at 377.444 126.492 0)
 			(effects
 				(font
@@ -20518,7 +20626,16 @@
 				(hide yes)
 			)
 		)
-		(property "DF_Comment" "高压LDO_HM7533HBPR_SOT89"
+		(property "DF_Comment" "Replaced HM7533HBPR (not at JLC) with HT7533-1, SOT-89 3V3 LDO"
+			(at 370.84 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C14289"
 			(at 370.84 138.43 0)
 			(effects
 				(font
@@ -20647,7 +20764,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 341.63 208.788 90)
 			(effects
 				(font
@@ -20710,6 +20827,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25076"
+			(at 341.63 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "35510986-b299-440b-b30f-5f88154475b5")
 		)
@@ -20720,121 +20846,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "R46")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector_Generic_MountingPin:Conn_01x10_MountingPin")
-		(at 168.91 337.82 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8053aaec-1989-414b-b703-6ff6f4315b77")
-		(property "Reference" "J19"
-			(at 166.624 338.582 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "WAFER-MX1.25-10PCB"
-			(at 189.23 319.278 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "A_DFRobot:MX1.25-10P-SMD"
-			(at 168.91 337.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 168.91 337.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Generic connectable mounting pin connector, single row, 01x10, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 168.91 337.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "WAFER-MX1.25-10PCB"
-			(at 168.91 337.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" "https://item.szlcsc.com/3561406.html"
-			(at 168.91 337.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "42fc6610-c36c-4d75-80ff-e4fda55ef93e")
-		)
-		(pin "1"
-			(uuid "fe4eb241-b67a-4f3e-88c8-b1d96509eca4")
-		)
-		(pin "MP"
-			(uuid "70c33dd1-6d96-4c52-84c3-492019da499c")
-		)
-		(pin "10"
-			(uuid "56030d35-b5cf-4d20-9e6b-dbbd57f5f1ae")
-		)
-		(pin "3"
-			(uuid "c00f3257-a22e-4560-86f2-76dd95bb0680")
-		)
-		(pin "6"
-			(uuid "9973cd9e-2444-4bbb-8d93-6304c1bfd52e")
-		)
-		(pin "8"
-			(uuid "c6a88403-f7f6-46b7-85a4-72906249846a")
-		)
-		(pin "7"
-			(uuid "c1092a75-6d6c-489f-8859-2b43626d8097")
-		)
-		(pin "9"
-			(uuid "29a5f190-fff6-4541-83d9-8b0397ddeb96")
-		)
-		(pin "5"
-			(uuid "9081d944-e286-4ea5-b4f8-72d585de03bf")
-		)
-		(pin "4"
-			(uuid "f050a01b-81bb-4152-9ea5-2852a773d929")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "J19")
 					(unit 1)
 				)
 			)
@@ -20931,7 +20942,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 250.19 167.64 0)
 			(effects
 				(font
@@ -20977,6 +20988,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 250.19 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22452"
 			(at 250.19 167.64 0)
 			(effects
 				(font
@@ -21090,6 +21110,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C41283"
+			(at 269.24 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "c9033286-aa7b-44f7-b26d-ebfecc487b10")
 		)
@@ -21196,6 +21225,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C59461"
+			(at 459.74 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ad00e5c7-528b-4243-b1da-78be77227cef")
 		)
@@ -21291,6 +21329,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 459.74 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C59461"
 			(at 459.74 171.45 0)
 			(effects
 				(font
@@ -21403,6 +21450,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C83423"
+			(at 415.29 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d1b3bb8d-e998-4bf8-8570-94b78c18b7f0")
 		)
@@ -21446,7 +21502,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "A_DFRobot:PinHeader_1x03_P2.54mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 406.4 322.58 0)
 			(effects
 				(font
@@ -21475,6 +21531,15 @@
 		)
 		(property "DF_Comment" "2.54黑色单排排针-3P"
 			(at 406.4 322.58 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49257"
+			(at 408.178 321.3099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21721,6 +21786,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C59461"
+			(at 439.42 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7c7dfffd-5980-4914-8670-5ba973bfc8d5")
 		)
@@ -21892,6 +21966,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C316049"
+			(at 233.68 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "765e5b97-a110-4b4d-8725-96febed9d9da")
 		)
@@ -21902,73 +21985,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "D14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 358.14 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "954f8897-398f-4c31-b943-a7104061c9d1")
-		(property "Reference" "TP14"
-			(at 201.422 358.14 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 359.4099 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "A_DFRobot:TestPoint_Pad_D1.5mm"
-			(at 196.85 363.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 363.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 358.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "177b922b-fad5-47bd-9486-7a79cb8d5fd1")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "TP14")
 					(unit 1)
 				)
 			)
@@ -22066,7 +22082,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 363.728 213.36 90)
 			(effects
 				(font
@@ -22121,6 +22137,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 361.95 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25741"
 			(at 361.95 213.36 0)
 			(effects
 				(font
@@ -22235,7 +22260,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 381.762 323.85 90)
 			(effects
 				(font
@@ -22272,6 +22297,15 @@
 			)
 		)
 		(property "DF_Comment" "贴片电阻0402-100K-1%"
+			(at 383.54 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25741"
 			(at 383.54 323.85 0)
 			(effects
 				(font
@@ -22362,72 +22396,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 247.65 369.57 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "9c0171c9-518f-4e9c-b0d8-3d27358d0643")
-		(property "Reference" "#PWR0114"
-			(at 247.65 375.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 247.65 374.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 247.65 369.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 247.65 369.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 247.65 369.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "299434ba-72af-4f6c-bb3d-550c8479b286")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "#PWR0114")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Diode_TVS_AKL:SMAJ24CA")
 		(at 218.44 336.55 90)
 		(unit 1)
@@ -22454,7 +22422,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 218.44 336.55 0)
 			(effects
 				(font
@@ -22483,6 +22451,15 @@
 		)
 		(property "DF_Comment" "双向TVS管-SMAJ26CA-SMA"
 			(at 209.55 349.504 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C908826"
+			(at 218.44 336.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22530,7 +22507,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 425.958 175.26 90)
 			(effects
 				(font
@@ -22593,6 +22570,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 424.18 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "126f43fe-5175-4448-ae21-32d0b619f86e")
 		)
@@ -22633,7 +22619,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 254.508 115.57 90)
 			(effects
 				(font
@@ -22688,6 +22674,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 252.73 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 252.73 115.57 0)
 			(effects
 				(font
@@ -22793,6 +22788,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C2286"
+			(at 365.76 244.1574 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "231188ff-efb0-4e43-9e54-b1a722646038")
 		)
@@ -22833,7 +22837,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 360.3752 142.24 0)
 			(effects
 				(font
@@ -22915,6 +22919,15 @@
 			)
 		)
 		(property "无标题字段" ""
+			(at 359.41 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C913904"
 			(at 359.41 138.43 0)
 			(effects
 				(font
@@ -23020,6 +23033,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C7496818"
+			(at 374.65 106.9975 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "343167f9-f21a-4422-af1b-297b4446e14f")
 		)
@@ -23110,6 +23132,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 381.0 332.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b5a1a27e-4750-4aef-833b-49441cefce0e")
 		)
@@ -23155,7 +23186,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 218.44 168.91 0)
 			(effects
 				(font
@@ -23184,6 +23215,15 @@
 		)
 		(property "DF_Comment" "双向TVS管-SMAJ26CA-SMA"
 			(at 209.55 181.864 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C908826"
+			(at 218.44 168.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23281,6 +23321,15 @@
 		)
 		(property "Field-1" ""
 			(at 407.67 246.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C7496818"
+			(at 411.48 246.6975 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23391,6 +23440,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C59461"
+			(at 444.5 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2f513107-c0b1-4aa9-8990-4fba33a69e1e")
 		)
@@ -23431,7 +23489,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 425.958 205.74 90)
 			(effects
 				(font
@@ -23494,6 +23552,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C185442"
+			(at 424.18 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "579e35a6-6149-421d-845f-62d788583f29")
 		)
@@ -23537,7 +23604,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 380.365 323.85 0)
 			(effects
 				(font
@@ -23574,6 +23641,15 @@
 			)
 		)
 		(property "DF_Comment" "二极管-1N5819W-SOD323备选型号:B5819WS、JSPD140A"
+			(at 375.92 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C191023"
 			(at 375.92 323.85 0)
 			(effects
 				(font
@@ -23752,6 +23828,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 407.67 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d77e4999-ea12-4cbc-bc5b-0023bbd6b66c")
 		)
@@ -23792,7 +23877,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 254.508 139.7 90)
 			(effects
 				(font
@@ -23847,6 +23932,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 252.73 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25879"
 			(at 252.73 139.7 0)
 			(effects
 				(font
@@ -24229,6 +24323,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 359.41 255.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "ce18d607-899f-40fa-a623-df528793bf0a")
 		)
@@ -24272,7 +24375,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 488.188 167.64 90)
 			(effects
 				(font
@@ -24336,6 +24439,15 @@
 			)
 		)
 		(property "无标题字段" ""
+			(at 486.41 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 486.41 167.64 0)
 			(effects
 				(font
@@ -24449,6 +24561,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 485.14 303.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3e6f282e-ed55-406b-9e96-fba04b329679")
 		)
@@ -24544,6 +24665,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 350.52 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C45783"
 			(at 350.52 191.77 0)
 			(effects
 				(font
@@ -24655,6 +24785,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C52923"
+			(at 283.21 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "27a9b3e6-9508-4542-aa8f-a963f0b8fad9")
 		)
@@ -24750,6 +24889,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 355.6 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C45783"
 			(at 355.6 172.72 0)
 			(effects
 				(font
@@ -24856,7 +25004,7 @@
 				)
 			)
 		)
-		(property "Value" "56K/1%"
+		(property "Value" "24K/1%"
 			(at 283.464 248.666 90)
 			(effects
 				(font
@@ -24864,7 +25012,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 283.21 253.238 90)
 			(effects
 				(font
@@ -24927,6 +25075,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C138026"
+			(at 283.21 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c8b78fa7-411b-4d7c-b967-d2b9a8d20450")
 		)
@@ -24967,7 +25124,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 250.19 171.45 0)
 			(effects
 				(font
@@ -25021,6 +25178,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22452"
+			(at 250.19 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "8efb24b4-2617-4916-b839-c20aaf4839b0")
 		)
@@ -25061,7 +25227,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 323.088 111.76 90)
 			(effects
 				(font
@@ -25124,6 +25290,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25741"
+			(at 321.31 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1c225bec-0888-4684-abee-01e75e992c7e")
 		)
@@ -25134,323 +25309,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "R45")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 195.58 342.9 270)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "be2d1a51-99e6-4e43-995c-1c831b9485bc")
-		(property "Reference" "R96"
-			(at 193.04 345.44 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0R/1%"
-			(at 192.786 346.964 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "A_DFRobot:R_0402"
-			(at 195.58 344.678 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 195.58 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 195.58 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" ""
-			(at 195.58 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "贴片电阻0402-0R-1%"
-			(at 195.58 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SCH_Show_Footprint" ""
-			(at 195.58 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field-1" ""
-			(at 195.58 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "80e16664-ed04-454a-8b84-e9dfd2fdcc96")
-		)
-		(pin "2"
-			(uuid "19252ef3-f02a-436a-a609-3eb0169dbabf")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "R96")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 410.21 299.72 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c23bfe3c-5bc3-402d-868b-a5483a4223b7")
-		(property "Reference" "R92"
-			(at 411.988 294.132 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100R/1%"
-			(at 413.258 296.672 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "A_DFRobot:R_0402"
-			(at 410.21 301.498 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 410.21 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 410.21 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" ""
-			(at 410.21 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "贴片电阻0402-100R-1%"
-			(at 410.21 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SCH_Show_Footprint" ""
-			(at 410.21 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field-1" ""
-			(at 410.21 299.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "958fb38f-b42e-490a-afad-d0e9cfd089b3")
-		)
-		(pin "2"
-			(uuid "b294e12b-1e7e-408c-ad11-788f7714a2bc")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "R92")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 299.72 209.55 90)
-		(mirror x)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(uuid "c3a30100-4d2c-47e8-b49c-ece8efc509fd")
-		(property "Reference" "R94"
-			(at 301.498 215.138 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100R/1%"
-			(at 302.768 212.598 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "A_DFRobot:R_0402"
-			(at 299.72 207.772 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 299.72 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 299.72 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" ""
-			(at 299.72 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "贴片电阻0402-100R-1%"
-			(at 299.72 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SCH_Show_Footprint" ""
-			(at 299.72 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field-1" ""
-			(at 299.72 209.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a8d08bf0-e478-4003-897e-e3a00cc7d05e")
-		)
-		(pin "2"
-			(uuid "86beb86a-d7ad-43ca-b6c3-f4e88378571b")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "R94")
 					(unit 1)
 				)
 			)
@@ -25615,6 +25473,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C8545"
+			(at 318.77 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b3e66a20-b3d8-40f5-834d-903dc65f3528")
 		)
@@ -25658,7 +25525,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 388.62 276.098 90)
 			(effects
 				(font
@@ -25721,6 +25588,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C11702"
+			(at 388.62 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "99d71e15-37bb-4484-b2a6-ac1cbbdea8cf")
 		)
@@ -25761,7 +25637,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 250.19 190.5 0)
 			(effects
 				(font
@@ -25807,6 +25683,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 250.19 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22452"
 			(at 250.19 190.5 0)
 			(effects
 				(font
@@ -25910,6 +25795,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 454.66 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C59461"
 			(at 454.66 209.55 0)
 			(effects
 				(font
@@ -26023,6 +25917,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C316049"
+			(at 201.93 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3e491cf1-f0ae-4695-be73-120bdf3fdf75")
 		)
@@ -26063,7 +25966,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 246.38 251.968 90)
 			(effects
 				(font
@@ -26118,6 +26021,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 246.38 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C11702"
 			(at 246.38 250.19 0)
 			(effects
 				(font
@@ -26363,6 +26275,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C83423"
+			(at 415.29 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "79ecfa78-4df6-422c-a5a9-66491c92e302")
 		)
@@ -26397,7 +26318,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+15V"
+		(property "Value" "+12V_PD"
 			(at 218.44 241.3 0)
 			(effects
 				(font
@@ -26469,7 +26390,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 273.05 121.412 90)
 			(effects
 				(font
@@ -26524,6 +26445,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 273.05 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C185442"
 			(at 273.05 123.19 0)
 			(effects
 				(font
@@ -26701,6 +26631,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C59461"
+			(at 439.42 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "dcdf60c1-71a1-4343-a7cb-037e7f2b5613")
 		)
@@ -26783,73 +26722,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 196.85 363.22 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "d6d19d35-e5fd-4362-9c00-bee8fe0eadc0")
-		(property "Reference" "TP16"
-			(at 201.422 363.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 201.93 364.4899 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "A_DFRobot:TestPoint_Pad_D1.5mm"
-			(at 196.85 368.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 196.85 368.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 196.85 363.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9b4e24c5-62d8-40a5-86e7-1826ac4700b8")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "TP16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:D_Schottky")
 		(at 250.19 194.31 180)
 		(unit 1)
@@ -26874,7 +26746,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SMA"
+		(property "Footprint" "Diode_SMD:D_SMA"
 			(at 250.19 194.31 0)
 			(effects
 				(font
@@ -26928,6 +26800,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C22452"
+			(at 250.19 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "80c2f02d-a062-449e-a53d-b3a37b18b07f")
 		)
@@ -26968,7 +26849,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 267.208 115.57 90)
 			(effects
 				(font
@@ -27031,6 +26912,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25744"
+			(at 265.43 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f0ad9070-d951-43e5-8425-49eb2e27b05f")
 		)
@@ -27073,7 +26963,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 426.466 310.642 90)
 			(effects
 				(font
@@ -27128,6 +27018,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 426.466 312.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25076"
 			(at 426.466 312.42 0)
 			(effects
 				(font
@@ -27241,6 +27140,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C316049"
+			(at 437.896 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f319d22f-67af-4a1e-976b-cb90e58c473e")
 		)
@@ -27339,6 +27247,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 392.43 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C93736"
 			(at 392.43 166.37 0)
 			(effects
 				(font
@@ -27462,6 +27379,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C1525"
+			(at 449.58 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "12f3a08a-e9e9-48bb-89fd-0c9c4478f2e7")
 		)
@@ -27502,7 +27428,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 279.908 137.16 90)
 			(effects
 				(font
@@ -27557,6 +27483,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 278.13 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C185442"
 			(at 278.13 137.16 0)
 			(effects
 				(font
@@ -27647,6 +27582,15 @@
 		)
 		(property "Field-1" ""
 			(at 332.74 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49257"
+			(at 330.2 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27760,6 +27704,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C52923"
+			(at 485.14 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d11e1f40-31f6-4fbe-9500-26d679366283")
 		)
@@ -27864,6 +27817,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C492420"
+			(at 440.944 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "35fadef8-6f32-407d-b821-a31ca523770e")
 		)
@@ -27886,111 +27848,6 @@
 			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.0)"
 				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
 					(reference "JP4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 195.58 340.36 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "efeb5512-52a2-4828-833d-e80fcc2209e4")
-		(property "Reference" "R95"
-			(at 193.04 337.82 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "0R/1%"
-			(at 192.786 336.296 90)
-			(effects
-				(font
-					(size 1 1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "A_DFRobot:R_0402"
-			(at 195.58 338.582 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 195.58 340.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 195.58 340.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Buy_Link" ""
-			(at 195.58 340.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DF_Comment" "贴片电阻0402-0R-1%"
-			(at 195.58 340.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SCH_Show_Footprint" ""
-			(at 195.58 340.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field-1" ""
-			(at 195.58 340.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "53656c8a-2df7-443d-887b-67338afe328b")
-		)
-		(pin "2"
-			(uuid "0d620921-8d22-4ae4-8b0e-f4d0f318a047")
-		)
-		(instances
-			(project "[DFR1142]Lite Carrier for LattePanda Mu(V1.1.2)"
-				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
-					(reference "R95")
 					(unit 1)
 				)
 			)
@@ -28084,6 +27941,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C45783"
+			(at 350.52 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e9685467-9662-4d86-9002-022006015741")
 		)
@@ -28161,6 +28027,15 @@
 			)
 		)
 		(property "DF_Comment" "贴片电容0402-10UF-10V-X5R_GRM155R61A106ME44D"
+			(at 361.95 336.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C15525"
 			(at 361.95 336.55 0)
 			(effects
 				(font
@@ -28264,6 +28139,15 @@
 			)
 		)
 		(property "Field-1" ""
+			(at 355.6 191.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C45783"
 			(at 355.6 191.77 0)
 			(effects
 				(font
@@ -28379,7 +28263,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 409.448 238.76 90)
 			(effects
 				(font
@@ -28442,6 +28326,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25879"
+			(at 407.67 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "402430a1-53e7-4eaf-b997-2b87c08dc712")
 		)
@@ -28484,7 +28377,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 363.728 236.22 90)
 			(effects
 				(font
@@ -28547,6 +28440,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25879"
+			(at 361.95 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "43b832d6-7e51-42d7-8e7c-bf7f9266a445")
 		)
@@ -28581,7 +28483,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+12V"
+		(property "Value" "+12V_CAR"
 			(at 218.44 158.75 0)
 			(effects
 				(font
@@ -28694,5 +28596,676 @@
 				)
 			)
 		)
+	)
+	(junction
+		(at 189.23 246.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "efcb042f-439a-4fda-a71f-f849437ab1c4")
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 232.41 163.83 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ff3c6eae-95a7-44b0-a6e6-af005bce93ac")
+		(property "Reference" "#PWR0300"
+			(at 232.41 160.02 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+12V"
+			(at 232.41 167.386 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 232.41 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 232.41 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 232.41 163.83 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "068ca4cd-c26d-44a0-8392-bdcc44aaca31")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
+					(reference "#PWR0300")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 254 185.42) (xy 254 190.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a866e20-e1f0-4b59-9f6a-dc729d56ac40")
+	)
+	(wire
+		(pts
+			(xy 254 190.5) (xy 254 194.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34e70eee-9735-443a-b6d6-b9b9ff6de23d")
+	)
+	(wire
+		(pts
+			(xy 254 194.31) (xy 254.0 198.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46ee0790-698e-4501-8724-245592f04bd7")
+	)
+	(junction
+		(at 254.0 190.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "73e20145-8005-47ed-80cc-80acded8dff2")
+	)
+	(junction
+		(at 254.0 194.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "961d7e0c-489f-4e2c-9ea2-10e6671d9323")
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 254 185.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0c499629-da8d-45ab-89f3-5948259e2d77")
+		(property "Reference" "#PWR0301"
+			(at 254 181.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+12V_CONST"
+			(at 254 188.976 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 254 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 254 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+12V\""
+			(at 254 185.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8b5cb066-0130-4694-801b-4912438570fa")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
+					(reference "#PWR0301")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Power_Management:LTC4359-MS8")
+		(at 90.17 139.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "43734e0c-aa78-4078-831f-a4f3cf2e9c37")
+		(property "Reference" "U44"
+			(at 90.17 127.0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LTC4359HMS8"
+			(at 90.17 152.4 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:MSOP-8_3x3mm_P0.65mm"
+			(at 96.52 135.89 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ltc4359.pdf"
+			(at 90.17 133.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Ideal diode controller with reverse input protection, MSOP-8"
+			(at 90.17 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C688239"
+			(at 90.17 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8473c766-ca44-4c3b-965e-a7424d971314")
+		)
+		(pin "2"
+			(uuid "352ef759-d177-40b0-b5f4-f166cb1dcf6d")
+		)
+		(pin "3"
+			(uuid "a0f94874-23db-4c6a-a9c6-10088b7686ce")
+		)
+		(pin "4"
+			(uuid "d40136e5-478c-41c1-ac9a-077aa5adedb9")
+		)
+		(pin "5"
+			(uuid "08a85040-9fea-4513-a2ec-27672668ddab")
+		)
+		(pin "6"
+			(uuid "b50d37df-f78f-44a9-b42b-59991cc6f41a")
+		)
+		(pin "7"
+			(uuid "aa58f40a-2735-423c-94c3-5eec97e9f91b")
+		)
+		(pin "8"
+			(uuid "ec79ffa6-67e0-4e67-9be0-cf67af8fb01d")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
+					(reference "U44")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Transistor_FET:Q_NMOS_SSSGD_AvalancheRated")
+		(at 124.46 139.7 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b1fd3dcf-fb84-4f84-9592-186fa87147cc")
+		(property "Reference" "Q44"
+			(at 124.46 132.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AO4264E"
+			(at 124.46 147.32 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 129.54 142.24 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, source (pins 1-3)/gate/drain (pin 5), SO-8/SO-8F/SO-8FL/SON-8/PowerPAK-8/TDSON-8/VSON-8"
+			(at 124.46 139.7 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C334232"
+			(at 124.46 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c669d544-ef27-418a-9a53-834683465aa3")
+		)
+		(pin "2"
+			(uuid "4a907146-ca46-4978-8776-38e58d881928")
+		)
+		(pin "3"
+			(uuid "182c9418-a44a-439d-8f4a-3a63b7cba6ee")
+		)
+		(pin "4"
+			(uuid "3f13324b-2bf6-44f1-b13a-960b9c6b6ccc")
+		)
+		(pin "5"
+			(uuid "62e36f4b-d20d-4f3e-9e1c-bf78bdfc068e")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
+					(reference "Q44")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 149.86 119.38 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4d24f6f1-a927-4abf-8cf7-a9b55c275c08")
+		(property "Reference" "#FLG0151"
+			(at 149.86 116.84 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 149.86 121.92 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 149.86 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 149.86 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b144d7aa-4031-4d1a-bce3-1a320f1d4d63")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
+					(reference "#FLG0151")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "RP_GATE"
+		(at 92.71000000000001 129.54 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7c15635c-ce68-4a00-8f66-b23f6e6a40f9")
+	)
+	(global_label "+12V_CAR"
+		(at 90.17 129.54 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "406e1ebc-d62e-4f6d-9b33-d8d86a65d8c4")
+	)
+	(global_label "+12V_CAR"
+		(at 82.55 139.7 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5ecd7aeb-a9f7-4c27-8697-dc622326e6dd")
+	)
+	(global_label "+12V_CAR"
+		(at 82.55 142.23999999999998 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8d85d9cd-9952-41e3-b0f0-65032e61a70f")
+	)
+	(global_label "GND"
+		(at 90.17 149.85999999999999 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0b4369ad-025f-4f21-a8b4-77a415d13953")
+	)
+	(global_label "+12V_CONST"
+		(at 97.79 139.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "216f5a71-fbdd-4e28-b497-a134a88fdee2")
+	)
+	(global_label "+12V_CAR"
+		(at 127.0 144.78 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a644206a-1722-43ed-ac25-0439a7c9e141")
+	)
+	(global_label "RP_GATE"
+		(at 119.38 139.7 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "01241963-f758-4952-bb35-4112dd01260b")
+	)
+	(global_label "+12V_CONST"
+		(at 127.0 134.61999999999998 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "23f82d2d-fbcd-46cd-9035-ce5914321d24")
+	)
+	(global_label "+12V_CONST"
+		(at 149.86 119.38 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c7500dbc-36b6-43fb-a63c-accfe1bfaa32")
+	)
+	(text "Ideal-diode input protection (LTC4359 + N-FET): blocks reverse polarity (to -40V) and any back-feed from PD/USB to the vehicle 12V line. +12V_CAR = after F6 fuse and TVS D29; +12V_CONST = protected rail."
+		(exclude_from_sim no)
+		(at 60 120 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "381eb6a3-dd38-485e-b0a9-347a2955e390")
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 39.37 20.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d6e08c09-0ac2-4651-9a69-ca964365ec0a")
+		(property "Reference" "#FLG091"
+			(at 39.37 17.78 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 39.37 22.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 39.37 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 39.37 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 39.37 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f440a934-3cdc-4a11-bc38-253912abf8f6")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b23aee49-27d1-466d-98e2-113ee657e42b"
+					(reference "#FLG091")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "+12VA"
+		(at 39.37 20.32 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "44f74d43-70eb-4f5b-a3f3-a3d6521a53bd")
 	)
 )

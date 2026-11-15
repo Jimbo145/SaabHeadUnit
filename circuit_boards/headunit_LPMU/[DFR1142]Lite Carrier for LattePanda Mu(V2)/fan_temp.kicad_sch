@@ -1779,6 +1779,164 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector_Generic:Conn_01x02"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x02"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x02_1_1"
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "CPU FAN"
 		(exclude_from_sim no)
@@ -2486,7 +2644,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 332.74 169.418 90)
 			(effects
 				(font
@@ -2532,6 +2690,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 332.74 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25076"
 			(at 332.74 167.64 0)
 			(effects
 				(font
@@ -2642,6 +2809,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25076"
+			(at 332.74 243.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "70ef2e93-04a3-4f53-9258-d0ae7ce65a6f")
 		)
@@ -2668,9 +2844,9 @@
 		(at 213.36 158.75 0)
 		(unit 1)
 		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board no)
-		(dnp yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1ac5e136-bb1b-42b9-9168-486ee138bec4")
 		(property "Reference" "JP2"
@@ -2849,6 +3025,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C185442"
+			(at 313.69 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "00eaed24-20b1-4866-8019-b1fd7d6f4fff")
 		)
@@ -2897,7 +3082,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "RES0603"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 359.41 215.9 90)
 			(effects
 				(font
@@ -2950,6 +3135,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C21189"
+			(at 365.76 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ac175390-e330-4ea5-ab26-47831882fe3e")
 		)
@@ -2976,9 +3170,9 @@
 		(at 226.06 165.1 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "37160b4e-0889-4062-b83f-f04ee302f524")
 		(property "Reference" "TH1"
@@ -3053,6 +3247,7 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C13564" (at 228.6 164.15 0) (effects (font (size 1.27 1.27)) (hide yes)))
 		(pin "1"
 			(uuid "c8a78681-9a85-4951-a513-7350d8a92140")
 		)
@@ -3151,6 +3346,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" "C0402"
+			(at 341.63 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1525"
 			(at 341.63 151.13 0)
 			(effects
 				(font
@@ -3625,6 +3829,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C191023"
+			(at 365.76 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "7605c49b-c9e6-43bc-b87b-797262b04266")
 		)
@@ -3739,9 +3952,9 @@
 		(at 341.63 227.33 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(uuid "7fd8210c-2734-4aa8-9819-cfa0169a58f7")
 		(property "Reference" "C85"
 			(at 344.17 224.79 0)
@@ -3805,6 +4018,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" "C0402"
+			(at 341.63 227.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C307331"
 			(at 341.63 227.33 0)
 			(effects
 				(font
@@ -3987,6 +4209,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25900"
+			(at 302.26 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "45a7c586-92da-484e-9605-9bb35624768b")
 		)
@@ -4081,6 +4312,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 332.74 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C185442"
 			(at 332.74 238.76 0)
 			(effects
 				(font
@@ -4273,6 +4513,15 @@
 		)
 		(property "SCH_Show_Footprint" ""
 			(at 391.16 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C131334"
+			(at 396.24 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4488,6 +4737,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25900"
+			(at 302.26 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b3e5352c-486e-40df-8f2d-c311ae9322c4")
 		)
@@ -4534,7 +4792,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 332.74 160.782 90)
 			(effects
 				(font
@@ -4580,6 +4838,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 332.74 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C185442"
 			(at 332.74 162.56 0)
 			(effects
 				(font
@@ -4774,9 +5041,9 @@
 		(at 226.06 152.4 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(uuid "c8ef5010-2e4b-4176-9413-3fa8662542f4")
 		(property "Reference" "R63"
 			(at 227.33 153.67 0)
@@ -4842,6 +5109,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 226.06 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25744"
 			(at 226.06 152.4 0)
 			(effects
 				(font
@@ -4944,6 +5220,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 313.69 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C185442"
 			(at 313.69 250.19 0)
 			(effects
 				(font
@@ -5073,7 +5358,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 361.315 152.4 0)
 			(effects
 				(font
@@ -5119,6 +5404,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" "SOD-323"
+			(at 365.76 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C191023"
 			(at 365.76 152.4 0)
 			(effects
 				(font
@@ -5301,6 +5595,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C25900"
+			(at 353.06 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ce80e7a9-12ca-43aa-89ab-6e2bb22d7e47")
 		)
@@ -5349,7 +5652,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 351.282 152.4 90)
 			(effects
 				(font
@@ -5395,6 +5698,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 353.06 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25900"
 			(at 353.06 152.4 0)
 			(effects
 				(font
@@ -5451,7 +5763,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "RES0603"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 346.71 215.9 90)
 			(effects
 				(font
@@ -5496,6 +5808,15 @@
 			)
 		)
 		(property "SCH_Show_Footprint" ""
+			(at 353.06 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C21189"
 			(at 353.06 215.9 0)
 			(effects
 				(font
@@ -5831,5 +6152,61 @@
 				)
 			)
 		)
+	)
+	(wire
+		(pts
+			(xy 236.22 165.1) (xy 236.22 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76a1d789-1799-4353-a7fc-0c41df5a976f")
+	)
+	(wire
+		(pts
+			(xy 236.22 171.45) (xy 226.06 171.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a02553e7-52a8-4032-a300-3c5db679cda3")
+	)
+	(junction
+		(at 226.06 171.45)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f41e6563-650a-4783-bc78-d53bda805234")
+	)
+	(wire
+		(pts
+			(xy 233.68 162.56) (xy 233.68 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "199cbd03-700e-4977-ad1b-1444c5970794")
+	)
+	(wire
+		(pts
+			(xy 233.68 158.75) (xy 226.06 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc759d3d-bbb1-4887-8718-313c73fcf2d3")
+	)
+	(global_label "TEMP"
+		(at 199.39 158.75 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b39dc7ef-fe85-45b9-a123-6865e493eb11")
 	)
 )

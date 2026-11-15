@@ -1,0 +1,162 @@
+(footprint "RJ45_HongCheng_HC-WK88-H16-DB"
+  (version 20241229)
+  (generator "kicad-mcp")
+  (generator_version "9.0")
+  (layer "F.Cu")
+  (descr "Hong Cheng HC-WK88-H16-DB right-angle THT RJ45 jack with LEDs, no magnetics (pad layout from datasheet; verify body outline)")
+  (tags "rj45 jack ethernet tht")
+
+  (property "Reference" "REF**" (at 0 -1.27 0)
+    (layer "F.SilkS")
+    (uuid "cdd0e407-55fb-4a1e-aea7-d92f1259135f")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Value" "RJ45_HongCheng_HC-WK88-H16-DB" (at 0 1.27 0)
+    (layer "F.Fab")
+    (uuid "4cc08664-8487-4d8c-bd48-72756fc1eb44")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Datasheet" "" (at 0 0 0)
+    (layer "F.Fab")
+    (uuid "57f2c85b-af5e-4e2d-9866-e7bada14542f")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+
+  (fp_rect
+    (start -13 -8)
+    (end 5.9 4.5)
+    (stroke (width 0.05) (type default))
+    (fill none)
+    (layer "F.CrtYd")
+    (uuid "a82ba004-5258-46fe-8a98-f371a67f81b3")
+  )
+
+  (pad "1" thru_hole circle
+    (at 0 0)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "d30a6b06-3d2a-49f7-b30b-115ec0d6f132")
+  )
+
+  (pad "3" thru_hole circle
+    (at -2.04 0)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "d78bd85c-47f8-4003-a90a-871c78b4b9f7")
+  )
+
+  (pad "5" thru_hole circle
+    (at -4.08 0)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "5d1da6c0-adc4-443e-b32c-73e9f1e83c87")
+  )
+
+  (pad "7" thru_hole circle
+    (at -6.12 0)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "15ebc071-0811-409f-a828-efc9517c63c8")
+  )
+
+  (pad "2" thru_hole circle
+    (at -1.02 -1.8)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "807ee7cf-b49f-4dd6-97a6-1b41c514e9a4")
+  )
+
+  (pad "4" thru_hole circle
+    (at -3.06 -1.8)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "5a0af20a-450b-49ec-a024-ccf400dadb48")
+  )
+
+  (pad "6" thru_hole circle
+    (at -5.1 -1.8)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "c5b4d106-9df2-436a-8a96-71af5fc39a45")
+  )
+
+  (pad "8" thru_hole circle
+    (at -7.14 -1.8)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "9ab06df7-c132-421c-962d-aecc4d1b792e")
+  )
+
+  (pad "9" thru_hole circle
+    (at -10.43 -6.5)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "1244507e-49c3-4f5d-a3fa-7878fff16f19")
+  )
+
+  (pad "10" thru_hole circle
+    (at -8.14 -6.5)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "fb9d30a3-7064-4c10-94c0-4e9684d7deea")
+  )
+
+  (pad "11" thru_hole circle
+    (at 1 -6.5)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "03a0ecc5-666c-460b-85a1-17199a3fc1ad")
+  )
+
+  (pad "12" thru_hole circle
+    (at 3.29 -6.5)
+    (size 1.5 1.5)
+    (drill 1)
+    (layers "*.Cu" "*.Mask")
+    (uuid "2f06bc5b-7d51-4c4a-a387-6da14892a8cb")
+  )
+
+  (pad "S1" thru_hole oval
+    (at -11.64 -0.96)
+    (size 2 3)
+    (drill oval 1.2 2.2)
+    (layers "*.Cu" "*.Mask")
+    (uuid "0b367553-574b-415b-8c79-ac79846f2fe3")
+  )
+
+  (pad "S2" thru_hole oval
+    (at 4.56 -0.96)
+    (size 2 3)
+    (drill oval 1.2 2.2)
+    (layers "*.Cu" "*.Mask")
+    (uuid "a9fb0d91-75b0-45de-ac1f-027bb4481d15")
+  )
+
+  (pad "" np_thru_hole circle
+    (at -9.92 2.6)
+    (size 3 3)
+    (drill 3)
+    (layers "*.Cu" "*.Mask")
+    (uuid "c289731d-4141-4af6-b4cd-2a61ae2fd344")
+  )
+
+  (pad "" np_thru_hole circle
+    (at 2.78 2.6)
+    (size 3 3)
+    (drill 3)
+    (layers "*.Cu" "*.Mask")
+    (uuid "27272f2a-ab6f-4b95-81f2-51fbfa7e3131")
+  )
+
+)

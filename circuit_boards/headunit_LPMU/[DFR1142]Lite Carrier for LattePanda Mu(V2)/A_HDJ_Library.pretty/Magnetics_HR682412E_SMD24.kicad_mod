@@ -1,0 +1,220 @@
+(footprint "Magnetics_HR682412E_SMD24"
+  (version 20241229)
+  (generator "kicad-mcp")
+  (generator_version "9.0")
+  (layer "F.Cu")
+  (descr "HanRun HR682412E 10/100/1000BASE-T 4-channel LAN transformer, 24-pin SMD")
+  (tags "transformer ethernet gigabit magnetics")
+
+  (property "Reference" "REF**" (at 0 -1.27 0)
+    (layer "F.SilkS")
+    (uuid "236646e3-6f99-4d62-882f-8a125d73b5eb")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Value" "Magnetics_HR682412E_SMD24" (at 0 1.27 0)
+    (layer "F.Fab")
+    (uuid "8a7ec292-525b-4ad3-a07a-0ced57bb24e8")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Datasheet" "" (at 0 0 0)
+    (layer "F.Fab")
+    (uuid "455f86f3-5cdf-4348-a9eb-44849e71bc88")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+
+  (fp_rect
+    (start -9.3 -5.6)
+    (end 9.3 5.6)
+    (stroke (width 0.05) (type default))
+    (fill none)
+    (layer "F.CrtYd")
+    (uuid "8597cea0-254a-412b-93dd-7f169b89208b")
+  )
+
+  (fp_rect
+    (start -8.925 -4.775)
+    (end 8.925 4.775)
+    (stroke (width 0.12) (type default))
+    (fill none)
+    (layer "F.SilkS")
+    (uuid "6f09cb94-1be9-4a07-be96-175e35388b61")
+  )
+
+  (fp_rect
+    (start -8.925 -4.775)
+    (end 8.925 4.775)
+    (stroke (width 0.1) (type default))
+    (fill none)
+    (layer "F.Fab")
+    (uuid "8b96dfdd-8986-44d5-862d-70d910276653")
+  )
+
+  (pad "1" smd rect
+    (at -6.985 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "76477013-eae6-4807-beeb-8214847eb81f")
+  )
+
+  (pad "24" smd rect
+    (at -6.985 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "be304cbc-f2b7-482e-a9b8-9ff786eadc2b")
+  )
+
+  (pad "2" smd rect
+    (at -5.715 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "0688d8b7-9fd6-43d2-b8d6-7d8bddeb47ba")
+  )
+
+  (pad "23" smd rect
+    (at -5.715 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "557518ab-e95e-4dcd-ae84-2b381b29c09c")
+  )
+
+  (pad "3" smd rect
+    (at -4.445 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "031ce3eb-37ae-4ab8-b096-e302a1fd162d")
+  )
+
+  (pad "22" smd rect
+    (at -4.445 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "26d25e95-0568-4324-b203-e0f984fc2fda")
+  )
+
+  (pad "4" smd rect
+    (at -3.175 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "14d629ad-dac9-4fb4-a9a9-be2944d85605")
+  )
+
+  (pad "21" smd rect
+    (at -3.175 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "d85c7f1e-da32-4ddc-8859-e69720cf52dd")
+  )
+
+  (pad "5" smd rect
+    (at -1.905 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "09056e4a-c6e4-47e3-b716-730b8432947b")
+  )
+
+  (pad "20" smd rect
+    (at -1.905 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "6fc6567c-9223-41a4-a8bc-90757a6aeede")
+  )
+
+  (pad "6" smd rect
+    (at -0.635 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "2f818f3a-6d99-4fcb-a8b5-32d03bf08524")
+  )
+
+  (pad "19" smd rect
+    (at -0.635 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "fe556ca6-601b-4a45-951a-102e8bbbb8ad")
+  )
+
+  (pad "7" smd rect
+    (at 0.635 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "e8487cf0-b46f-4bad-9531-247059217fab")
+  )
+
+  (pad "18" smd rect
+    (at 0.635 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "eb51b5af-cd2c-456a-b15d-495dbe634da7")
+  )
+
+  (pad "8" smd rect
+    (at 1.905 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "489ac7fb-88f0-4d0e-8f47-86b8e3aa66ca")
+  )
+
+  (pad "17" smd rect
+    (at 1.905 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "cc70a42a-5b3c-4f03-ab00-dc61b76fc56b")
+  )
+
+  (pad "9" smd rect
+    (at 3.175 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "b285d090-a62f-4a1b-bc6b-8dff5e948f97")
+  )
+
+  (pad "16" smd rect
+    (at 3.175 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "30a728a8-b6c5-4686-88b4-6cb8d59e8c03")
+  )
+
+  (pad "10" smd rect
+    (at 4.445 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "99775e84-8c43-4aa1-92d7-c49dbc46d611")
+  )
+
+  (pad "15" smd rect
+    (at 4.445 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "495e6e48-2719-4a40-9976-55f9fa19dc2a")
+  )
+
+  (pad "11" smd rect
+    (at 5.715 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "d6ff0274-adbb-4af1-9bc4-4b3d4d585bc2")
+  )
+
+  (pad "14" smd rect
+    (at 5.715 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "6564424c-5cfb-470e-a9a8-11caecf844e2")
+  )
+
+  (pad "12" smd rect
+    (at 6.985 4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "f44ae852-b1c2-43fe-ae30-fe2925ea2edb")
+  )
+
+  (pad "13" smd rect
+    (at 6.985 -4.28)
+    (size 0.89 1.65)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "26223700-83b8-423a-b290-b53c25f22cd5")
+  )
+
+)

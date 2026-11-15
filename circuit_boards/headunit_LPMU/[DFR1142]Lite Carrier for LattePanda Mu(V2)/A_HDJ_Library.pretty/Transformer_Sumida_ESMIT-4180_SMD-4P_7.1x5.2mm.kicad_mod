@@ -1,0 +1,79 @@
+(footprint "Transformer_Sumida_ESMIT-4180_SMD-4P_7.1x5.2mm"
+  (version 20241229)
+  (generator "kicad-mcp")
+  (generator_version "9.0")
+  (layer "F.Cu")
+  (descr "Sumida ESMIT-4180 (CBM5D33) SMD-4P, pads per datasheet")
+
+  (property "Reference" "REF**" (at 0 -1.27 0)
+    (layer "F.SilkS")
+    (uuid "c695814c-02da-4c12-8376-9692596fdcda")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Value" "Transformer_Sumida_ESMIT-4180_SMD-4P_7.1x5.2mm" (at 0 1.27 0)
+    (layer "F.Fab")
+    (uuid "bf4ee2b0-f8a2-4262-8415-fb1b579a8ad7")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (property "Datasheet" "" (at 0 0 0)
+    (layer "F.Fab")
+    (uuid "0166ea2b-d61a-4de5-a081-44a7e9cee418")
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+
+  (fp_rect
+    (start -3.5 -5.3)
+    (end 3.5 5.3)
+    (stroke (width 0.05) (type default))
+    (fill none)
+    (layer "F.CrtYd")
+    (uuid "ce905c13-03e7-4193-a4d5-aee51a55ad65")
+  )
+
+  (fp_rect
+    (start -2.7 -3.3)
+    (end 2.7 3.3)
+    (stroke (width 0.12) (type default))
+    (fill none)
+    (layer "F.SilkS")
+    (uuid "387b6941-137f-436f-b08d-5666466012da")
+  )
+
+  (fp_rect
+    (start -2.6 -4.57)
+    (end 2.6 4.57)
+    (stroke (width 0.1) (type default))
+    (fill none)
+    (layer "F.Fab")
+    (uuid "63b2e34d-bae0-42e5-8eed-24ba2263c67a")
+  )
+
+  (pad "1" smd rect
+    (at -1.27 4.125)
+    (size 1.4 1.4)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "f825ab2b-ab20-472a-bb78-bcd0e3f09cd8")
+  )
+
+  (pad "2" smd rect
+    (at 1.27 4.125)
+    (size 1.4 1.4)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "feef1794-619a-4374-8a54-ca6b90638f0b")
+  )
+
+  (pad "3" smd rect
+    (at 1.27 -4.125)
+    (size 1.4 1.4)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "dfa9cf17-ddb7-4e1c-88e7-eb83decf1c22")
+  )
+
+  (pad "4" smd rect
+    (at -1.27 -4.125)
+    (size 1.4 1.4)
+    (layers "F.Cu" "F.Paste" "F.Mask")
+    (uuid "fddc723f-cbe7-459e-83e5-d90b3fedb8dd")
+  )
+
+)

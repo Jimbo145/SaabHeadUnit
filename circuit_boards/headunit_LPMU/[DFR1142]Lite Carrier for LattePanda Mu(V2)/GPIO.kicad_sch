@@ -485,7 +485,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
+			(property "Footprint" "A_HDJ_Library:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
 				(at -24.13 -10.16 0)
 				(effects
 					(font
@@ -2707,6 +2707,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C49257"
+			(at 290.195 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "0f551213-91c0-4c94-af50-92b2c85d473e")
 		)
@@ -2788,6 +2797,15 @@
 		)
 		(property "Field-1" ""
 			(at 289.56 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C124378"
+			(at 290.195 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2904,6 +2922,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 251.46 190.5 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "4cd560f6-ebd6-4f5a-bc29-1ae143a40319")
 		)
@@ -3031,6 +3052,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 322.58 190.5 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "7c72a004-ee81-4b29-a3d8-9c5fb24ce9b0")
 		)
@@ -3274,6 +3298,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C124378"
+			(at 219.075 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "6d66f150-74e8-4409-9c53-f2216d3940ce")
 		)
@@ -3365,6 +3398,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C49257"
+			(at 219.075 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "929dcb52-0717-406c-aa3a-eded534ddbf3")
 		)
@@ -3446,6 +3488,15 @@
 		)
 		(property "Field-1" ""
 			(at 383.54 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49257"
+			(at 384.175 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3758,6 +3809,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 251.46 245.11 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "9d5a0e6d-dd76-46c6-9965-7b4ae1bb250e")
 		)
@@ -4000,6 +4054,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C124378"
+			(at 403.225 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "71fc0a9a-51e3-4b99-8161-946dcb8904cd")
 		)
@@ -4092,6 +4155,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C124378"
+			(at 385.445 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "4f130db6-829e-4de6-8adc-6d0c0c099126")
 		)
@@ -4177,6 +4249,15 @@
 		)
 		(property "Field-1" ""
 			(at 402.59 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C49257"
+			(at 403.225 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4290,6 +4371,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C384892" (at 322.58 245.11 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "fe51358c-9d45-4b0f-9462-e7ae61ccceb6")
 		)

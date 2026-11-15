@@ -1376,7 +1376,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Package_DFN_QFN:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
+			(property "Footprint" "A_HDJ_Library:Diodes_UDFN-10_1.0x2.5mm_P0.5mm"
 				(at -24.13 -10.16 0)
 				(effects
 					(font
@@ -5219,6 +5219,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 173.99 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "067b5a96-6edf-48e3-b78d-e6d6773f2765")
 		)
@@ -5261,7 +5264,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 234.442 189.23 90)
 			(effects
 				(font
@@ -5324,6 +5327,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 236.22 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "1847a5ad-8f7c-40ff-b9b5-b296b19db87d")
 		)
@@ -5366,7 +5372,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 248.412 232.41 90)
 			(effects
 				(font
@@ -5429,6 +5435,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25879" (at 250.19 232.41 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "591f2304-10ce-416b-b953-ad15d5b95bfb")
 		)
@@ -5536,7 +5545,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 202.692 288.29 90)
 			(effects
 				(font
@@ -5599,6 +5608,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C26083" (at 204.47 288.29 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "0600c454-7730-4755-9585-e150e8235dee")
 		)
@@ -5702,6 +5714,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 153.67 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "9257b796-c1a2-4841-8ab9-ee7a509da781")
 		)
@@ -5807,6 +5822,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 243.84 218.44 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "f23c4734-9a62-42ad-ac7e-7e16843b1747")
 		)
@@ -5915,6 +5933,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C20069148" (at 233.68 260.35 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "446f6389-8be6-47f3-90ea-3efefa6591a0")
 		)
@@ -5960,7 +5981,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 244.602 189.23 90)
 			(effects
 				(font
@@ -6023,6 +6044,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 246.38 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "b2c726cc-9f0b-4fcf-90fa-e660eae7d5c5")
 		)
@@ -6122,6 +6146,15 @@
 		)
 		(property "Field-1" ""
 			(at 401.32 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C883087"
+			(at 403.86 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6298,6 +6331,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 406.4 119.38 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "99531c06-3ff4-49c7-b79f-6710d0f499bb")
 		)
@@ -6472,7 +6508,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 242.57 296.418 90)
 			(effects
 				(font
@@ -6535,6 +6571,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C11702" (at 242.57 294.64 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "ba5884f4-584a-458f-9f3e-bfbee2a649fa")
 		)
@@ -6577,7 +6616,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 258.572 232.41 90)
 			(effects
 				(font
@@ -6640,6 +6679,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25879" (at 260.35 232.41 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "07ae8961-ef2a-4a38-81e3-aa690c5d921a")
 		)
@@ -6748,7 +6790,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 212.852 232.41 90)
 			(effects
 				(font
@@ -6811,6 +6853,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25879" (at 214.63 232.41 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "af299eba-d1f9-43ac-9ec3-119ef1b9cfe1")
 		)
@@ -6853,7 +6898,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 238.252 189.23 90)
 			(effects
 				(font
@@ -6916,6 +6961,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 240.03 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "6abed1de-36e8-4ad1-aa01-19d21f888df5")
 		)
@@ -7023,7 +7071,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 240.792 189.23 90)
 			(effects
 				(font
@@ -7086,6 +7134,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 242.57 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "a2a7a9ee-9662-40b8-b8ef-3d20a6efeeb8")
 		)
@@ -7191,6 +7242,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 250.19 271.78 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "f8f77f18-4a5b-4d69-bc4b-5bb99fe1f3fb")
 		)
@@ -7232,7 +7286,7 @@
 				)
 			)
 		)
-		(property "Footprint" "A_DFRobot:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_SOD-323"
 			(at 271.78 233.045 0)
 			(effects
 				(font
@@ -7295,6 +7349,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C191023" (at 271.78 228.6 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "6da78793-e8c4-4ca5-9e83-b044a22ad2db")
 		)
@@ -7401,6 +7458,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C916313" (at 401.32 160.02 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "8"
 			(uuid "275fe8b1-29fe-46cf-b2ad-8bd18867f834")
 		)
@@ -7558,6 +7618,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 176.53 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "4d0387b3-9a84-4de5-b8b1-30ab378ead1d")
 		)
@@ -7600,7 +7663,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 230.632 302.26 90)
 			(effects
 				(font
@@ -7663,6 +7726,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C185442" (at 232.41 302.26 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "362c9d63-7cdf-457f-beb0-30f1a9257f58")
 		)
@@ -7832,6 +7898,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 139.7 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "43d2a9e0-0423-4674-8ed8-9a6b3f962499")
 		)
@@ -8068,6 +8137,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 250.19 302.26 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "8264d578-782b-4106-a01d-437e0be96ce8")
 		)
@@ -8171,6 +8243,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 142.24 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "755a369f-4256-4493-9790-e819d6a5f759")
 		)
@@ -8213,7 +8288,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 247.142 189.23 90)
 			(effects
 				(font
@@ -8276,6 +8351,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 248.92 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "264c5481-cc71-49fe-b53e-9581f3e2d81b")
 		)
@@ -8385,6 +8463,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C20069148" (at 257.81 212.09 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "d9e372c5-9ed6-4434-825a-56fa8dddfde1")
 		)
@@ -8491,6 +8572,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 162.56 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "14c5ba31-634f-4cff-bead-b6beb6fb9019")
 		)
@@ -8663,6 +8747,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C316049" (at 260.35 271.78 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "97a5a45e-23dc-4c97-a97c-60230225700a")
 		)
@@ -8770,7 +8857,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 202.692 232.41 90)
 			(effects
 				(font
@@ -8833,6 +8920,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25879" (at 204.47 232.41 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "aee8cf7a-36da-4776-bbd3-15aec3488233")
 		)
@@ -8936,6 +9026,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 151.13 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "d1ce5b77-45a5-4825-be74-121cc87c1404")
 		)
@@ -8978,7 +9071,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 250.952 189.23 90)
 			(effects
 				(font
@@ -9041,6 +9134,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 252.73 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "d58a83b5-9c98-4261-8fbc-70ac6c23c030")
 		)
@@ -9083,7 +9179,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 269.24 210.312 90)
 			(effects
 				(font
@@ -9146,6 +9242,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25879" (at 269.24 212.09 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "ea663b8f-25fd-4404-abe2-0cdebec868aa")
 		)
@@ -9254,6 +9353,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C20069148" (at 233.68 241.3 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "2ca411fe-94c8-452c-81fc-03099388da9a")
 		)
@@ -9427,6 +9529,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 220.98 165.1 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "d6e56a13-129c-46f9-9597-1d56afdc8066")
 		)
@@ -9523,6 +9628,15 @@
 		)
 		(property "Field-1" ""
 			(at 349.25 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1980462"
+			(at 354.33 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9650,6 +9764,15 @@
 		)
 		(property "Field-1" ""
 			(at 298.45 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C1980462"
+			(at 303.53 204.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9790,7 +9913,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 231.902 189.23 90)
 			(effects
 				(font
@@ -9853,6 +9976,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 233.68 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "ab5f7e83-0549-4049-ac3d-61fd4b5e77b2")
 		)
@@ -9895,7 +10021,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 253.492 189.23 90)
 			(effects
 				(font
@@ -9958,6 +10084,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25117" (at 255.27 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "97b284bd-3d2d-46da-86ee-c868fb1097db")
 		)
@@ -10066,6 +10195,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C8545" (at 222.25 292.1 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "8d57078f-3861-40f1-86bc-25c6779cc45c")
 		)
@@ -10083,5 +10215,89 @@
 				)
 			)
 		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 39.37 20.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "71d0293c-04ec-4521-bf18-95dcdf810ada")
+		(property "Reference" "#FLG090"
+			(at 39.37 17.78 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 39.37 22.86 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 39.37 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 39.37 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 39.37 20.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "710417f2-e029-435b-93ec-6b77693a88b2")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/b169c362-0273-44a3-bb19-0bcbad977976"
+					(reference "#FLG090")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "+3V3"
+		(at 39.37 20.32 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a486f528-4f08-4631-84ff-6e186ce89e7c")
 	)
 )

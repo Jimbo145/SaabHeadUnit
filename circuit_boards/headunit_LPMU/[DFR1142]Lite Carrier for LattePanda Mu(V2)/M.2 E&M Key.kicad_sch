@@ -3934,14 +3934,6 @@
 		(uuid "1477de56-29f4-42de-b5b9-13bc626f7c7f")
 	)
 	(no_connect
-		(at 200.66 163.83)
-		(uuid "15bedd29-97e0-4543-8619-b9acc256d51b")
-	)
-	(no_connect
-		(at 200.66 171.45)
-		(uuid "18d19283-2f63-4ffb-8d22-48430cd58a34")
-	)
-	(no_connect
 		(at 403.86 175.26)
 		(uuid "19fc14c5-a1fe-48ae-b7ac-440fc250fea7")
 	)
@@ -3950,16 +3942,8 @@
 		(uuid "24e31631-f3f4-4e72-93b4-424e137040eb")
 	)
 	(no_connect
-		(at 200.66 151.13)
-		(uuid "27ac4891-81e1-4f4c-a99a-7f0432cdc6be")
-	)
-	(no_connect
 		(at 454.66 203.2)
 		(uuid "2872c3d0-160c-4c37-b05c-5fb28c22e97e")
-	)
-	(no_connect
-		(at 200.66 173.99)
-		(uuid "2a1c2586-8029-4a47-87f5-2eb33f5ee873")
 	)
 	(no_connect
 		(at 403.86 182.88)
@@ -4010,10 +3994,6 @@
 		(uuid "844ba8a9-ab76-4c3e-a5a1-3c9354b24ce5")
 	)
 	(no_connect
-		(at 200.66 148.59)
-		(uuid "84d53647-82c2-48e4-9bd2-fc10d0c7ce17")
-	)
-	(no_connect
 		(at 454.66 177.8)
 		(uuid "85da65f2-5da4-4951-bbf2-57d4e1d5b84c")
 	)
@@ -4034,16 +4014,8 @@
 		(uuid "913f542f-47dd-4829-9894-c2082034d89b")
 	)
 	(no_connect
-		(at 200.66 166.37)
-		(uuid "9162b647-1d74-4bd3-84d5-a921da7fc20b")
-	)
-	(no_connect
 		(at 454.66 185.42)
 		(uuid "97b81abf-66bf-4fe5-8e94-5745504b056e")
-	)
-	(no_connect
-		(at 200.66 161.29)
-		(uuid "99dc9295-5971-4bbc-928f-1cb882a48ffc")
 	)
 	(no_connect
 		(at 403.86 190.5)
@@ -4054,16 +4026,8 @@
 		(uuid "a23dfac3-78db-43fd-8a0c-d972ffbd28e3")
 	)
 	(no_connect
-		(at 200.66 156.21)
-		(uuid "adf0bba6-0eb1-4fe6-b6ab-706be5ec628a")
-	)
-	(no_connect
 		(at 454.66 205.74)
 		(uuid "af46cbfc-7ea0-42cf-8f66-491680c3ac5e")
-	)
-	(no_connect
-		(at 200.66 153.67)
-		(uuid "b4f1ddb2-6268-44f3-8fc3-2820ac7756a9")
 	)
 	(no_connect
 		(at 403.86 195.58)
@@ -4086,14 +4050,6 @@
 		(uuid "ce1f4eb2-dca9-477d-a619-6eb00a6f8404")
 	)
 	(no_connect
-		(at 200.66 146.05)
-		(uuid "d1df765c-38f5-4f1f-909b-f84ed628609a")
-	)
-	(no_connect
-		(at 200.66 168.91)
-		(uuid "d7116634-b8b1-45f5-b20e-01bc80662fb5")
-	)
-	(no_connect
 		(at 454.66 175.26)
 		(uuid "d942eb4f-c183-41e4-8e3f-6eb5d76827e7")
 	)
@@ -4108,10 +4064,6 @@
 	(no_connect
 		(at 454.66 144.78)
 		(uuid "f33bc88c-ac69-4f3c-a924-775b9b391d75")
-	)
-	(no_connect
-		(at 200.66 158.75)
-		(uuid "f567eac2-6499-4e67-b35d-3e3afcf542e7")
 	)
 	(no_connect
 		(at 454.66 132.08)
@@ -4964,17 +4916,6 @@
 		)
 		(uuid "327bb4ec-8726-461a-b11c-fa5a6137b6b6")
 	)
-	(hierarchical_label "PCIE_TX_1+"
-		(shape input)
-		(at 160.02 135.89 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "3c0b68a8-13e3-4ae5-b35b-ec8be9236adb")
-	)
 	(hierarchical_label "PCIE_TX_0+"
 		(shape input)
 		(at 363.22 137.16 180)
@@ -5008,17 +4949,6 @@
 		)
 		(uuid "63d18e29-aa0a-49ea-afde-02f0e7c61b27")
 	)
-	(hierarchical_label "REFCLKM-"
-		(shape input)
-		(at 160.02 207.01 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "650d0155-1998-41a8-98f0-12477cae8afe")
-	)
 	(hierarchical_label "USB_2_P7+"
 		(shape bidirectional)
 		(at 363.22 160.02 180)
@@ -5041,17 +4971,6 @@
 		)
 		(uuid "787307ed-33b1-47c5-a873-02a6f174abc8")
 	)
-	(hierarchical_label "PCIE_RX_1+"
-		(shape output)
-		(at 160.02 140.97 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "79ceb449-d6a1-4732-a99d-c563d4a1d4c4")
-	)
 	(hierarchical_label "PCIE_RX_0-"
 		(shape output)
 		(at 363.22 144.78 180)
@@ -5063,17 +4982,6 @@
 		)
 		(uuid "868c172b-1715-4451-8179-44cd036d7e11")
 	)
-	(hierarchical_label "REFCLKM+"
-		(shape input)
-		(at 160.02 204.47 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "a6a76dc7-43b7-4af2-9066-a3bb4af2b775")
-	)
 	(hierarchical_label "REFCLKE-"
 		(shape input)
 		(at 363.22 208.28 180)
@@ -5084,17 +4992,6 @@
 			(justify right)
 		)
 		(uuid "b658b343-a42b-437a-b318-58bf912689f0")
-	)
-	(hierarchical_label "PCIE_RX_1-"
-		(shape output)
-		(at 160.02 143.51 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "b6c21dd5-c726-4514-8761-a791ed163d75")
 	)
 	(hierarchical_label "~{CLKREQM}"
 		(shape input)
@@ -5139,17 +5036,6 @@
 			(justify left)
 		)
 		(uuid "f34a5e3f-8dc1-40a7-9aa5-34d03bf393e4")
-	)
-	(hierarchical_label "PCIE_TX_1-"
-		(shape input)
-		(at 160.02 138.43 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f4e8b1dc-99b1-4514-87ab-cecc24eddb29")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5244,7 +5130,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 189.738 116.84 90)
 			(effects
 				(font
@@ -5307,6 +5193,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 187.96 116.84 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "6b5ace28-0f60-45bc-bfef-4794ccd673c5")
 		)
@@ -5349,7 +5238,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 473.202 146.05 90)
 			(effects
 				(font
@@ -5412,6 +5301,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25744" (at 474.98 146.05 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "759c5a9c-551a-4b85-acb0-460ad5fc1253")
 		)
@@ -5581,6 +5473,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C15525" (at 435.61 96.52 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "a8ef735d-e935-4088-b201-5fc723ad87f0")
 		)
@@ -5623,7 +5518,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 265.938 167.64 90)
 			(effects
 				(font
@@ -5686,6 +5581,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25879" (at 264.16 167.64 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "482fea82-094a-4c8d-b521-c34e9659a6e2")
 		)
@@ -5789,6 +5687,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 435.61 115.57 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "09a8df63-e887-413f-8df1-b1bac1973bcb")
 		)
@@ -5894,6 +5795,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C326836" (at 166.37 138.43 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "1c9995c4-36d3-4a72-9893-b4ad0c9bcd4f")
 		)
@@ -6135,6 +6039,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C15525" (at 232.41 107.95 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "14c78c59-7d6a-4ff4-a7d3-a77788a20dd2")
 		)
@@ -6307,6 +6214,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 175.26 128.27 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "4db0c6b9-c443-4e72-96bc-bd67bbcc89bf")
 		)
@@ -6404,6 +6314,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "C7496818"
+			(at 267.97 175.5775 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "338697e7-ce3e-4bbd-a045-57df9745bf96")
 		)
@@ -6447,7 +6366,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:PCIe_M.2_Connectors_P=0.5mm_H=4.2mm_KeyE"
+		(property "Footprint" "A_HDJ_Library:M.2_E-Key_Foxconn_AS0BC21-S40BE-7H"
 			(at 429.26 143.51 0)
 			(effects
 				(font
@@ -6510,6 +6429,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C410527" (at 429.26 170.18 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "5"
 			(uuid "ad2607be-71b3-49c8-af95-e5c07a57c7e6")
 		)
@@ -6816,6 +6738,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 378.46 129.54 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "a2b63942-4193-463b-b61a-2c6e2dd6e978")
 		)
@@ -6985,6 +6910,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 232.41 101.6 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "1939dc55-f0d0-421b-864c-9b0a2107bd15")
 		)
@@ -7206,7 +7134,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 469.9 199.898 90)
 			(effects
 				(font
@@ -7269,6 +7197,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 469.9 198.12 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "d09bfed8-cad2-4a13-9477-f5e143e682b6")
 		)
@@ -7441,6 +7372,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C326836" (at 166.37 135.89 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "54fd7099-f8e5-4274-bec9-364bf5bb50c7")
 		)
@@ -7550,6 +7484,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C15525" (at 435.61 109.22 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "bbee65f0-b0ad-4255-9e03-90774e45a52d")
 		)
@@ -7593,7 +7530,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:MountingHole_2.75mm_M2_4.4mm_Pad_TopOnly"
+		(property "Footprint" "A_HDJ_Library:MountingHole_2.7mm_M2_Pad_TopOnly"
 			(at 317.5 144.78 0)
 			(effects
 				(font
@@ -7749,6 +7686,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C326836" (at 369.57 139.7 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "57e641ae-91e1-43a0-8083-cb986adf0a34")
 		)
@@ -7798,7 +7738,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:MountingHole_2.75mm_M2_4.4mm_Pad_TopOnly"
+		(property "Footprint" "A_HDJ_Library:MountingHole_2.7mm_M2_Pad_TopOnly"
 			(at 290.83 144.78 0)
 			(effects
 				(font
@@ -7958,7 +7898,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_HDJ_Library:PCIe_M.2_Connectors_P=0.5mm_H=4.2mm_KeyM"
+		(property "Footprint" "A_HDJ_Library:M.2_M-Key_Foxconn_AS0BC21-S40BM-7H"
 			(at 226.06 142.24 0)
 			(effects
 				(font
@@ -8021,6 +7961,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C410528" (at 226.06 168.91 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "9"
 			(uuid "6371fb38-d88a-4f9e-b264-ff4489efea00")
 		)
@@ -8325,6 +8268,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 232.41 114.3 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "16ac32fd-3c96-40e5-90b0-dbf6c77bf978")
 		)
@@ -8367,7 +8313,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 399.288 114.3 90)
 			(effects
 				(font
@@ -8430,6 +8376,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 397.51 114.3 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "af713415-57f2-499d-b6c8-cb69831765cb")
 		)
@@ -8535,6 +8484,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C326836" (at 369.57 137.16 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "4c9bfd60-2928-4244-b00a-6b34ec7d60b6")
 		)
@@ -8644,6 +8596,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C15525" (at 232.41 95.25 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "66ba3355-fedd-4b2f-b063-de5ada07b20a")
 		)
@@ -8752,7 +8707,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 261.62 198.628 90)
 			(effects
 				(font
@@ -8815,6 +8770,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 261.62 196.85 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "4eabe411-04dc-4b6a-ae4d-67e4c486df8a")
 		)
@@ -8986,6 +8944,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C17168" (at 261.62 189.23 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "811e03a4-8025-4a37-94fb-e1a9ac56d8df")
 		)
@@ -9095,7 +9056,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "A_DFRobot:R_0402"
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 472.948 146.05 90)
 			(effects
 				(font
@@ -9158,6 +9119,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C25744" (at 471.17 146.05 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "1"
 			(uuid "78b6f93d-dafb-433b-845c-953b72652b8a")
 		)
@@ -9327,6 +9291,9 @@
 				(hide yes)
 			)
 		)
+    (property "LCSC" "C1525" (at 435.61 102.87 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
 		(pin "2"
 			(uuid "5541ec17-8d9f-4b4e-a806-45b9fde7556b")
 		)
@@ -9341,5 +9308,797 @@
 				)
 			)
 		)
+	)
+	(global_label "M2_TX0+"
+		(at 160.02 135.89 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a8908664-45bf-44c4-a381-0e653ce5aedd")
+	)
+	(global_label "M2_TX0-"
+		(at 160.02 138.43 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9e6f25f4-dac4-46a5-b560-4d43e1a5a5c5")
+	)
+	(global_label "M2_RX0+"
+		(at 160.02 140.97 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f7361450-47fe-44f7-ab57-30c547dc6b3a")
+	)
+	(global_label "M2_RX0-"
+		(at 160.02 143.51 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b1675488-a6d6-42c9-959a-68210495ca91")
+	)
+	(global_label "M2_REFCLK-"
+		(at 160.02 207.01 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "dc74059e-70de-40ba-b11f-7ba1efca2022")
+	)
+	(global_label "M2_REFCLK+"
+		(at 160.02 204.47 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1c70d5ae-15ba-483c-8136-e36df32b50f8")
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 166.37 146.05 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "327c224f-1539-4121-af1f-2b40c9ebd500")
+		(property "Reference" "C217"
+			(at 166.37 143.51 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220nF/16V"
+			(at 166.37 148.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 166.37 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 166.37 146.05 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C5378" (at 166.37 146.05 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "a3f818f8-fa92-4258-9c97-9a5b4e835d22")
+		)
+		(pin "2"
+			(uuid "2f7bdec7-67df-448b-a99f-272089d7f660")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/ef6f480d-d7ca-4322-a73f-5177e707fe9e"
+					(reference "C217")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 166.37 148.59 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "373e499b-e60c-46dc-90ae-be0c3206c6e1")
+		(property "Reference" "C218"
+			(at 166.37 146.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220nF/16V"
+			(at 166.37 151.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 166.37 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 166.37 148.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C5378" (at 166.37 148.59 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "bdf05dce-5128-4700-ab47-e1d867b4ab8f")
+		)
+		(pin "2"
+			(uuid "a7e2eb98-a4e8-42bb-8ae5-81b816b7069a")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/ef6f480d-d7ca-4322-a73f-5177e707fe9e"
+					(reference "C218")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 166.37 156.21 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9b28a42e-cb0e-42bf-b6b1-b01519c06632")
+		(property "Reference" "C219"
+			(at 166.37 153.67 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220nF/16V"
+			(at 166.37 158.75 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 166.37 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 166.37 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C5378" (at 166.37 156.21 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "68b91a87-4871-4791-8047-6ee1484ee6ae")
+		)
+		(pin "2"
+			(uuid "c101631f-0cd5-4320-b628-211efc717164")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/ef6f480d-d7ca-4322-a73f-5177e707fe9e"
+					(reference "C219")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 166.37 158.75 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "164bc73c-15ba-4d06-904a-34877350c43b")
+		(property "Reference" "C220"
+			(at 166.37 156.21 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220nF/16V"
+			(at 166.37 161.29 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 166.37 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 166.37 158.75 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C5378" (at 166.37 158.75 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "14e9fcbf-4496-4e3b-86e2-fe319d93098e")
+		)
+		(pin "2"
+			(uuid "7a499092-aa02-4e4e-97a0-5b39320538d3")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/ef6f480d-d7ca-4322-a73f-5177e707fe9e"
+					(reference "C220")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 166.37 166.37 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "96935cf8-41b8-4ffe-bf72-49736173a70b")
+		(property "Reference" "C221"
+			(at 166.37 163.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220nF/16V"
+			(at 166.37 168.91 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 166.37 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 166.37 166.37 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C5378" (at 166.37 166.37 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "6464cda1-3fd5-49ca-92f6-c348b0c96ef6")
+		)
+		(pin "2"
+			(uuid "f2288952-6cd9-4875-a7c5-85a277c429f6")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/ef6f480d-d7ca-4322-a73f-5177e707fe9e"
+					(reference "C221")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Small")
+		(at 166.37 168.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6f895c64-0b4d-43ab-bdc1-749141f4b1fd")
+		(property "Reference" "C222"
+			(at 166.37 166.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220nF/16V"
+			(at 166.37 171.45 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 166.37 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 166.37 168.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+    (property "LCSC" "C5378" (at 166.37 168.91 0)
+      (effects (font (size 1.27 1.27)) (hide yes))
+    )
+		(pin "1"
+			(uuid "891db509-e388-4eaa-8f90-508e3433eb68")
+		)
+		(pin "2"
+			(uuid "e9d6c80d-9768-491f-84da-384d38c6aea4")
+		)
+		(instances
+			(project "[DFR1142]Lite Carrier for LattePanda Mu(V2)"
+				(path "/2a6d114a-7fd7-4207-b5f7-4ea9c34f36aa/ef6f480d-d7ca-4322-a73f-5177e707fe9e"
+					(reference "C222")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(global_label "M2_TX1+"
+		(at 163.83 146.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0bd99816-0cf6-49bb-9f9a-a0edd78338ae")
+	)
+	(global_label "M2_TX1-"
+		(at 163.83 148.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "69ecd2b4-f0c8-49e4-9d39-74a8a12960db")
+	)
+	(global_label "M2_TX2+"
+		(at 163.83 156.21 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "25dc5e29-0b0a-4712-821f-9f0a6fba0b61")
+	)
+	(global_label "M2_TX2-"
+		(at 163.83 158.75 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f88fd4bc-6098-4bad-b66c-500a04c87394")
+	)
+	(global_label "M2_TX3+"
+		(at 163.83 166.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "02cbb08f-6a3c-42ae-a77b-00e4a620aabd")
+	)
+	(global_label "M2_TX3-"
+		(at 163.83 168.91 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "98a6e92a-bfd7-44c5-9c8f-cae234686ae1")
+	)
+	(global_label "M2_RX3-"
+		(at 200.66 173.99 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "36070ce9-b4a0-48bb-b95e-9ebc71668d71")
+	)
+	(global_label "M2_RX3+"
+		(at 200.66 171.45 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e5c7b3bd-a341-4eaa-b66b-4589213573fc")
+	)
+	(global_label "M2_RX2-"
+		(at 200.66 163.82999999999998 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c944fe06-4a69-4375-81d4-03a81521ab90")
+	)
+	(global_label "M2_RX2+"
+		(at 200.66 161.29 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "587b4584-c9f4-45f8-a529-582bee1290a4")
+	)
+	(global_label "M2_RX1-"
+		(at 200.66 153.67 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e2089cec-05e7-4b8b-80c1-c42b7ccd6c51")
+	)
+	(global_label "M2_RX1+"
+		(at 200.66 151.13 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b2fa2068-5023-4695-9c50-074e18ec67ae")
+	)
+	(label "M2_TX1+_AC"
+		(at 168.91 146.05 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "42b7d93d-38f5-4d0d-9a60-ecf117ff4120")
+	)
+	(label "M2_TX1-_AC"
+		(at 168.91 148.59 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "88f1bd6c-00a5-42d9-976b-84d122d99ece")
+	)
+	(label "M2_TX2+_AC"
+		(at 168.91 156.21 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ed7cbaac-a747-489b-8734-026919930352")
+	)
+	(label "M2_TX2-_AC"
+		(at 168.91 158.75 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2a09d38f-43e6-467a-bf84-73484aa3f598")
+	)
+	(label "M2_TX3+_AC"
+		(at 168.91 166.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0261cfa5-ae45-4d0d-a86f-02b6c309b4f6")
+	)
+	(label "M2_TX3-_AC"
+		(at 168.91 168.91 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "50307d35-f398-4460-aeca-c33bdadc4cd1")
+	)
+	(label "M2_TX3-_AC"
+		(at 200.66 168.91 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d038a67a-37b0-4770-b513-dfad1aa74ccd")
+	)
+	(label "M2_TX3+_AC"
+		(at 200.66 166.37 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f412d664-08e8-4d1b-a25a-673131ddfe6f")
+	)
+	(label "M2_TX2-_AC"
+		(at 200.66 158.75 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2187c932-2d7c-4320-8f6a-b784ece2377e")
+	)
+	(label "M2_TX2+_AC"
+		(at 200.66 156.21 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "204c5bcb-174e-4fef-8dda-7f61978c6cea")
+	)
+	(label "M2_TX1-_AC"
+		(at 200.66 148.59 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ca9db511-1eb2-4a76-be0d-28d34aa782db")
+	)
+	(label "M2_TX1+_AC"
+		(at 200.66 146.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ab7b6082-c958-4247-84d6-fbe3b0f4d444")
 	)
 )
